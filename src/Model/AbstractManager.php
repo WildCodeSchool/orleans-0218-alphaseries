@@ -92,4 +92,9 @@ abstract class AbstractManager
     {
         //TODO : Implements SQL UPDATE request
     }
+
+    public function truncate(): string
+    {
+
+    }
 }
