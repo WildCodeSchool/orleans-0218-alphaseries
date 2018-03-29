@@ -1,14 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Series</h1>
+    <h1 class="text-center">Series</h1>
     <div class="row">
     {% for serie in series %}
         <div class="col">
             <div class="card card-body mx-auto">
                 <h4 class="card-title">{{ serie.title | title }}</h4>
-                <p class="card-text">{{ serie.synopsis }}</p>
-                <a href="#" class="btn btn-primary">More</a>
+                <p class="card-text">{{ serie.synopsis | slice(0,498) }}</p>
+                <a class="btn btn-primary" data-toggle="collapse" href="#{{ serie.idserie }}" role="button" aria-expanded="false" aria-controls="collapseExample">Next...</a>
+                <div id="{{ serie.idserie }}" class="collapse">
+                    <p class="card-text">{{ serie.synopsis | slice(498) }}</p>
+                </div>
             </div>
         </div>
     {% endfor %}
