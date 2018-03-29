@@ -1,0 +1,13 @@
+@font-face {
+    font-family: TeXGyreAdventor;
+}
+body {
+    background-color: black;
+}
+.card{
+    max-width: 20vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: darkblue;
+    color: antiquewhite;
+    font-family: TeXGyreAdventor sans-serif;
+}
