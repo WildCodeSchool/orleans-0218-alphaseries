@@ -17,6 +17,6 @@ $routes = [
         ['show', '/item/{id:\d+}', 'GET'], // action, url, method
     ],*/
     'serie' => [ // Controller
-        ['accroche','/','/'],
+        ['accroche','/','GET'],
     ],
 ];
