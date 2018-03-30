@@ -34,6 +34,6 @@ class SerieController extends AbstractController
      */
     public function accroche()
     {
-        return $this->twig->render('Serie/accroche.html.twig');
+        return $this->twig->render('Serie/index.html.twig');
     }
 }

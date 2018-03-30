@@ -19,6 +19,6 @@ $routes = [
     ],
     'Serie' => [
         ['list', '/list', 'GET'],
-        ['accroche','/accroche','GET'],
+        ['accroche','/','GET'],
     ],
 ];
