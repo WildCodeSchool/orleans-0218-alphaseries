@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Series</h1>
+    <div class="row">
+    {% for serie in series %}
+        <div class="col">
+            <div class="card card-body mx-auto">
+                <h4 class="card-title">{{ serie.title | title }}</h4>
+                <p class="card-text">{{ serie.synopsis }}</p>
+                <a href="#" class="btn btn-primary">More</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock content %}
