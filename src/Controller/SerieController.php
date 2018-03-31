@@ -32,7 +32,7 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function catchPhrase()
+    public function home()
     {
         return $this->twig->render('Serie/index.html.twig');
     }
