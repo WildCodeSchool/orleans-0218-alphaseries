@@ -10,6 +10,7 @@
 namespace Model;
 
 use App\Connection;
+use bar\foo\baz\Object;
 
 /**
  * Abstract class handling default manager.
@@ -93,8 +94,4 @@ abstract class AbstractManager
         //TODO : Implements SQL UPDATE request
     }
 
-    public function truncate(): string
-    {
-
-    }
 }

@@ -181,7 +181,4 @@ class Serie
 
         return $this;
     }
-
-
-
 }

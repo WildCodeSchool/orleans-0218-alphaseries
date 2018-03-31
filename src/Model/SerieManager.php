@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class SerieManager extends AbstractManager
 {
     const TABLE = 'serie';
@@ -20,5 +19,4 @@ class SerieManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
 }
