@@ -3,12 +3,44 @@
 }
 body {
     background-color: black;
+    color: white;
 }
 .card{
-    max-width: 20vw;
+    max-width: 70vw;
+    max-height: 80vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: darkblue;
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
+.row {
+    margin:0;
+    padding:0;
+}
+
+.card img {
+    height: 35vh;
+}
+
+.card p {
+    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+}
+
+.card h4 {
+    font-size: calc(12px + 12 * (100vw - 400px) / 1200);
+}
+
+.card h5 {
+    font-size: calc(11px + 5 * (100vw - 400px) / 1200);
+}
+
+h1{
+    color: antiquewhite;
+}
+
+/* ///// ///// /////  Quentin phrase d'accroche ///// ///// ///// */
+.catchphrase-lineheight {
+    line-height: 26px;
+}
+/* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
 

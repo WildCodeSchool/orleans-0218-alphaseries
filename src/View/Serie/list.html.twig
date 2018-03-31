@@ -1,14 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Series</h1>
+    <h1 class="text-center">Series</h1>
     <div class="row">
     {% for serie in series %}
-        <div class="col">
+        <div class="col-md-3 pl-4 pb-5">
             <div class="card card-body mx-auto">
-                <h4 class="card-title">{{ serie.title | title }}</h4>
-                <p class="card-text">{{ serie.synopsis }}</p>
-                <a href="#" class="btn btn-primary">More</a>
+                <h4 class="card-title text-center">{{ serie.title | title }}</h4>
+                <img class="img-fluid" src="http://via.placeholder.com/200x300">
+                <h5 class="card-text text-center"><a data-toggle="collapse" href="#{{ serie.idserie }}" role="button" aria-expanded="false" aria-controls="collapseExample">{{ serie.genre }}</a></h5>
+                <div id="{{ serie.idserie }}" class="collapse">
+                    <p class="card-text">{{ serie.synopsis  | slice(0,100) }}</p>
+                </div>
             </div>
         </div>
     {% endfor %}
