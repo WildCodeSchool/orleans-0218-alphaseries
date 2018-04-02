@@ -15,7 +15,7 @@
                             </p>
                             <div>
                                 <h4 class="mx-auto" height="30px">{{ serie.title | title }}</h4>
-                                <h5 class="mb-5 mx-auto">{{ serie.creation_date|date("Y")}}</h5>
+                                <h5 class="pb-5 mx-auto">{{ serie.creation_date|date("Y")}}</h5>
                             </div>
                         </div>
                     {% endfor %}
@@ -24,15 +24,3 @@
         </div>
 {% endblock content %}
 
-
-{#
-{% for serie in series|slice(0, 3) %}
-    <div class="col-sm-6 col-md-4">
-        <div class="box text-center">
-            <h4 height="30px">{{ serie.title | title }}</h4>
-            <p><img class="img-fluid" src="http://via.placeholder.com/200x300" alt="/"></p>
-            <h5>{{ serie.genre }}</h5>
-
-        </div>
-    </div>
-{% endfor %}#}
