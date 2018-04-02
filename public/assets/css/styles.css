@@ -28,11 +28,11 @@ body {
     font-size: calc(10px + 10 * (100vw - 400px) / 1200);
 }
 
-.card h4, .box h4 {
+.card h4 {
     font-size: calc(12px + 12 * (100vw - 400px) / 1200);
 }
 
-.card h5, .box h5 {
+.card h5 {
     font-size: calc(11px + 5 * (100vw - 400px) / 1200);
 }
 
@@ -42,13 +42,24 @@ h1{
 
 /* //// //// //// Quentin : affichage 3séries //// //// //// */
 
+.new-series-title {
+    font-size: 25px;
+}
 .box {
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
-
-.new-series-title {
-    font-size: calc(20px + 25 * (100vw - 400px) / 1200);
+.box h4 {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 172px;
+    max-width: 200px;
 }
-
+.box h5 {
+    font-size: 13px;
+    line-height: 5px;
+    max-width: 200px;
+}
 /* //// //// //// Quentin affichage 3séries (end) //// //// //// */
