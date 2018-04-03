@@ -66,8 +66,27 @@ h1{
 /* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
 
 /**********Navbar**********/
-.nav-link{
+.navlink{
     color: white;
+    display: inline-block;
+
+}
+.navlink:hover {
+
+    color: white;
+}
+
+.navlink:after
+{
+    display: block;
+    content: '';
+    border-bottom: 2px solid white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.navlink:hover:after{
+    transform: scaleX(1);
 
 }
 
