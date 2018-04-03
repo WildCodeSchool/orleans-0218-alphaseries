@@ -1,0 +1,35 @@
+@font-face {
+    font-family: TeXGyreAdventor;
+}
+body {
+    background-image: url("../images/bg.jpg");
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: transparent;
+    color: antiquewhite;
+    font-family: TeXGyreAdventor sans-serif;
+}
+.row {
+    margin:0;
+    padding:0;
+}
+
+.card p {
+    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+}
+
+.card h4 {
+    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card h5 {
+    font-size: calc(11px + 5 * (100vw - 400px) / 1200);
+}
+
+h1{
+    color: antiquewhite;
+}
