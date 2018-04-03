@@ -2,11 +2,7 @@
     font-family: TeXGyreAdventor;
 }
 body {
-    /*background-image: radial-gradient(closest-side ellipse at center, darkblue, black);*/
-    /*background-image: linear-gradient(to right, black, darkblue, black);*/
     background-image: url("../images/bg.jpg");
-    /*background-color: black;
-    color: white;*/
 }
 .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -24,7 +20,10 @@ body {
 }
 
 .card h4 {
-    font-size: calc(12px + 12 * (100vw - 400px) / 1200);
+    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card h5 {
