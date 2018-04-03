@@ -15,7 +15,9 @@ class SerieController extends AbstractController
 {
     /**
      * Display serie listing
-     *
+     *@throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      * @return string
      */
     public function list()
@@ -32,8 +34,10 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function accroche()
+    public function home()
     {
-        return $this->twig->render('Serie/index.html.twig');
+        $serieManager = new SerieManager();
+        $series = $serieManager->selectAll();
+        return $this->twig->render('Serie/index.html.twig', ['series' => $series]);
     }
 }
