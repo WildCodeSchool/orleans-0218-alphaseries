@@ -10,8 +10,6 @@ body {
     color: white;
 }
 .card{
-    max-width: 70vw;
-    max-height: 80vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: dimgrey;
     color: antiquewhite;
@@ -21,12 +19,6 @@ body {
     margin:0;
     padding:0;
 }
-
-.card img {
-    height: 35vh;
-}
-
-
 
 .card p {
     font-size: calc(10px + 10 * (100vw - 400px) / 1200);
