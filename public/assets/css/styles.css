@@ -33,3 +33,33 @@ body {
 h1{
     color: antiquewhite;
 }
+
+/* //// //// //// Quentin : affichage 3séries //// //// //// */
+
+.new-series-title {
+    font-size: 25px;
+}
+.box {
+    color: antiquewhite;
+    font-family: TeXGyreAdventor sans-serif;
+}
+.box h4 {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 172px;
+    max-width: 200px;
+}
+.box h5 {
+    font-size: 13px;
+    line-height: 5px;
+    max-width: 200px;
+}
+/* //// //// //// Quentin affichage 3séries (end) //// //// //// */
+
+/* ///// ///// /////  Quentin phrase d'accroche ///// ///// ///// */
+.catchphrase-lineheight {
+    line-height: 26px;
+}
+/* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
