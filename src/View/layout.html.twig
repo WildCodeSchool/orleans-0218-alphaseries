@@ -16,21 +16,23 @@
 <body>
 {% block content %}{% endblock %}
 {% block footer %}
-    <footer id="footer" class="m-0">
-        <nav class="navbar navbar-expand-sm">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li><a href="#">Mentions légales</a></li>
-                    <li><a href="#">Conditions d'utilisation</a></li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Séries</a></li>
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">A propos</a></li>
+    <footer id="footer" class="m-5 justify-content-center">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="">
+                    <li class=""><a href="#">Mentions légals</a></li>
+                    <li class=""><a href="#">Conditions d'utilisation</a></li>
                 </ul>
             </div>
-        </nav>
+            <div class="col-md-4">
+                <ul>
+                    <li class=""><a href="#">Acceuil</a></li>
+                    <li class=""><a href="#">Séries</a></li>
+                    <li class=""><a href="#">Admin</a></li>
+                    <li class=""><a href="#">A propos</a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
 
 {% endblock %}
