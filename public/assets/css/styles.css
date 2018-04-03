@@ -2,13 +2,16 @@
     font-family: TeXGyreAdventor;
 }
 body {
-    background-color: black;
+    /*background-image: radial-gradient(closest-side ellipse at center, darkblue, black);*/
+    /*background-image: linear-gradient(to right, black, darkblue, black);*/
+    background-image: url("../images/bg2.jpg");
+    background-repeat:no-repeat;
 }
 .card{
     max-width: 70vw;
     max-height: 80vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: darkblue;
+    background-color: dimgrey;
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 
