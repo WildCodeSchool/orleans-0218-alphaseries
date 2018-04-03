@@ -26,4 +26,8 @@ class SerieController extends AbstractController
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
 
+    public function index()
+    {
+        return $this->twig->render('layout.html.twig');
+    }
 }

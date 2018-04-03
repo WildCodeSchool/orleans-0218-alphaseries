@@ -17,6 +17,7 @@ $routes = [
         ['show', '/item/{id:\d+}', 'GET'], // action, url, method
     ],
     'Serie' => [
+        ['index', '/', 'GET'],
         ['list', '/list', 'GET'],
     ],
 ];

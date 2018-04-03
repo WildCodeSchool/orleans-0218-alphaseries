@@ -15,6 +15,25 @@
 
 <body>
 {% block content %}{% endblock %}
+{% block footer %}
+    <footer id="footer" class="m-0">
+        <nav class="navbar navbar-expand-sm">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Séries</a></li>
+                    <li><a href="#">Admin</a></li>
+                    <li><a href="#">A propos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+
+{% endblock %}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
