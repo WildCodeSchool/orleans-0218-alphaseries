@@ -4,14 +4,13 @@
 body {
     /*background-image: radial-gradient(closest-side ellipse at center, darkblue, black);*/
     /*background-image: linear-gradient(to right, black, darkblue, black);*/
-    /*background-image: url("../images/bg2.jpg");
-    background-repeat:no-repeat;*/
-    background-color: black;
-    color: white;
+    background-image: url("../images/bg.jpg");
+    /*background-color: black;
+    color: white;*/
 }
 .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: dimgrey;
+    background-color: transparent;
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
