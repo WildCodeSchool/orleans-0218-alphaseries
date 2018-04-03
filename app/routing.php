@@ -10,6 +10,7 @@
  */
 
 $routes = [
+
     'Item' => [ // Controller
         ['index', '/index', 'GET'], // action, url, method
         ['add', '/item/add', 'GET'], // action, url, method
@@ -18,6 +19,6 @@ $routes = [
     ],
     'Serie' => [
         ['list', '/list', 'GET'],
-        ['home', '/', 'GET'],
+        ['home','/','GET'],
     ],
 ];

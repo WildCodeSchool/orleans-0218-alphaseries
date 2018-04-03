@@ -3,6 +3,7 @@
 }
 body {
     background-color: black;
+    color: white;
 }
 .card{
     max-width: 70vw;
@@ -12,7 +13,6 @@ body {
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
-
 .row {
     margin:0;
     padding:0;
@@ -40,6 +40,7 @@ h1{
     color: antiquewhite;
 }
 
+<<<<<<< HEAD
 /* //// //// //// Quentin : affichage 3séries //// //// //// */
 
 .new-series-title {
@@ -63,3 +64,11 @@ h1{
     max-width: 200px;
 }
 /* //// //// //// Quentin affichage 3séries (end) //// //// //// */
+=======
+/* ///// ///// /////  Quentin phrase d'accroche ///// ///// ///// */
+.catchphrase-lineheight {
+    line-height: 26px;
+}
+/* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
+
+>>>>>>> qs1-accroche
