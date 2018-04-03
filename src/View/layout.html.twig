@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -13,8 +13,32 @@
 </head>
 
 <body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bgc fixed-top ">
+        <div class="container">
+            <ul class="nav nav-pills nav-fill mx-auto w-100">
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="/list">Séries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="#">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="#">A Propos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 {% block content %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 {% block javascript %}{% endblock %}
+
 </html>
