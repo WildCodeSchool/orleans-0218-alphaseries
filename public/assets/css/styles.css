@@ -44,6 +44,7 @@ h1{
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
+
 .box h4 {
     font-size: 15px;
     white-space: nowrap;
@@ -93,4 +94,8 @@ h1{
 .bgc {
     background-color: black;
     opacity: 0.9;
+}
+
+.footer{
+    font-family: TeXGyreAdventor sans-serif;
 }

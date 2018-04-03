@@ -41,25 +41,22 @@
 {% block content %}{% endblock %}
 
 {% block footer %}
-    <footer id="footer" class="m-5 justify-content-center">
-        <div class="row">
-            <div class="col-md-4">
-                <ul class="">
-                    <li class=""><a href="#">Mentions légals</a></li>
-                    <li class=""><a href="#">Conditions d'utilisation</a></li>
+    <footer id="footer" class=" mt-5">
+        <nav class="navbar navbar-expand-sm bg-black navbar-dark footer d-flex flex-row">
+            <div class="collapse navbar-collapse justify-content-center d-flex flex-row">
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Séries</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Admin</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">A propos</a></li>
+                </ul>
+                <ul class="navbar-nav ml-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Mentions légals</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Conditions d'utilisation</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <ul>
-                    <li class=""><a href="#">Acceuil</a></li>
-                    <li class=""><a href="#">Séries</a></li>
-                    <li class=""><a href="#">Admin</a></li>
-                    <li class=""><a href="#">A propos</a></li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </footer>
-
 {% endblock %}
 
 </body>
