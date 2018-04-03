@@ -4,8 +4,10 @@
 body {
     /*background-image: radial-gradient(closest-side ellipse at center, darkblue, black);*/
     /*background-image: linear-gradient(to right, black, darkblue, black);*/
-    background-image: url("../images/bg2.jpg");
-    background-repeat:no-repeat;
+    /*background-image: url("../images/bg2.jpg");
+    background-repeat:no-repeat;*/
+    background-color: black;
+    color: white;
 }
 .card{
     max-width: 70vw;
@@ -15,7 +17,6 @@ body {
     color: antiquewhite;
     font-family: TeXGyreAdventor sans-serif;
 }
-
 .row {
     margin:0;
     padding:0;
@@ -66,3 +67,8 @@ h1{
     max-width: 200px;
 }
 /* //// //// //// Quentin affichage 3séries (end) //// //// //// */
+/* ///// ///// /////  Quentin phrase d'accroche ///// ///// ///// */
+.catchphrase-lineheight {
+    line-height: 26px;
+}
+/* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
