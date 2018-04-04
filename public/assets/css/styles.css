@@ -33,3 +33,34 @@ body {
 h1{
     color: antiquewhite;
 }
+
+/**********Navbar**********/
+.navlink{
+    color: white;
+    display: inline-block;
+
+}
+.navlink:hover {
+
+    color: white;
+}
+
+.navlink:after
+{
+    display: block;
+    content: '';
+    border-bottom: 2px solid white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.navlink:hover:after{
+    transform: scaleX(1);
+
+}
+
+.bgc {
+    background-color: black;
+    opacity: 0.9;
+
+}
