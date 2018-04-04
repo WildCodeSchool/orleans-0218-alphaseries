@@ -13,23 +13,12 @@
 {% block trois_series %}
     <h1 class="new-series-title text-center pb-5 mt-5">Mes trois dernières séries ajoutées</h1>
     <div class="row">
-        <div class="col-md-10 offset-md-1">
-            <div class="row">
-                {% for serie in series %}
-                    <div class="col-sm-6 col-md-4 box">
-                        <p class="text-center mb-1">
-                            <img class="img-fluid"
-                                 src="http://via.placeholder.com/200x300"
-                                 alt="/"
-                            />
-                        </p>
-                        <div>
-                            <h4 class="mx-auto" height="30px">{{ serie.title | title }}</h4>
-                            <h5 class="pb-5 mx-auto">{{ serie.creation_date|date("Y")}}</h5>
-                        </div>
-                    </div>
-                {% endfor %}
+    {% for serie in series %}
+        <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
+            <div class="card card-body mx-auto">
+                <h2 class="card-title text-center">{{ serie.title | title }}</h2>
+                <img class="img-fluid" src="http://via.placeholder.com/200x300">
             </div>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
