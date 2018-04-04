@@ -29,7 +29,7 @@ class Serie
     /**
      * @var string
      */
-    private $gender;
+    private $genre;
 
     /**
      * @var string
@@ -37,14 +37,9 @@ class Serie
     private $creationDate;
 
     /**
-     * @var float
-     */
-    private $globalNote;
-
-    /**
      * @var string
      */
-    private $linkPicture;
+    private $picture;
 
     /**
      * @return int
@@ -106,7 +101,7 @@ class Serie
     /**
      * @return string
      */
-    public function getGender(): string
+    public function getGenre(): string
     {
         return $this->gender;
     }
@@ -115,9 +110,9 @@ class Serie
      * @param string $gender
      * @return Serie
      */
-    public function setGender(string $gender): Serie
+    public function setGenre(string $genre): Serie
     {
-        $this->gender = $gender;
+        $this->genre = $genre;
 
         return $this;
     }
@@ -142,28 +137,9 @@ class Serie
     }
 
     /**
-     * @return float
-     */
-    public function getGlobalNote(): float
-    {
-        return $this->globalNote;
-    }
-
-    /**
-     * @param float $globalNote
-     * @return Serie
-     */
-    public function setGlobalNote(float $globalNote): Serie
-    {
-        $this->globalNote = $globalNote;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
-    public function getLinkPicture(): string
+    public function getPicture(): string
     {
         return $this->linkPicture;
     }
@@ -172,9 +148,9 @@ class Serie
      * @param string $linkPicture
      * @return Serie
      */
-    public function setLinkPicture(string $linkPicture): Serie
+    public function setPicture(string $picture): Serie
     {
-        $this->linkPicture = $linkPicture;
+        $this->picture = $picture;
 
         return $this;
     }
