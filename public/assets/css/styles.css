@@ -4,7 +4,7 @@
 body {
     background-image: url("../images/bg.jpg");
 }
-.card{
+.card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
     color: antiquewhite;
@@ -26,14 +26,19 @@ body {
     text-overflow: ellipsis;
 }
 
-h1{
+h1 {
     color: antiquewhite;
     text-align: center;
     font-size: calc(24px + 19 * (100vw - 400px) / 1200);
+
+.footer {
+    font-family: TeXGyreAdventor sans-serif;
+    font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+
 }
 
 /**********Navbar**********/
-.navlink{
+.navlink {
     color: white;
     display: inline-block;
 
@@ -43,8 +48,7 @@ h1{
     color: white;
 }
 
-.navlink:after
-{
+.navlink:after {
     display: block;
     content: '';
     border-bottom: 2px solid white;
@@ -52,7 +56,7 @@ h1{
     transition: transform 250ms ease-in-out;
 }
 
-.navlink:hover:after{
+.navlink:hover:after {
     transform: scaleX(1);
 
 }
