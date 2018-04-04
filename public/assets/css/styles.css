@@ -1,10 +1,44 @@
-.footer{
+@font-face {
+    font-family: TeXGyreAdventor;
+}
+body {
+    background-image: url("../images/bg.jpg");
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: transparent;
+    color: antiquewhite;
+    font-family: TeXGyreAdventor sans-serif;
+}
+.row {
+    margin:0;
+    padding:0;
+}
+
+.card p {
+    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+}
+
+.card h2 {
+    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+h1 {
+    color: antiquewhite;
+    text-align: center;
+    font-size: calc(24px + 19 * (100vw - 400px) / 1200);
+
+.footer {
     font-family: TeXGyreAdventor sans-serif;
     font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+
 }
 
 /**********Navbar**********/
-.navlink{
+.navlink {
     color: white;
     display: inline-block;
 
@@ -14,8 +48,7 @@
     color: white;
 }
 
-.navlink:after
-{
+.navlink:after {
     display: block;
     content: '';
     border-bottom: 2px solid white;
@@ -23,7 +56,7 @@
     transition: transform 250ms ease-in-out;
 }
 
-.navlink:hover:after{
+.navlink:hover:after {
     transform: scaleX(1);
 
 }
@@ -31,5 +64,5 @@
 .bgc {
     background-color: black;
     opacity: 0.9;
-}
 
+}
