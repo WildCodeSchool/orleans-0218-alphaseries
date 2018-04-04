@@ -4,7 +4,7 @@
 body {
     background-image: url("../images/bg.jpg");
 }
-.card{
+.card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
     color: antiquewhite;
@@ -30,7 +30,7 @@ body {
     font-size: calc(11px + 5 * (100vw - 400px) / 1200);
 }
 
-h1{
+h1 {
     color: antiquewhite;
 }
 
@@ -63,3 +63,38 @@ h1{
     line-height: 26px;
 }
 /* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
+
+.footer {
+    font-family: TeXGyreAdventor sans-serif;
+    font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+}
+
+/**********Navbar**********/
+.navlink {
+    color: white;
+    display: inline-block;
+
+}
+.navlink:hover {
+
+    color: white;
+}
+
+.navlink:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.navlink:hover:after {
+    transform: scaleX(1);
+
+}
+
+.bgc {
+    background-color: black;
+    opacity: 0.9;
+}
+
