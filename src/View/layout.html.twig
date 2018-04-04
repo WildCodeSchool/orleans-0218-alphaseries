@@ -34,9 +34,30 @@
     </nav>
 </header>
 {% block content %}{% endblock %}
+
+{% block footer %}
+    <footer id="footer" class=" mt-5">
+        <nav class="navbar navbar-expand-sm bg-black navbar-dark footer d-flex flex-row">
+            <div class="collapse navbar-collapse justify-content-center d-flex flex-row">
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Séries</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Admin</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">A propos</a></li>
+                </ul>
+                <ul class="navbar-nav ml-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Mentions légales</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Conditions d'utilisation</a></li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+{% endblock %}
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </body>
 
 {% block javascript %}{% endblock %}

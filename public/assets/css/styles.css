@@ -1,3 +1,8 @@
+.footer{
+    font-family: TeXGyreAdventor sans-serif;
+    font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+}
+
 /**********Navbar**********/
 .navlink{
     color: white;
@@ -27,3 +32,4 @@
     background-color: black;
     opacity: 0.9;
 }
+
