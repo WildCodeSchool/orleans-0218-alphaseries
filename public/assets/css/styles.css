@@ -28,41 +28,16 @@ body {
 
 h1 {
     color: antiquewhite;
+   text-align: center;
+    font-size: calc(24px + 19 * (100vw - 400px) / 1200);
 }
 
-/* //// //// //// Quentin : affichage 3séries //// //// //// */
 
-.new-series-title {
-    font-size: 25px;
-}
-.box {
-    color: antiquewhite;
-    font-family: TeXGyreAdventor sans-serif;
-}
-.box h4 {
-    font-size: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 172px;
-    max-width: 200px;
-}
-.box h5 {
-    font-size: 13px;
-    line-height: 5px;
-    max-width: 200px;
-}
-/* //// //// //// Quentin affichage 3séries (end) //// //// //// */
-
-/* ///// ///// /////  Quentin phrase d'accroche ///// ///// ///// */
-.catchphrase-lineheight {
-    line-height: 26px;
-}
-/* ///// ///// /////  Quentin phrase d'accroche (end) ///// ///// ///// */
 
 .footer {
     font-family: TeXGyreAdventor sans-serif;
     font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+
 }
 
 /**********Navbar**********/
@@ -92,5 +67,5 @@ h1 {
 .bgc {
     background-color: black;
     opacity: 0.9;
-}
 
+}

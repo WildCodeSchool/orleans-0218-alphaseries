@@ -18,8 +18,12 @@ $routes = [
     ],
     'Serie' => [
         ['list', '/list', 'GET'],
+
     ],
     'Home' => [
     ['homePage', '/', 'GET'],
     ],
+
+    ]
+
 ];
