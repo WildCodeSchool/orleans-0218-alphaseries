@@ -27,15 +27,4 @@ class SerieController extends AbstractController
 
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
-
-    /**
-     * @return mixed
-     */
-    public function home()
-    {
-        $serieManager = new SerieManager();
-        $series = $serieManager->selectAll();
-        return $this->twig->render('Serie/index.html.twig', ['series' => $series]);
-    }
-
 }
