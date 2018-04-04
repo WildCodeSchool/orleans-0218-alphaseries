@@ -19,15 +19,11 @@ body {
     font-size: calc(10px + 10 * (100vw - 400px) / 1200);
 }
 
-.card h4 {
+.card h2 {
     font-size: calc(20px + 15 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.card h5 {
-    font-size: calc(11px + 5 * (100vw - 400px) / 1200);
 }
 
 h1 {
