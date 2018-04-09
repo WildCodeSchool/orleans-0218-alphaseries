@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     public function homePage()
     {
         $homeManager = new HomeManager();
-        $series = $homeManager->showThreeSeries();
+        $series = $homeManager->showLimitedSeries(3);
         return $this->twig->render('Home/index.html.twig', ['series' => $series]);
     }
 }
