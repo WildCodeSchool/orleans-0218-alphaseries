@@ -24,9 +24,12 @@ class HomeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function showThreeSeries()
+    public function showLimitedSeries(int $limit)
     {
-        $resultShowThreeSeries = $this->pdoConnection->query('SELECT * FROM serie ORDER BY idserie DESC LIMIT 3');
-        return $resultShowThreeSeries->fetchAll(\PDO::FETCH_ASSOC);
+        $statement = $this->pdoConnection->prepare('SELECT * FROM serie ORDER BY idserie DESC LIMIT :limit');
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
+        $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 }
