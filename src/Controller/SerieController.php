@@ -8,6 +8,9 @@
 
 namespace Controller;
 
+use Model\Serie;
+use Model\SerieManager;
+
 
 class SerieController extends AbstractController
 {

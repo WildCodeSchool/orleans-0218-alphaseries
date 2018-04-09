@@ -30,6 +30,9 @@ h1 {
     color: antiquewhite;
     text-align: center;
     font-size: calc(24px + 19 * (100vw - 400px) / 1200);
+}
+
+
 
 .footer {
     font-family: TeXGyreAdventor sans-serif;
