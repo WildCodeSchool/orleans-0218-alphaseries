@@ -28,4 +28,30 @@ class SerieController extends AbstractController
 
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
+
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function form()
+    {
+        return $this->twig->render('Serie/add.html.twig');
+    }
+
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function add()
+    {
+        $serieManager = new SerieManager();
+        $serieManager->addSerie($_POST);
+        $series = $serieManager->selectAll();
+
+        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
+    }
 }

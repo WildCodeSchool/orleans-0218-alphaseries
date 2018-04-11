@@ -103,7 +103,7 @@ class Serie
      */
     public function getGenre(): string
     {
-        return $this->gender;
+        return $this->genre;
     }
 
     /**
@@ -141,11 +141,11 @@ class Serie
      */
     public function getPicture(): string
     {
-        return $this->linkPicture;
+        return $this->picture;
     }
 
     /**
-     * @param string $linkPicture
+     * @param string $picture
      * @return Serie
      */
     public function setPicture(string $picture): Serie

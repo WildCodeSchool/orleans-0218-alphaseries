@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="mt-5 pt-5">Administration des Séries</h1>
+    <div class="row pt-5">
+        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+            <h2 class="text-center">Création d'une série</h2>
+            <form action="/list/admin" method="post" enctype="multipart/form-data">
+                <div class="form-group row justify-content-center p-2">
+                    <label for="title" class="col-xs-3 col-form-label mr-3">Titre</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input type="text" class="form-control ml-2" id="title" name="title">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="synopsis" class="col-xs-3 col-form-label">Synopsis</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <textarea class="form-control" rows="5" id="synopsis" name="synopsis"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="genre" class="col-xs-3 col-form-label mr-3">Genre</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input list="genres" type="text" class="form-control ml-1" id="genre" name="genre">
+                        <datalist id="genres">
+                            <option value="Policier">
+                            <option value="Fiction">
+                            <option value="Comédie">
+                            <option value="Drame">
+                            <option value="Western">
+                            <option value="Horreur">
+                            <option value="Thriller">
+                            <option value="Animation">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="creation_date" class="col-xs-3 col-form-label mr-2">Date de création</label>
+                    <div class="col-xs-9">
+                        <input type="date" class="form-control" id="creation_date" name="creation_date">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="picture"></label>
+                    <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <div class="offset-xs-3 col-xs-9 mr-3">
+                        <button type="submit" class="btn btn-primary" value="addSerie">Terminer</button>
+                    </div>
+                    <div class="offset-xs-3 col-xs-9">
+                        <button type="button" class="btn btn-primary" value="addEpisode">Ajouter Episode</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+            <h2 class="text-center">Liste des épisodes</h2>
+        </div>
+    </div>
+{% endblock content %}
