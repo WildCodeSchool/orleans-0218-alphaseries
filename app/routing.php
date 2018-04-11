@@ -12,8 +12,8 @@
 $routes = [
     'Serie' => [
         ['list', '/list', 'GET'],
-        ['form', '/admin', 'GET'],
-        ['add', '/list/admin', ['GET','POST']],
+        ['addView', '/admin', 'GET'],
+        ['listAfterAdd', '/list/admin', ['GET','POST']],
 
     ],
     'Home' => [

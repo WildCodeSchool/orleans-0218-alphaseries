@@ -27,6 +27,11 @@ body {
     text-overflow: ellipsis;
 }
 
+.card img{
+    width: 340px;
+    height: 500px;
+}
+
 h1 {
     color: antiquewhite;
     text-align: center;
