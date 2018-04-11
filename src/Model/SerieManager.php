@@ -24,7 +24,8 @@ class SerieManager extends AbstractManager
     /**
      * @return array
      */
-    public function searchbar () {
+    public function searchbar() 
+    {
 
         if(!empty($_GET['search'])) {
             $searchterm = $_GET['search'];
