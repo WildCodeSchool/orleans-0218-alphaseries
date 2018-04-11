@@ -28,4 +28,12 @@ class SerieController extends AbstractController
 
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
+
+    public function search ()
+    {
+        $serieManager = new SerieManager();
+        $series = $serieManager->searchbar();
+
+        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
+    }
 }
