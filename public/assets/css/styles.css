@@ -38,6 +38,13 @@ h1 {
     font-size: calc(24px + 19 * (100vw - 400px) / 1200);
 }
 
+.vignette{
+    margin-left: 12vw;
+}
+
+.broadcast{
+    margin-left: 9vw;
+}
 
 
 .footer {
