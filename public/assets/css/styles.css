@@ -27,7 +27,7 @@ body {
     text-overflow: ellipsis;
 }
 
-.card img{
+img{
     width: 340px;
     height: 500px;
 }

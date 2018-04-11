@@ -13,8 +13,9 @@
         <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
             <div class="card card-body mx-auto">
                 <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                <img class="img-fluid mx-auto" src="/assets/images/{{ serie.link_picture }}" style="width: 340px;height: 500px;">
+                <img class="img-fluid mx-auto" src="/assets/images/{{ serie.link_picture }}">
             </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
