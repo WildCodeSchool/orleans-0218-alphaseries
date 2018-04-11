@@ -33,12 +33,17 @@ h1 {
 }
 
 
-
+/**********Footer**********/
 .footer {
     font-family: TeXGyreAdventor sans-serif;
     font-size: calc(13px + 8 * (100vw - 400px) / 1200);
 
 }
+.navlink-footer:hover {
+
+    color: white;
+}
+
 
 /**********Navbar**********/
 .navlink {
