@@ -35,7 +35,7 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function form()
+    public function addView()
     {
         return $this->twig->render('Serie/add.html.twig');
     }
@@ -46,12 +46,20 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function add()
+    public function listAfterAdd()
     {
         $serieManager = new SerieManager();
-        $serieManager->addSerie($_POST);
+        $serieManager->addSerie($this->cleanPost($_POST));
         $series = $serieManager->selectAll();
 
         return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
+    }
+
+    public function cleanPost(array $data) {
+        foreach ($data as $key => $item){
+            $data[$key] = trim($item);
+            $data[$key] = htmlspecialchars($item);
+        }
+        return $data;
     }
 }

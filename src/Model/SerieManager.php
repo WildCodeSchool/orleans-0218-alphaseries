@@ -47,7 +47,7 @@ class SerieManager extends AbstractManager
                     $fileName = $_FILES["fichier"]["tmp_name"][$i];
                     $imageSize = getimagesize($fileName);
                     $extension_upload = strtolower(substr(strrchr($_FILES['fichier']['name'][$i], '.'), 1));
-                    $uniqueSaveName = time() . uniqid(rand());
+                    $uniqueSaveName = time() . uniqid();
                     $uploadFile = $uploadDir . $uniqueSaveName . '.' . $extension_upload;
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
@@ -62,7 +62,7 @@ class SerieManager extends AbstractManager
                         move_uploaded_file($fileName, $uploadFile);
                     } else {
                         foreach ($errors as $error) {
-                            echo '<script>alert("' . $error . '");</script>';
+                            return '<script>alert("' . $error . '");</script>';
                         }
                     }
                 }
