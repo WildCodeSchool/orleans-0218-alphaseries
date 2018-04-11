@@ -63,6 +63,21 @@ abstract class AbstractManager
     }
 
     /**
+     * @param int $idserie
+     * @return mixed
+     */
+    public function selectOneSerie(int $idserie)
+    {
+        // prepared request
+        $statement = $this->pdoConnection->prepare("SELECT * FROM $this->table WHERE idserie=:idserie");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('idserie', $idserie, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    /**
      * DELETE on row in dataase by ID
      *
      * @param int $id

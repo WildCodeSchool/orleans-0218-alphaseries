@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row pt-5">
+        <div class="col-md-4">
+            <h1>{{ serie.title }}</h1>
+            <h2 style="color: white;">Synopsis</h2>
+            <p style="color: white;">{{ serie.synopsis }}</p>
+            <img src="{{ serie.link_picture }}"/>
+            <img src="../../../public/assets/images/penny.png"/>
+        </div>
+    </div>
+{% endblock %}
+
