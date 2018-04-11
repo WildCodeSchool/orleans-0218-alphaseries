@@ -2,6 +2,7 @@
     font-family: TeXGyreAdventor;
 }
 body {
+    margin-top: 70px;
     background-image: url("../images/bg.jpg");
 }
 .card {
@@ -69,3 +70,4 @@ h1 {
     opacity: 0.9;
 
 }
+
