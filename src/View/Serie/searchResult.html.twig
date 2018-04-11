@@ -1,1 +1,15 @@
-{% extends  'Serie/list.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="mt-5 pt-5">Resultat de votre recherche</h1>
+    <div class="row pt-5">
+        {% for serie in series %}
+            <div class="col-md-3 col-sm-6 pl-4 pb-5">
+                <div class="card card-body mx-auto">
+                    <h2 class="card-title text-center">{{ serie.title | title }}</h2>
+                    <img class="img-fluid" src="http://via.placeholder.com/200x300">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
