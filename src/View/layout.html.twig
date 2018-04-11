@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -13,8 +13,59 @@
 </head>
 
 <body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bgc fixed-top ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent" aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navBarContent">
+            <ul class="nav nav-pills nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="/list">Séries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="#">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlink" href="#">A Propos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+{% block search_bar %}{% endblock %}
 {% block content %}{% endblock %}
-</body>
+
+
+{% block footer %}
+    <footer id="footer" class=" mt-5">
+        <nav class="navbar navbar-expand-sm bg-black navbar-dark footer d-flex flex-row">
+            <div class="collapse navbar-collapse justify-content-center d-flex flex-row">
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Séries</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Admin</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">A propos</a></li>
+                </ul>
+                <ul class="navbar-nav ml-5">
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Mentions légales</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Conditions d'utilisation</a></li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 {% block javascript %}{% endblock %}
+
+</body>
+
 </html>
