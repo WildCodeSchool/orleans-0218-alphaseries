@@ -29,7 +29,7 @@ body {
 
 img{
     width: 340px;
-    height: 500px;
+    max-height: 454px;
 }
 
 h1 {

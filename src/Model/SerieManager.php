@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class SerieManager extends AbstractManager
 {
     const TABLE = 'serie';
@@ -35,17 +34,15 @@ class SerieManager extends AbstractManager
             'gif',
             'png'
         ];
-        if (!empty($_POST)){
-            for ($i = 0; $i < count($_FILES['fichier']['name']); $i++) {
 
-                if (empty($_POST['fichier[]'])){
-                    $fileName = 'defaultPicture.jpg';
-                    $filePath = $fileName;
+        if (!empty($_POST)){
+            for ($i = 0; $i < count($_FILES["fichier"]["name"]); $i++) {
+
+                if ($_FILES["fichier"]["name"][0] === ""){
+                    $filePath = 'defaultPicture.jpg';
 
                 }else {
-
                     $fileName = $_FILES["fichier"]["tmp_name"][$i];
-                    $imageSize = getimagesize($fileName);
                     $extension_upload = strtolower(substr(strrchr($_FILES['fichier']['name'][$i], '.'), 1));
                     $uniqueSaveName = time() . uniqid();
                     $uploadFile = $uploadDir . $uniqueSaveName . '.' . $extension_upload;
@@ -62,7 +59,7 @@ class SerieManager extends AbstractManager
                         move_uploaded_file($fileName, $uploadFile);
                     } else {
                         foreach ($errors as $error) {
-                            return '<script>alert("' . $error . '");</script>';
+                            echo '<script>alert("' . $error . '");</script>';
                         }
                     }
                 }
