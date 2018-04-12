@@ -32,6 +32,6 @@ class SerieController extends AbstractController
     {
         $serieManager =  new SerieManager();
         $series = $serieManager->selectOneSerie(1);
-        return $this->twig->render('Serie/maserie.html.twig', ['serie' => $series]);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $series]);
     }
 }
