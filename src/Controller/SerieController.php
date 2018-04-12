@@ -30,6 +30,12 @@ class SerieController extends AbstractController
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
 
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function search()
     {
         $serieManager = new SerieManager();
