@@ -1,10 +1,20 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block content %}
     <div class="row mt-5 mb-5">
         <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2">
             <i class="fas fa-quote-left fa-pull-left fa-border fa-2x"></i>
             <p class="lead mb-0 catchphrase-lineheight"> AlphaSeries : gérer vos séries n'a jamais été aussi facile !</p>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col-7 mx-auto">
+                <form method="GET" action ="/list/searchResult" class="input-group">
+                    <input class="form-control searchengine" type="text" name="search" value="" placeholder="Votre recherche">
+                </form>
+            </div>
         </div>
     </div>
     <h1 class="new-series-title text-center pb-5 mt-5">Mes trois dernières séries ajoutées</h1>

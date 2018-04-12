@@ -5,6 +5,7 @@
     font-style: normal;
 }
 body {
+    margin-top:70px;
     background-image: url("../images/bg.jpg");
     font-family: 'tex_gyre_adventorregular';
 }
@@ -75,4 +76,9 @@ h1 {
     background-color: black;
     opacity: 0.9;
 
+}
+/****searchbar*****/
+.form-control.searchengine {
+    border-radius:50px 50px 50px 50px;
+    min-width: 50%;
 }
