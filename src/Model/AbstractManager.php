@@ -85,7 +85,7 @@ abstract class AbstractManager
 
 
     /**
-     * @param int   $id   Id of the row to update
+     * @param int $id Id of the row to update
      * @param array $data $data to update
      */
     public function update(int $id, array $data)

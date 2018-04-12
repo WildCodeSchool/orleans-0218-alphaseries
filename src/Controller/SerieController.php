@@ -14,18 +14,37 @@ use Model\SerieManager;
 
 class SerieController extends AbstractController
 {
+    const LIMIT = 12;
+    const PAGEMIN = 0;
+
     /**
      * Display serie listing
-     *@throws \Twig_Error_Loader
+     * @param int $page
+     * @param int $pageMax
+     * @return string
+     * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
-     * @return string
      */
-    public function list()
+    public function list(int $page)
     {
         $serieManager = new SerieManager();
-        $series = $serieManager->selectAll();
+        $series = $serieManager->selectByPage($page, self::LIMIT);
 
-        return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
+        $pageMax = $serieManager->recupPageMax();
+        if ($page < 1) {
+            $page = 1;
+        }
+
+        if ($page > $pageMax) {
+            $page = $pageMax;
+        }
+
+        return $this->twig->render('Serie/list.html.twig', [
+                'series' => $series,
+                'page' => $page,
+                'pageMax' => $pageMax,
+            ]
+        );
     }
 }
