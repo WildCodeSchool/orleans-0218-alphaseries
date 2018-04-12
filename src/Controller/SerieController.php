@@ -8,6 +8,7 @@
 
 namespace Controller;
 
+use Model\HomeManager;
 use Model\Serie;
 use Model\SerieManager;
 
@@ -46,20 +47,14 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function listAfterAdd()
+    public function viewAfterAdd()
     {
         $serieManager = new SerieManager();
+        $homeManager = new HomeManager();
         $serieManager->addSerie($this->cleanPost($_POST));
-        $series = $serieManager->selectAll();
+        $series = $homeManager->showLimitedSeries(1);
 
-        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
+        return $this->twig->render('Serie/adminSerie.html.twig', ['series' => $series]);
     }
 
-    public function cleanPost(array $data) {
-        foreach ($data as $key => $item){
-            $data[$key] = trim($item);
-            $data[$key] = htmlspecialchars($item);
-        }
-        return $data;
-    }
 }

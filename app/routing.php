@@ -13,7 +13,7 @@ $routes = [
     'Serie' => [
         ['list', '/list', 'GET'],
         ['addView', '/admin', 'GET'],
-        ['listAfterAdd', '/list/admin', ['GET','POST']],
+        ['viewAfterAdd', '/serie/admin', ['GET','POST']],
 
     ],
     'Home' => [

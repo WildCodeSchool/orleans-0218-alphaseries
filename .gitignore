@@ -3,7 +3,6 @@
 *.cache
 app/db.php
 /.idea/
-/public/assets/images/*
-!/public/assets/images/defaultPicture.jpg
-!/public/assets/images/favicon.png
-!/public/assets/images/bg.jpg
+/public/assets/upload/*
+!/public/assets/upload/defaultPicture.jpg
+

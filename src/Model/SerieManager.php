@@ -25,7 +25,7 @@ class SerieManager extends AbstractManager
      */
     public function checkPicture()
     {
-        $uploadDir = 'assets/images/';
+        $uploadDir = 'assets/upload/';
         $errors = [];
         $maxsize  = 1048576;
         $acceptable = [
@@ -45,18 +45,17 @@ class SerieManager extends AbstractManager
                     $fileName = $_FILES["fichier"]["tmp_name"][$i];
                     $extension_upload = strtolower(substr(strrchr($_FILES['fichier']['name'][$i], '.'), 1));
                     $uniqueSaveName = time() . uniqid();
-                    $uploadFile = $uploadDir . $uniqueSaveName . '.' . $extension_upload;
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
                     if (($_FILES['fichier']['size'][$i] >= $maxsize) || ($_FILES['fichier']['size'][$i] == 0)) {
-                        $errors[] = 'File too large. File must be less than 1 megabytes.';
+                        $errors[] = 'File too large. File must be less than '.$maxsize .' bytes.';
                     }
 
                     if (!in_array($extension_upload, $acceptable) && !empty($_FILES['fichier']['type'][$i])) {
-                        $errors[] = 'Invalid file type. Only JPG, JPEG, GIF and PNG types are accepted.';
+                        $errors[] = 'Invalid file type. Only '.implode(',',$acceptable).' types are accepted.';
                     }
                     if (count($errors) === 0) {
-                        move_uploaded_file($fileName, $uploadFile);
+                        move_uploaded_file($fileName, $uploadDir.$filePath);
                     } else {
                         foreach ($errors as $error) {
                             echo '<script>alert("' . $error . '");</script>';
@@ -75,26 +74,19 @@ class SerieManager extends AbstractManager
     {
         $manage = new SerieManager();
         $data['picture'] = $manage->checkPicture();
-        $serie = new Serie();
-        $serie->setTitle($data['title']);
-        $serie->setGenre($data['genre']);
-        $serie->setSynopsis($data['synopsis']);
-        $serie->setCreationDate($data['creation_date']);
-        $serie->setPicture($data['picture']);
-        $title = $serie->getTitle();
-        $syno = $serie->getSynopsis();
-        $genre = $serie->getGenre();
-        $date = $serie->getCreationDate();
-        $picture = $serie->getPicture();
+        $title = $data['title'];
+        $syno = $data['synopsis'];
+        $genre = $data['genre'];
+        $date = $data['creation_date'];
+        $picture = $data['picture'];
 
-        $statement = $this->pdoConnection->prepare("INSERT INTO serie (title, synopsis, genre, creation_date, link_picture) VALUES (:title, :synopsis, :genre, :creation_date, :picture)");
+        $statement = $this->pdoConnection->prepare("INSERT INTO $this->table (title, synopsis, genre, creation_date, link_picture) VALUES (:title, :synopsis, :genre, :creation_date, :picture)");
         $statement->bindValue('title', $title);
         $statement->bindValue('synopsis', $syno);
         $statement->bindValue('genre', $genre);
         $statement->bindValue('creation_date', $date);
         $statement->bindValue('picture', $picture);
         $statement->execute();
-
     }
 
 

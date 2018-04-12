@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1 class="mt-5 pt-5">Liste des Séries</h1>
+    <h1 class="mt-5 pt-5">Ajout des épisodes</h1>
     <div class="row pt-5">
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5">
                 <div class="card card-body mx-auto">
                     <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                    <img class="img-fluid mx-auto" src="/assets/images/{{ serie.link_picture }}">
+                    <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
                 </div>
             </div>
         {% endfor %}

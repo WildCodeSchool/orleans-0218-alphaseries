@@ -76,11 +76,11 @@ abstract class AbstractManager
     /**
      * INSERT one row in dataase
      *
-     * @param Array $data
+     * @param array $data
      */
     public function insert(array $data)
     {
-        //TODO : Implements SQL INSERT request
+
     }
 
 
