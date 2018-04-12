@@ -33,7 +33,7 @@ class SerieController extends AbstractController
     public function search()
     {
         $serieManager = new SerieManager();
-        $series = $serieManager->searchbar();
+        $series = $serieManager->searchbar($_GET['search']);
 
         return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
     }
