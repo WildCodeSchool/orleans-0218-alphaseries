@@ -22,8 +22,9 @@ class SerieManager extends AbstractManager
 
     /**
      * @return string
+     * @throws \Exception
      */
-    public function checkPicture()
+    public function upload()
     {
         $uploadDir = 'assets/upload/';
         $errors = [];
@@ -48,46 +49,29 @@ class SerieManager extends AbstractManager
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
                     if (($_FILES['fichier']['size'][$i] >= $maxsize) || ($_FILES['fichier']['size'][$i] == 0)) {
-                        $errors[] = 'File too large. File must be less than '.$maxsize .' bytes.';
+                        throw new \Exception('File too large. File must be less than '.$maxsize .' bytes.');
                     }
 
                     if (!in_array($extension_upload, $acceptable) && !empty($_FILES['fichier']['type'][$i])) {
-                        $errors[] = 'Invalid file type. Only '.implode(',',$acceptable).' types are accepted.';
+                        throw new \Exception('Invalid file type. Only '.implode(',',$acceptable).' types are accepted.');
                     }
-                    if (count($errors) === 0) {
-                        move_uploaded_file($fileName, $uploadDir.$filePath);
-                    } else {
-                        foreach ($errors as $error) {
-                            echo '<script>alert("' . $error . '");</script>';
-                        }
-                    }
+                    move_uploaded_file($fileName, $uploadDir.$filePath);
+
                 }
             }
         }
         return $filePath;
     }
 
-    /**
-     * @param array $data
-     */
-    public function addSerie(array $data)
+    public function insert(array $data)
     {
-        $manage = new SerieManager();
-        $data['picture'] = $manage->checkPicture();
-        $title = $data['title'];
-        $syno = $data['synopsis'];
-        $genre = $data['genre'];
-        $date = $data['creation_date'];
-        $picture = $data['picture'];
+        try{
+            $data['link_picture'] = $this->upload();
+            parent::insert($data);
+        }catch (\Exception $e){
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        }
 
-        $statement = $this->pdoConnection->prepare("INSERT INTO $this->table (title, synopsis, genre, creation_date, link_picture) VALUES (:title, :synopsis, :genre, :creation_date, :picture)");
-        $statement->bindValue('title', $title);
-        $statement->bindValue('synopsis', $syno);
-        $statement->bindValue('genre', $genre);
-        $statement->bindValue('creation_date', $date);
-        $statement->bindValue('picture', $picture);
-        $statement->execute();
     }
-
 
 }

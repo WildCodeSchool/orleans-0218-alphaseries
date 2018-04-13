@@ -74,12 +74,19 @@ abstract class AbstractManager
 
 
     /**
-     * INSERT one row in dataase
-     *
      * @param array $data
      */
     public function insert(array $data)
     {
+        $fields = array_keys($data);
+        $query = "INSERT INTO $this->table (".implode(',',$fields).") VALUES (:".implode(',:',$fields).")";
+        $statement = $this->pdoConnection->prepare($query);
+        foreach ($data as $field => $value){
+            $statement->bindValue($field, $value);
+        }
+        $statement->execute();
+
+        return $this->pdoConnection->lastInsertId();
 
     }
 

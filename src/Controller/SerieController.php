@@ -46,13 +46,25 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     * @throws \Exception
      */
     public function viewAfterAdd()
     {
-        $serieManager = new SerieManager();
-        $homeManager = new HomeManager();
-        $serieManager->addSerie($this->cleanPost($_POST));
-        $series = $homeManager->showLimitedSeries(1);
+        if (!empty($_POST)){
+            if (empty($_POST['title'])){
+                throw new \Exception('Le champ titre est requis!');
+            }
+            if (strlen($_POST['title']) > 255){
+                throw new \Exception('Le titre est trop long!');
+            }
+            if (!preg_match('/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/', $_POST['creation_date'])){
+                throw new \Exception('Date invalide');
+            }
+            $serieManager = new SerieManager();
+            $data = $this->cleanPost($_POST);
+            $series = $serieManager->insert($data);
+
+        }
 
         return $this->twig->render('Serie/adminSerie.html.twig', ['series' => $series]);
     }

@@ -35,7 +35,7 @@ abstract class AbstractController
         $this->twig->addExtension(new \Twig_Extension_Debug());
     }
 
-    public function cleanPost(array $data) {
+    protected function cleanPost(array $data) {
         foreach ($data as $key => $item){
             $data[$key] = trim($item);
         }
