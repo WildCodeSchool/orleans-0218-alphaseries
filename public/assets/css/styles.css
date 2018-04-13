@@ -55,7 +55,7 @@ a:hover:after {
 }
 
 .card h2 {
-    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -70,6 +70,10 @@ h1 {
     color: antiquewhite;
     text-align: center;
     font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+}
+
+h2 {
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
 }
 
 .vignette{
