@@ -58,7 +58,7 @@ class SerieController extends AbstractController
             if (strlen($_POST['title']) > 255){
                 throw new \Exception('Le titre est trop long!');
             }
-            if (!preg_match('/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/', $_POST['creation_date'])){
+            if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $_POST['creation_date'])){
                 throw new \Exception('Date invalide');
             }
             $serieManager = new SerieManager();
