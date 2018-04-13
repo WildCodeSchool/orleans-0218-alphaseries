@@ -24,18 +24,6 @@ class SerieManager extends AbstractManager
 
     public function selectByPage(int $page, int $limit)
     {
-        if ($page < 1) {
-            $page = 1;
-        }
-        $data = $this->pdoConnection->query('SELECT COUNT(*) AS total FROM ' . $this->table)->fetch(\PDO::FETCH_ASSOC);
-        $total = $data['total'];
-
-        $pageMax = ceil($total / $limit);
-
-        if ($page > $pageMax) {
-            $page = $pageMax;
-        }
-
         return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
             \PDO::FETCH_CLASS, $this->className
         )->fetchAll();

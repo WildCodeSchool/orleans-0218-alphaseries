@@ -29,9 +29,9 @@ class SerieController extends AbstractController
     public function list(int $page)
     {
         $serieManager = new SerieManager();
-        $series = $serieManager->selectByPage($page, self::LIMIT);
 
         $pageMax = $serieManager->recupPageMax();
+
         if ($page < 1) {
             $page = 1;
         }
@@ -40,6 +40,7 @@ class SerieController extends AbstractController
             $page = $pageMax;
         }
 
+        $series = $serieManager->selectByPage($page, self::LIMIT);
         return $this->twig->render('Serie/list.html.twig', [
                 'series' => $series,
                 'page' => $page,
