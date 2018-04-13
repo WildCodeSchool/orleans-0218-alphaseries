@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block content %}
     <div class="container">
         <div class="row justify-content-center">
@@ -12,6 +13,15 @@
             </div>
         </div>
     </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col-7 mx-auto">
+                <form method="GET" action ="/list/searchResult" class="input-group">
+                    <input class="form-control searchengine" type="search" name="search" value="" placeholder="Votre recherche">
+                </form>
+            </div>
+        </div>
+    </div>
     <h1 class="new-series-title text-center pb-5 mt-5">Mes trois dernières séries ajoutées</h1>
     <div class="row">
         {% for serie in series %}
@@ -21,7 +31,9 @@
                     <img class="img-fluid" src="http://via.placeholder.com/200x300">
                 </div>
             </div>
+
         {% endfor %}
+
     </div>
 {% endblock %}
 
