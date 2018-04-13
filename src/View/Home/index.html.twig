@@ -13,16 +13,17 @@
         </div>
     </div>
     <h1 class="new-series-title text-center pb-5 mt-5">Mes trois dernières séries ajoutées</h1>
-    <div class="row">
-    {% for serie in series %}
-        <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
-            <div class="card card-body mx-auto">
-                <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                {% if {{ serie.link_picture }} is null %}
-                    <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
-                {% else %}
-                    <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
-                {% endif %}
+    <div class="row pt-5">
+        {% for serie in series %}
+            <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
+                <figure class="card card-body mx-auto">
+                    <h2 class="card-title text-center">{{ serie.title | title }}</h2>
+                    {% if serie.link_picture is null %}
+                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
+                    {% else %}
+                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                    {% endif %}
+                </figure>
             </div>
         {% endfor %}
     </div>
