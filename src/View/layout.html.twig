@@ -37,23 +37,23 @@
         </div>
     </nav>
 </header>
-
-{% block content %}{% endblock %}
 {% block search_bar %}{% endblock %}
+{% block content %}{% endblock %}
+
 
 {% block footer %}
-    <footer id="footer" class=" mt-5">
-        <nav class="navbar navbar-expand-sm bg-black navbar-dark footer d-flex flex-row">
+    <footer id="footer" class="container-fluid p-0 mt-5">
+        <nav class="navbar navbar-expand-sm bgc navbar-dark footer">
             <div class="collapse navbar-collapse justify-content-center d-flex flex-row">
-                <ul class="navbar-nav mr-5">
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Accueil</a></li>
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Séries</a></li>
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Admin</a></li>
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">A propos</a></li>
+                <ul class="navbar-nav mr-2">
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="/">Accueil</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="/list/1">Séries</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="#">Admin</a></li>
                 </ul>
-                <ul class="navbar-nav ml-5">
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Mentions légales</a></li>
-                    <li class="nav-item text-nowrap"><a class="nav-link" href="#">Conditions d'utilisation</a></li>
+                <ul class="navbar-nav ml-2">
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="#">A propos</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="#">Mentions légales</a></li>
+                    <li class="nav-item text-nowrap"><a class="nav-link navlink-footer" href="#">Conditions d'utilisation</a></li>
                 </ul>
             </div>
         </nav>
