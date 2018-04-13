@@ -52,14 +52,17 @@ class SerieController extends AbstractController
     {
         if (!empty($_POST)){
             $data = $this->cleanPost($_POST);
-            if (empty($_POST['title'])){
+            if (empty($data['title'])){
                 throw new \Exception('Le champ titre est requis!');
             }
-            if (strlen($_POST['title']) > 255){
+            if (strlen($data['title']) > 255){
                 throw new \Exception('Le titre est trop long!');
             }
-            if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $_POST['creation_date'])){
-                throw new \Exception('Date invalide');
+            if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+
+                if (!checkdate($date[2], $date[3], $date[1])) {
+                    throw new \Exception('Date invalide');
+                }
             }
             $serieManager = new SerieManager();
             $series = $serieManager->insert($data);

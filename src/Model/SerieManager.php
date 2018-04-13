@@ -43,7 +43,7 @@ class SerieManager extends AbstractManager
 
                 }else {
                     $fileName = $_FILES["fichier"]["tmp_name"][$i];
-                    $extension_upload = strtolower(substr(strrchr($_FILES['fichier']['name'][$i], '.'), 1));
+                    $extension_upload = pathinfo($_FILES['fichier']['name'][$i], PATHINFO_EXTENSION);
                     $uniqueSaveName = uniqid();
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
