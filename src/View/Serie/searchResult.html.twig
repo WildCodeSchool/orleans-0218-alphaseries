@@ -6,7 +6,7 @@
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5">
                 <figure class="card card-body mx-auto">
-                    <figcaption><h2 class="card-title text-center">{{ serie.title | title }}</h2></figcaption>
+                    <figcaption><a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a></figcaption>
                     {% if serie.link_picture is null %}
                         <img class="img-fluid" src="assets/upload/defaultPicture.jpg"/>
                     {% else %}
