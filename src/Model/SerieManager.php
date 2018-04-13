@@ -27,7 +27,6 @@ class SerieManager extends AbstractManager
     public function upload()
     {
         $uploadDir = 'assets/upload/';
-        $errors = [];
         $maxsize  = 1048576;
         $acceptable = [
             'jpg',

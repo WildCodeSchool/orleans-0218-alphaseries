@@ -75,6 +75,7 @@ abstract class AbstractManager
 
     /**
      * @param array $data
+     * @return string
      */
     public function insert(array $data)
     {
@@ -89,7 +90,6 @@ abstract class AbstractManager
         return $this->pdoConnection->lastInsertId();
 
     }
-
 
     /**
      * @param int   $id   Id of the row to update
