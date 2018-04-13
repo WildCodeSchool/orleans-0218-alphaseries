@@ -14,7 +14,9 @@ $routes = [
         ['list', '/list', 'GET'],
         ['selectSerie', '/pageSerie/{id:\d+}', 'GET'],
         ['search', '/list/searchResult', 'GET'],
-
+        ['addView', '/admin', 'GET'],
+        ['viewAfterAdd', '/serie/admin', ['GET','POST']],
+        ['search', '/list/searchResult', 'GET'],
     ],
     'Home' => [
         ['homePage', '/', 'GET'],
