@@ -5,6 +5,7 @@
     font-style: normal;
 }
 body {
+    margin-top: 70px;
     background-image: url("../images/bg.jpg");
     color: white;
     font-family: 'tex_gyre_adventorregular';
@@ -89,3 +90,4 @@ h1 {
     opacity: 0.9;
 
 }
+
