@@ -28,10 +28,10 @@ class SerieController extends AbstractController
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
 
-    public function selectSerie()
+    public function selectSerie(int $id)
     {
         $serieManager =  new SerieManager();
-        $series = $serieManager->selectOneSerie(1);
-        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $series]);
+        $serie = $serieManager->selectOneById($id);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie]);
     }
 }

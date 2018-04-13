@@ -12,7 +12,7 @@
 $routes = [
     'Serie' => [
         ['list', '/list', 'GET'],
-        ['selectSerie', '/pageSerie', 'GET'],
+        ['selectSerie', '/pageSerie/{id:\d+}', 'GET'],
 
     ],
     'Home' => [
