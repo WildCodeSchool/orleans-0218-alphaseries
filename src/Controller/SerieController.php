@@ -17,6 +17,7 @@ class SerieController extends AbstractController
 {
     /**
      * Display serie listing
+     *
      *@throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -71,5 +72,11 @@ class SerieController extends AbstractController
 
         return $this->twig->render('Serie/adminSerie.html.twig', ['series' => $series]);
     }
+    public function search()
+    {
+        $serieManager = new SerieManager();
+        $series = $serieManager->searchbar($_GET['search']);
 
+        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
+    }
 }
