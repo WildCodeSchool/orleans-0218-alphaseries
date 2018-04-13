@@ -10,10 +10,15 @@
  */
 
 $routes = [
-    'Item' => [ // Controller
-        ['index', '/', 'GET'], // action, url, method
-        ['add', '/item/add', 'GET'], // action, url, method
-        ['edit', '/item/edit/{id:\d+}', 'GET'], // action, url, method
-        ['show', '/item/{id:\d+}', 'GET'], // action, url, method
+    'Serie' => [
+        ['list', '/list/{page}', 'GET'],
+        ['selectSerie', '/pageSerie/{id:\d+}', 'GET'],
+        ['search', '/searchResult', 'GET'],
+        ['addView', '/admin', 'GET'],
+        ['viewAfterAdd', '/serie/admin', ['GET','POST']],
     ],
+    'Home' => [
+        ['homePage', '/', 'GET'],
+    ],
+
 ];
