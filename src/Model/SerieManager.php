@@ -39,12 +39,12 @@ class SerieManager extends AbstractManager
             for ($i = 0; $i < count($_FILES["fichier"]["name"]); $i++) {
 
                 if ($_FILES["fichier"]["name"][0] === ""){
-                    $filePath = 'defaultPicture.jpg';
+                    $filePath = null;
 
                 }else {
                     $fileName = $_FILES["fichier"]["tmp_name"][$i];
                     $extension_upload = strtolower(substr(strrchr($_FILES['fichier']['name'][$i], '.'), 1));
-                    $uniqueSaveName = time() . uniqid();
+                    $uniqueSaveName = uniqid();
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
                     if (($_FILES['fichier']['size'][$i] >= $maxsize) || ($_FILES['fichier']['size'][$i] == 0)) {

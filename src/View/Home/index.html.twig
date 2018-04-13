@@ -13,7 +13,11 @@
         <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
             <div class="card card-body mx-auto">
                 <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                {% if {{ serie.link_picture }} is null %}
+                    <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
+                {% else %}
+                    <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                {% endif %}
             </div>
         </div>
     {% endfor %}

@@ -51,6 +51,7 @@ class SerieController extends AbstractController
     public function viewAfterAdd()
     {
         if (!empty($_POST)){
+            $data = $this->cleanPost($_POST);
             if (empty($_POST['title'])){
                 throw new \Exception('Le champ titre est requis!');
             }
@@ -61,7 +62,6 @@ class SerieController extends AbstractController
                 throw new \Exception('Date invalide');
             }
             $serieManager = new SerieManager();
-            $data = $this->cleanPost($_POST);
             $series = $serieManager->insert($data);
 
         }
