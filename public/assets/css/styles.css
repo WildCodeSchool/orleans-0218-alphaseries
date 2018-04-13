@@ -78,3 +78,6 @@ h1 {
 
 }
 
+.navbar{
+    font-size: calc(9px + 9 * (100vw - 400px) / 1200);
+}
