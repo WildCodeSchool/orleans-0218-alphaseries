@@ -8,7 +8,7 @@
                 <figure class="card card-body mx-auto">
                     <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
+                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
                     {% else %}
                         <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
                     {% endif %}
