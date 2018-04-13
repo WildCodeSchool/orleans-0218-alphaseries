@@ -20,6 +20,27 @@ class SerieManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+
+    public function selectByPage(int $page, int $limit)
+    {
+        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
+            \PDO::FETCH_CLASS, $this->className
+        )->fetchAll();
+
+    }
+
+    public function recupPageMax()
+    {
+        $limit = 12;
+
+        $data = $this->pdoConnection->query('SELECT COUNT(*) AS total FROM ' . $this->table)->fetch(\PDO::FETCH_ASSOC);
+        $total = $data['total'];
+
+        $pageMax = ceil($total / $limit);
+
+        return $pageMax;
+    }
+
     /**
      * @return string
      * @throws \Exception

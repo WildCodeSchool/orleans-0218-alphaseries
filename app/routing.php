@@ -11,6 +11,7 @@
 
 $routes = [
     'Serie' => [
+        ['list', '/list/{page}', 'GET'],
         ['list', '/list', 'GET'],
         ['selectSerie', '/pageSerie/{id:\d+}', 'GET'],
         ['search', '/list/searchResult', 'GET'],
