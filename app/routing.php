@@ -12,9 +12,9 @@
 $routes = [
     'Serie' => [
         ['list', '/list', 'GET'],
+        ['addView', '/admin', 'GET'],
+        ['viewAfterAdd', '/serie/admin', ['GET','POST']],
         ['search', '/list/searchResult', 'GET'],
-
-
     ],
     'Home' => [
         ['homePage', '/', 'GET'],

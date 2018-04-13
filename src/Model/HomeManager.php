@@ -26,7 +26,7 @@ class HomeManager extends AbstractManager
 
     public function showLimitedSeries(int $limit)
     {
-        $statement = $this->pdoConnection->prepare('SELECT * FROM serie ORDER BY idserie DESC LIMIT :limit');
+        $statement = $this->pdoConnection->prepare('SELECT * FROM serie ORDER BY id DESC LIMIT :limit');
         $statement->setFetchMode(\PDO::FETCH_ASSOC);
         $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
         $statement->execute();

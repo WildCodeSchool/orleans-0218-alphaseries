@@ -8,6 +8,7 @@ body {
     
     margin-top: 70px;
     background-image: url("../images/bg.jpg");
+    color: white;
     font-family: 'tex_gyre_adventorregular';
 }
 .card {
@@ -31,12 +32,24 @@ body {
     text-overflow: ellipsis;
 }
 
+img{
+    width: 340px;
+    max-height: 454px;
+}
+
 h1 {
     color: antiquewhite;
     text-align: center;
     font-size: calc(24px + 19 * (100vw - 400px) / 1200);
 }
 
+.vignette{
+    margin-left: 12vw;
+}
+
+.broadcast{
+    margin-left: 9vw;
+}
 
 /**********Footer**********/
 .footer {
