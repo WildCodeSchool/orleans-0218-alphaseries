@@ -5,7 +5,7 @@
     <div class="row pt-5">
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
-              <a href="/pageSerie/{{ serie.id }}"><div class="card card-body mx-auto">
+              <a href="/pageSerie/{{ serie.id }}">
                 <figure class="card card-body mx-auto">
                     <h2 class="card-title text-center">{{ serie.title | title }}</h2>
                     {% if serie.link_picture is null %}
@@ -14,7 +14,6 @@
                         <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
                     {% endif %}
                 </figure>
-               </a>
             </div>
         {% endfor %}
     </div>
@@ -30,7 +29,5 @@
                 <a class="btn btn-secondary" href="/list/{{ page+1 }}" role="button">suivant</a>
             </div>
         {% endif %}
-
-
     </div>
 {% endblock content %}
