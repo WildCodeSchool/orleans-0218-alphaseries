@@ -93,10 +93,13 @@ h1 {
 
 }
 
+
+.navbar{
+    font-size: calc(9px + 9 * (100vw - 400px) / 1200);
+}
+
 /****searchbar*****/
 .form-control.searchengine {
     border-radius:50px 50px 50px 50px;
     min-width: 50%;
 }
-
-
