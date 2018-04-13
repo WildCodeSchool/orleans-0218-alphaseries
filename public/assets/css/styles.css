@@ -1,15 +1,19 @@
 @font-face {
-    font-family: TeXGyreAdventor;
+    font-family: 'tex_gyre_adventorregular';
+    src: url('fonts/texgyreadventor-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 body {
-    margin-top:70px;
+    
+    margin-top: 70px;
     background-image: url("../images/bg.jpg");
+    font-family: 'tex_gyre_adventorregular';
 }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
     color: antiquewhite;
-    font-family: TeXGyreAdventor sans-serif;
 }
 .row {
     margin:0;
@@ -34,12 +38,16 @@ h1 {
 }
 
 
-
+/**********Footer**********/
 .footer {
-    font-family: TeXGyreAdventor sans-serif;
     font-size: calc(13px + 8 * (100vw - 400px) / 1200);
 
 }
+.navlink-footer:hover {
+
+    color: white;
+}
+
 
 /**********Navbar**********/
 .navlink {
@@ -70,8 +78,11 @@ h1 {
     opacity: 0.9;
 
 }
+
 /****searchbar*****/
 .form-control.searchengine {
     border-radius:50px 50px 50px 50px;
     min-width: 50%;
 }
+
+
