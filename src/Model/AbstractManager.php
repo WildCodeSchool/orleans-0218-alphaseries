@@ -62,6 +62,8 @@ abstract class AbstractManager
         return $statement->fetch();
     }
 
+
+
     /**
      * DELETE on row in dataase by ID
      *

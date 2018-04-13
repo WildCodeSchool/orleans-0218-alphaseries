@@ -27,9 +27,15 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $series = $serieManager->selectAll();
-
         return $this->twig->render('Serie/list.html.twig', ['series' => $series]);
     }
+
+
+    public function selectSerie(int $id)
+    {
+        $serieManager =  new SerieManager();
+        $serie = $serieManager->selectOneById($id);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie]);
 
     /**
      * @return string
@@ -78,5 +84,6 @@ class SerieController extends AbstractController
         $series = $serieManager->searchbar($_GET['search']);
 
         return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
+
     }
 }
