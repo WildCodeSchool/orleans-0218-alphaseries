@@ -2,24 +2,26 @@
 
 {% block content %}
     <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-pr-3">
-            <img class="logoalpha" src="/assets/images/ecran%20Alpha.png" alt="logo alpha séries">
+        <div class="row justify-content-center">
+            <div class="col-pr-3">
+                <img class="logoalpha" src="/assets/images/ecran_alpha.png" alt="logo alpha séries">
+            </div>
+            <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2">
+                <i class="fas fa-quote-left fa-pull-left fa-border fa-2x"></i>
+                <p class="lead mb-0 catchphrase-lineheight"> AlphaSeries : gérer vos séries n'a jamais été aussi facile!</p>
+            </div>
         </div>
-        <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2">
-            <i class="fas fa-quote-left fa-pull-left fa-border fa-2x"></i>
-            <p class="lead mb-0 catchphrase-lineheight"> AlphaSeries : gérer vos séries n'a jamais été aussi facile !</p>
-        </div>
-    </div>
     </div>
     <h1 class="new-series-title text-center pb-5 mt-5">Mes trois dernières séries ajoutées</h1>
     <div class="row">
-    {% for serie in series %}
-        <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
-            <div class="card card-body mx-auto">
-                <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                <img class="img-fluid" src="http://via.placeholder.com/200x300">
+        {% for serie in series %}
+            <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
+                <div class="card card-body mx-auto">
+                    <h2 class="card-title text-center">{{ serie.title | title }}</h2>
+                    <img class="img-fluid" src="http://via.placeholder.com/200x300">
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}
+
