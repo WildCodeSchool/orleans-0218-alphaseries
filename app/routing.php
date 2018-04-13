@@ -18,5 +18,4 @@ $routes = [
         ['homePage', '/', 'GET'],
     ],
 
-
 ];
