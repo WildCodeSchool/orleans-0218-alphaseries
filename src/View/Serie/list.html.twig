@@ -5,9 +5,8 @@
     <div class="row pt-5">
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
-              <a href="/pageSerie/{{ serie.id }}">
                 <figure class="card card-body mx-auto">
-                    <h2 class="card-title text-center">{{ serie.title | title }}</h2>
+                    <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
                         <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
                     {% else %}
@@ -18,13 +17,18 @@
         {% endfor %}
     </div>
     <div class=" d-flex flex-row pt-5 justify-content-center">
-        {% if page > 1 %}
+        {% if page == 1 %}
+            <div class="col-md-1 mr-3">
+                <a class="btn btn-secondary" href="/list/{{ page+1 }}" role="button">suivant</a>
+            </div>
+        {% elseif page == 2 %}
             <div class="col-md-1 ml-5">
                 <a class="btn btn-secondary" href="/list/{{ page-1 }}" role="button">précédent</a>
             </div>
-
-        {% endif %}
-        {% if page < pageMax %}
+        {% elseif page > 1 %}
+            <div class="col-md-1 mr-3">
+                <a class="btn btn-secondary" href="/list/{{ page-1 }}" role="button">précédent</a>
+            </div>
             <div class="col-md-1 mr-3">
                 <a class="btn btn-secondary" href="/list/{{ page+1 }}" role="button">suivant</a>
             </div>
