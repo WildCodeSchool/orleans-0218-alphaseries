@@ -12,6 +12,34 @@ body {
     font-family: 'tex_gyre_adventorregular';
 
 }
+
+.ast {
+     color: #ff0000;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: white;
+}
+
+a:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid white;
+    margin-bottom: 10px;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+a:hover:after {
+    transform: scaleX(1);
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
@@ -27,7 +55,7 @@ body {
 }
 
 .card h2 {
-    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -41,7 +69,11 @@ img{
 h1 {
     color: antiquewhite;
     text-align: center;
-    font-size: calc(24px + 19 * (100vw - 400px) / 1200);
+    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+}
+
+h2 {
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
 }
 
 .vignette{

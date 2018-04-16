@@ -18,11 +18,13 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4 order-1 order-sm-2 pt-1">
-            {% if serie.link_picture is null %}
-                <img class="img-fluid" src="assets/images/defaultPicture.jpg"/>
-            {% else %}
-                <img class="img-fluid" src="assets/images/{{ serie.link_picture }}"/>
-            {% endif %}
+            <figure>
+                {% if serie.link_picture is null %}
+                    <img class="img-fluid" src="/assets/upload/defaultPicture.png"/>
+                {% else %}
+                    <img class="img-fluid" src="/assets/upload/{{ serie.link_picture }}"/>
+                {% endif %}
+            </figure>
         </div>
     </div>
 {% endblock %}
