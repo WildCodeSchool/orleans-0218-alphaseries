@@ -40,6 +40,10 @@ a:hover:after {
     transform: scaleX(1);
 }
 
+a.add-link:after{
+    display: none;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
