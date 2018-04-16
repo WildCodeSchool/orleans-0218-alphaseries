@@ -3,4 +3,6 @@
 *.cache
 app/db.php
 /.idea/
+/public/assets/upload/*
+!/public/assets/upload/defaultPicture.jpg
 
