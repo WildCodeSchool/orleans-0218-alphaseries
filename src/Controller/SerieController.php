@@ -116,6 +116,34 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @throws \Exception
+     */
+    public function viewAfterUpdate()
+    {
+        if (!empty($_POST)){
+            $data = $this->cleanPost($_POST);
+            if (empty($data['title'])){
+                throw new \Exception('Le champ titre est requis!');
+            }
+            if (strlen($data['title']) > 255){
+                throw new \Exception('Le titre est trop long!');
+            }
+            if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+
+                if (!checkdate($date[2], $date[3], $date[1])) {
+                    throw new \Exception('Date invalide');
+                }
+            }
+            $serieManager = new SerieManager();
+            $id = $data['id'];
+            array_splice($data, 0, 1);
+            $serieManager->update($id, $data);
+            header('Location: /list/admin/1');
+        }
+
+    }
+
+    /**
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
