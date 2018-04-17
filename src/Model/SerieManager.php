@@ -98,6 +98,20 @@ class SerieManager extends AbstractManager
         }
 
     }
+
+    /**
+     * @param int $id
+     * @param array $data
+     */
+    public function update (int $id, array $data)
+    {
+        try{
+            $data['link_picture'] = $this->upload();
+            parent::update($id, $data);
+        }catch (\Exception $e){
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        }
+    }
   
     /**
      * @param $searchterm
