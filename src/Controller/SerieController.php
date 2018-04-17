@@ -85,10 +85,6 @@ class SerieController extends AbstractController
     }
 
     /**
-     * @return string
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
      * @throws \Exception
      */
     public function viewAfterAdd()
@@ -108,11 +104,10 @@ class SerieController extends AbstractController
                 }
             }
             $serieManager = new SerieManager();
-            $series = $serieManager->insert($data);
+            $lastId = $serieManager->insert($data);
+            header('Location: /pageSerie/admin/'.$lastId);
 
         }
-
-        return $this->twig->render('Serie/adminSerie.html.twig', ['series' => $series]);
     }
 
     /**
