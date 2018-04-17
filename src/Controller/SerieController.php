@@ -45,27 +45,17 @@ class SerieController extends AbstractController
     }
 
     /**
-     * @param int $page
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function listAdmin(int $page)
+    public function listAdmin()
     {
         $serieManager = new SerieManager();
-        $pageMax = $serieManager->recupPageMax();
+        $series = $serieManager->selectAll();
 
-        if ($page < 1) {
-            $page = 1;
-        }
-
-        if ($page > $pageMax) {
-            $page = $pageMax;
-        }
-
-        $series = $serieManager->selectByPage($page, self::LIMIT);
-        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series,'page' => $page,'pageMax' => $pageMax]);
+        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
     }
 
     /**
