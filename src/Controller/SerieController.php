@@ -45,6 +45,20 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function listAdmin()
+    {
+        $serieManager = new SerieManager();
+        $series = $serieManager->selectAll();
+
+        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
+    }
+
+    /**
      * @param int $id
      * @return string
      * @throws \Twig_Error_Loader
