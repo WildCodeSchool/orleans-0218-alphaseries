@@ -2,6 +2,15 @@
 
 {% block content %}
     <h1 class="mt-5 pt-5">Liste des Séries</h1>
+    <div class="container ">
+        <div class="row">
+            <div class="col-7 p-3 mx-auto">
+                <form method="GET" action ="/searchResult" class="input-group">
+                    <input class="form-control searchengine" type="search" name="search" value="" placeholder="Votre recherche">
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="row pt-5">
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
