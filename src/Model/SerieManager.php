@@ -117,7 +117,17 @@ class SerieManager extends AbstractManager
             echo 'Exception reçue : ',  $e->getMessage(), "\n";
         }
     }
-  
+
+    public function delete (int $id)
+    {
+        try{
+            parent::delete($id);
+        }catch (\Exception $e){
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        }
+
+    }
+
     /**
      * @param $searchterm
      * @return array

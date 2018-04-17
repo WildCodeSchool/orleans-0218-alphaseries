@@ -18,6 +18,7 @@
                         <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
                     {% endif %}
                     <a href="/pageSerie/admin/{{ serie.id }}" class="add-link mt-1 mx-auto"><button class="btn btn-outline-success">Modifier</button></a>
+                    <form action="/admin/del/{{ serie.id }}" method="post"><input type="hidden" name="serieId" id="serieId" value="{{ serie.id }}"><button type="submit" class="btn btn-outline-danger" value="Del">Supprimer</button></form>
                 </figure>
             </div>
         {% endfor %}

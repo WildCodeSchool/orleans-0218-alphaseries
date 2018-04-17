@@ -174,6 +174,30 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+    public function viewDelSerie()
+    {
+        if (!empty($_POST)) {
+            $id = $_POST['serieId'];
+            return $this->twig->render('Serie/delSerie.html.twig', ['id' => $id]);
+        }
+    }
+
+    public function viewAfterDelete()
+    {
+        if (!empty($_POST)) {
+            $id = $_POST['serieId'];
+            $serieManager = new SerieManager();
+            $serieManager->delete($id);
+            header('Location: /list/admin/');
+        }
+    }
+
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function search()
     {
         $serieManager = new SerieManager();
