@@ -77,7 +77,6 @@ abstract class AbstractManager
 
     /**
      * @param array $data
-     * @return string
      */
     public function insert(array $data)
     {
@@ -88,8 +87,6 @@ abstract class AbstractManager
             $statement->bindValue($field, $value);
         }
         $statement->execute();
-
-        return $this->pdoConnection->lastInsertId();
 
     }
 
