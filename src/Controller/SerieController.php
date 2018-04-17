@@ -45,6 +45,7 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @param int $page
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -100,6 +101,9 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      * @throws \Exception
      */
     public function viewAfterAdd()
