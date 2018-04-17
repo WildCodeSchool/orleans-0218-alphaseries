@@ -83,11 +83,16 @@ class SerieManager extends AbstractManager
         return $filePath;
     }
 
+    /**
+     * @param array $data
+     * @return string
+     */
     public function insert(array $data)
     {
         try{
             $data['link_picture'] = $this->upload();
             parent::insert($data);
+            return $this->pdoConnection->lastInsertId();
         }catch (\Exception $e){
             echo 'Exception reçue : ',  $e->getMessage(), "\n";
         }
