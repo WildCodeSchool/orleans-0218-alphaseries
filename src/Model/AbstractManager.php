@@ -99,6 +99,20 @@ abstract class AbstractManager
      */
     public function update(int $id, array $data)
     {
-        //TODO : Implements SQL UPDATE request
+        $fields = array_keys($data);
+        $update = "UPDATE $this->table SET ";
+        $queryFields = '';
+        foreach ($fields as $field) {
+            $queryFields .= "$field = :$field, ";
+        }
+
+        $queryFields = substr($queryFields, 0, -2);
+        $query = $update.$queryFields." WHERE id = :id";
+        $statement = $this->pdoConnection->prepare($query);
+        foreach ($data as $field => $value){
+            $statement->bindValue($field, $value);
+        }
+        $statement->bindValue('id', $id);
+        $statement->execute();
     }
 }
