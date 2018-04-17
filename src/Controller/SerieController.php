@@ -152,7 +152,7 @@ class SerieController extends AbstractController
             $id = $data['id'];
             array_splice($data, 0, 1);
             $serieManager->update($id, $data);
-            header('Location: /list/admin/1');
+            header('Location: /list/admin/');
         }
 
     }
