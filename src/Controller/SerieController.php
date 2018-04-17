@@ -74,6 +74,21 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editSerie(int $id)
+    {
+        $serieManager = new SerieManager();
+        $serie = $serieManager->selectOneById($id);
+
+        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie]);
+    }
+
+    /**
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
