@@ -151,8 +151,19 @@ class SerieController extends AbstractController
             $serieManager = new SerieManager();
             $id = $data['id'];
             array_splice($data, 0, 1);
-            $serieManager->update($id, $data);
-            header('Location: /list/admin/');
+            if (isset($data['edit_image'])){
+                array_splice($data, 4, 1);
+                $fileName = 'assets/upload/'.$data['link_picture'];
+                if (file_exists($fileName)) {
+                    unlink($fileName);
+                }
+                $data['link_picture'] = null;
+                $serieManager->update($id, $data);
+                header('Location: /list/admin/');
+            }else {
+                $serieManager->update($id, $data);
+                header('Location: /list/admin/');
+            }
         }
 
     }

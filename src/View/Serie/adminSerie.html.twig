@@ -41,14 +41,21 @@
                         <input type="date" class="form-control" id="creation_date" name="creation_date" value="{{ serie.creation_date }}" required>
                     </div>
                 </div>
-                <div class="form-group row justify-content-left p-2 vignette">
-                    <label for="picture" class="col-xs-3 col-form-label mr-3">Vignette :</label>
-                    {% if serie.link_picture is null %}
+                {% if serie.link_picture is null %}
+                    <div class="form-group row justify-content-left p-2 vignette">
+                        <label for="picture" class="col-xs-3 col-form-label mr-3">Vignette :</label>
                         <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
-                    {% else %}
-                        <input id="picture" type="file" name="fichier[]" multiple="multiple" value="{{ serie.link_picture }}"/>
-                    {% endif %}
-                </div>
+                    </div>
+                {% else %}
+                    <div class="form-group row justify-content-center p-2">
+                        <label for="edit_image" class="col-xs-3 col-form-label"> Voulez-vous supprimer l'image?</label>
+                        <input type="checkbox" name="edit_image" id="edit_image" class="form-control">
+                        <input type="hidden" name="link_picture" value="{{ serie.link_picture }}">
+                    </div>
+                    <figure class="card card-body mx-auto">
+                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                    </figure>
+                {% endif %}
                 <div class="form-group row justify-content-center p-2">
                     <div class="offset-xs-3 col-xs-9 mr-3">
                         <button type="submit" class="btn btn-primary" value="updateSerie">Modifier</button>
