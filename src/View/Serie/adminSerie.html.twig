@@ -3,10 +3,10 @@
 {% block content %}
     <h1 class="mt-5 pt-5">Administration des Séries</h1>
     <div class="row pt-5 mt-5">
-        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+        <div class="col-md-5 col-sm-6 pl-4 pb-5">
             <h2 class="text-center">Modification de la série</h2>
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="{{ serie.id }}">
+                <input type="hidden" name="idSerie" value="{{ serie.id }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="title" class="col-xs-3 col-form-label mr-3">Titre<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5">
@@ -53,7 +53,24 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+        <div class="col-md-4 col-sm-6 pl-4 pb-5">
+            <h2 class="text-center">Ajouter des Saisons</h2>
+            <form action="" method="post">
+                <input type="hidden" name="idSerie" value="{{ serie.id }}">
+                <div class="form-group row justify-content-center p-2">
+                    <label for="nbSeasons" class="col-xs-3 col-form-label mr-3">Nombre de saisons à ajouter<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input type="text" class="form-control ml-2" id="nbSeasons" name="nbSeasons" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <div class="offset-xs-3 col-xs-9 mr-3">
+                        <button type="submit" class="btn btn-primary" value="addSeason">Ajouter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3 col-sm-6 pl-4 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
         </div>
     </div>

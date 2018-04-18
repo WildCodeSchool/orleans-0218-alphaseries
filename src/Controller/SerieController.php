@@ -11,6 +11,7 @@ namespace Controller;
 use Model\HomeManager;
 use Model\Serie;
 use Model\SerieManager;
+use Model\SeasonManager;
 
 
 class SerieController extends AbstractController
@@ -141,37 +142,45 @@ class SerieController extends AbstractController
     {
         if (!empty($_POST)){
             $data = $this->cleanPost($_POST);
-            if (empty($data['title'])){
-                throw new \Exception('Le champ titre est requis!');
-            }
-            if (strlen($data['title']) > 255){
-                throw new \Exception('Le titre est trop long!');
-            }
-            if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+            $idSerie = $data['idSerie'];
+            if (!isset($data['nbSeasons'])) {
+                if (empty($data['title'])){
+                    throw new \Exception('Le champ titre est requis!');
+                }
+                if (strlen($data['title']) > 255){
+                    throw new \Exception('Le titre est trop long!');
+                }
+                if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
 
-                if (!checkdate($date[2], $date[3], $date[1])) {
-                    throw new \Exception('Date invalide');
+                    if (!checkdate($date[2], $date[3], $date[1])) {
+                        throw new \Exception('Date invalide');
+                    }
                 }
-            }
-            $serieManager = new SerieManager();
-            $id = $data['id'];
-            unset($data['id']);
-            if (isset($data['edit_image'])){
-                unset($data['edit_image']);
-                $fileName = 'assets/upload/'.$data['link_picture'];
-                if (file_exists($fileName)) {
-                    unlink($fileName);
+                $serieManager = new SerieManager();
+                unset($data['idSerie']);
+                if (isset($data['edit_image'])){
+                    unset($data['edit_image']);
+                    $fileName = 'assets/upload/'.$data['link_picture'];
+                    if (file_exists($fileName)) {
+                        unlink($fileName);
+                    }
+                    $data['link_picture'] = null;
+                    $serieManager->update($idSerie, $data);
+                    header('Location: /list/admin/');
+                    exit();
+                }else {
+                    $data['link_picture'] = $serieManager->upload();
+                    $serieManager->update($idSerie, $data);
+                    header('Location: /list/admin/');
+                    exit();
                 }
-                $data['link_picture'] = null;
-                $serieManager->update($id, $data);
-                header('Location: /list/admin/');
-                exit();
-            }else {
-                $data['link_picture'] = $serieManager->upload();
-                $serieManager->update($id, $data);
-                header('Location: /list/admin/');
+            }elseif (isset($data['nbSeasons'])) {
+                $saisonManager = new SeasonManager();
+                $saisonManager->insert($data);
+                header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
             }
+
         }
 
     }
