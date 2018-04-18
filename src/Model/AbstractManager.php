@@ -97,12 +97,12 @@ abstract class AbstractManager
     public function update(int $id, array $data)
     {
         $fields = array_keys($data);
-        $update = "UPDATE $this->table SET ";
+        $query = "UPDATE $this->table SET ";
         foreach ($fields as $field) {
             $queryFields[] = "$field = :$field";
         }
         $queryFields = implode(',', $queryFields);
-        $query = $update.$queryFields." WHERE id = :id";
+        $query .= $queryFields." WHERE id = :id";
         $statement = $this->pdoConnection->prepare($query);
         foreach ($data as $field => $value){
             $statement->bindValue($field, $value);
