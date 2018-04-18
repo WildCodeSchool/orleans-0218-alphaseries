@@ -19,6 +19,8 @@ $routes = [
     ],
     'Home' => [
         ['homePage', '/', 'GET'],
+        ['aPropos', '/apropos', 'GET']
+
     ],
 
 ];
