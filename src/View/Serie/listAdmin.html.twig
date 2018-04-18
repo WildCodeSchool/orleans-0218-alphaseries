@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="mt-5 pt-5">Liste des Séries</h1>
+    <div class="row pt-5">
+        <div class="col-md-1 col-sm-6 mx-auto">
+            <a href="/admin" class="add-link"><button class="btn btn-outline-primary">Ajouter une série</button></a>
+        </div>
+    </div>
+    <div class="row pt-5">
+        {% for serie in series %}
+            <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
+                <figure class="card card-body mx-auto">
+                    <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
+                    {% if serie.link_picture is null %}
+                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
+                    {% else %}
+                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                    {% endif %}
+                    <a href="/pageSerie/admin/{{ serie.id }}" class="add-link mt-1 mx-auto"><button class="btn btn-outline-success">Modifier</button></a>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -5,10 +5,45 @@
     font-style: normal;
 }
 body {
+    
     margin-top: 70px;
     background-image: url("../images/bg.jpg");
+    color: white;
     font-family: 'tex_gyre_adventorregular';
+
 }
+
+.ast {
+     color: #ff0000;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: white;
+}
+
+a:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid white;
+    margin-bottom: 10px;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+a:hover:after {
+    transform: scaleX(1);
+}
+
+a.add-link:after{
+    display: none;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
@@ -24,18 +59,34 @@ body {
 }
 
 .card h2 {
-    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+img{
+    width: 340px;
+    max-height: 454px;
+}
+
 h1 {
     color: antiquewhite;
     text-align: center;
-    font-size: calc(24px + 19 * (100vw - 400px) / 1200);
+    font-size: calc(20px + 15 * (100vw - 400px) / 1200);
 }
 
+h2 {
+    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
+}
+
+.vignette{
+    margin-left: 12vw;
+}
+
+.broadcast{
+    margin-left: 9vw;
+}
 
 /**********Footer**********/
 .footer {
@@ -78,9 +129,22 @@ h1 {
 
 }
 
+<<<<<<< HEAD
 .logoalpha{
     width: 44vw;
     height: auto;
     max-height: 500px;
     max-width: 100vw;
 }
+=======
+
+.navbar{
+    font-size: calc(9px + 9 * (100vw - 400px) / 1200);
+}
+
+/****searchbar*****/
+.form-control.searchengine {
+    border-radius:50px 50px 50px 50px;
+    min-width: 50%;
+}
+>>>>>>> 0b7e856d3440144566773c0222c9037c5f67ba2e
