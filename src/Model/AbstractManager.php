@@ -80,6 +80,7 @@ abstract class AbstractManager
 
     /**
      * @param array $data
+     * @return string
      */
     public function insert(array $data)
     {
@@ -90,6 +91,7 @@ abstract class AbstractManager
             $statement->bindValue($field, $value);
         }
         $statement->execute();
+        return $this->pdoConnection->lastInsertId();
 
     }
 
@@ -100,14 +102,12 @@ abstract class AbstractManager
     public function update(int $id, array $data)
     {
         $fields = array_keys($data);
-        $update = "UPDATE $this->table SET ";
-        $queryFields = '';
+        $query = "UPDATE $this->table SET ";
         foreach ($fields as $field) {
-            $queryFields .= "$field = :$field, ";
+            $queryFields[] = "$field = :$field";
         }
-
-        $queryFields = substr($queryFields, 0, -2);
-        $query = $update.$queryFields." WHERE id = :id";
+        $queryFields = implode(',', $queryFields);
+        $query .= $queryFields." WHERE id = :id";
         $statement = $this->pdoConnection->prepare($query);
         foreach ($data as $field => $value){
             $statement->bindValue($field, $value);

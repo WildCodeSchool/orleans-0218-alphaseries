@@ -83,41 +83,6 @@ class SerieManager extends AbstractManager
         return $filePath;
     }
 
-    /**
-     * @param array $data
-     * @return string
-     */
-    public function insert(array $data)
-    {
-        try{
-            $data['link_picture'] = $this->upload();
-            parent::insert($data);
-            return $this->pdoConnection->lastInsertId();
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
-
-    }
-
-    /**
-     * @param int $id
-     * @param array $data
-     */
-    public function update (int $id, array $data)
-    {
-        try{
-            if (isset($data['link_picture'])) {
-                parent::update($id, $data);
-            }else {
-                $data[ 'link_picture' ] = $this->upload();
-                parent::update($id, $data);
-            }
-
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
-    }
-
     public function delete (int $id)
     {
         try{
@@ -127,6 +92,7 @@ class SerieManager extends AbstractManager
         }
 
     }
+
 
     /**
      * @param $searchterm
