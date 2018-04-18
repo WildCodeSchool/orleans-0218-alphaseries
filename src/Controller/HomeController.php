@@ -21,8 +21,8 @@ class HomeController extends AbstractController
         $series = $homeManager->showLimitedSeries(3);
         return $this->twig->render('Home/index.html.twig', ['series' => $series]);
     }
-    public function aPropos()
+    public function aboutUs()
     {
-        return $this->twig->render('Home/apropos.html.twig' );
+        return $this->twig->render('Home/aboutus.html.twig' );
     }
 }
