@@ -129,14 +129,13 @@ h2 {
 
 }
 
-<<<<<<< HEAD
+
 .logoalpha{
     width: 44vw;
     height: auto;
     max-height: 500px;
-    max-width: 100vw;
+
 }
-=======
 
 .navbar{
     font-size: calc(9px + 9 * (100vw - 400px) / 1200);
@@ -147,4 +146,4 @@ h2 {
     border-radius:50px 50px 50px 50px;
     min-width: 50%;
 }
->>>>>>> 0b7e856d3440144566773c0222c9037c5f67ba2e
+
