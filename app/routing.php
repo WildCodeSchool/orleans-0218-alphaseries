@@ -19,8 +19,7 @@ $routes = [
         ['listAdmin', '/list/admin/', 'GET'],
         ['viewAfterAdd', '/admin', 'POST'],
         ['viewAfterUpdate', '/pageSerie/admin/{id:\d+}', 'POST'],
-        ['viewDelSerie', '/admin/del/{id:\d+}', 'GET'],
-        ['viewAfterDelete', '/admin/del/{id:\d+}', 'POST'],
+        ['viewAfterDelete', '/admin/delete/', 'POST'],
     ],
     'Home' => [
         ['homePage', '/', 'GET'],

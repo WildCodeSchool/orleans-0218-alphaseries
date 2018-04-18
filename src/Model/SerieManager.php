@@ -83,16 +83,6 @@ class SerieManager extends AbstractManager
         return $filePath;
     }
 
-    public function delete (int $id)
-    {
-        try{
-            parent::delete($id);
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
-
-    }
-
 
     /**
      * @param $searchterm

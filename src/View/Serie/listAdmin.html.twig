@@ -22,7 +22,10 @@
                             <a href="/pageSerie/admin/{{ serie.id }}" class="add-link mt-1"><button class="btn btn-outline-success">Modifier</button></a>
                         </div>
                         <div class="p-2">
-                            <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette série?');" action="/admin/del/{{ serie.id }}" method="post"><input type="hidden" name="serieId" id="serieId" value="{{ serie.id }}"><button type="submit" class="btn btn-outline-danger" value="Del">Supprimer</button></form>
+                            <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette série?');" action="/admin/delete/" method="post">
+                                <input type="hidden" name="serieId" id="serieId" value="{{ serie.id }}">
+                                <button type="submit" class="btn btn-outline-danger" value="Del">Supprimer</button>
+                            </form>
                         </div>
                     </div>
                 </figure>
