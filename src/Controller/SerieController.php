@@ -176,6 +176,17 @@ class SerieController extends AbstractController
 
     }
 
+    public function viewAfterDelete()
+    {
+        if (!empty($_POST)) {
+            $id = trim($_POST['serieId']);
+            $serieManager = new SerieManager();
+            $serieManager->delete($id);
+            header('Location: /list/admin/');
+            exit();
+        }
+    }
+
     /**
      * @return string
      * @throws \Twig_Error_Loader

@@ -82,7 +82,8 @@ class SerieManager extends AbstractManager
         }
         return $filePath;
     }
-  
+
+
     /**
      * @param $searchterm
      * @return array
