@@ -48,7 +48,7 @@
                 {% endif %}
                 <div class="form-group row justify-content-center p-2">
                     <div class="offset-xs-3 col-xs-9 mr-3">
-                        <button type="submit" class="btn btn-primary" value="updateSerie">Modifier</button>
+                        <button type="submit" class="btn btn-outline-primary" value="updateSerie">Modifier</button>
                     </div>
                 </div>
             </form>
@@ -57,15 +57,13 @@
             <h2 class="text-center">Ajouter des Saisons</h2>
             <form action="" method="post">
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
-                <div class="form-group row justify-content-center p-2">
-                    <label for="nbSeasons" class="col-xs-3 col-form-label mr-3">Nombre de saisons à ajouter<span class="ast">&ast;</span> :</label>
-                    <div class="col-xs-9 col-sm-5">
+                <div class="form-group row justify-content-left p-2">
+                    <label for="nbSeasons" class="col-xs-3 col-form-label mt-1">Nombre de saisons à ajouter<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-2 p-2">
                         <input type="text" class="form-control ml-2" id="nbSeasons" name="nbSeasons" required>
                     </div>
-                </div>
-                <div class="form-group row justify-content-center p-2">
-                    <div class="offset-xs-3 col-xs-9 mr-3">
-                        <button type="submit" class="btn btn-primary" value="addSeason">Ajouter</button>
+                    <div class="offset-xs-3 col-xs-9 ml-3 p-2">
+                        <button type="submit" class="btn btn-outline-info" value="addSeason">Ajouter</button>
                     </div>
                 </div>
             </form>

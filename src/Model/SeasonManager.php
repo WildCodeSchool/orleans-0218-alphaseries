@@ -26,8 +26,9 @@ class SeasonManager extends AbstractManager
         $idSerie = $data['idSerie'];
         unset($data['idSerie']);
         $nb = $data['nbSeasons'];
-        $query = "SELECT max(id) FROM $this->table";
-
+        $query = "SELECT max(numero_season) FROM $this->table WHERE idserie = $idSerie";
+        $result = $this->pdoConnection->query($query, \PDO::FETCH_ASSOC)->fetch();
+        $lastSeason = $result['max(numero_season)'];
         for ($i = 1; $i <= $nb; $i++) {
             $query = "INSERT INTO $this->table (numero_season, idserie) VALUES (:numb, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
