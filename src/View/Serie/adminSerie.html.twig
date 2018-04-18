@@ -1,19 +1,60 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1 class="mt-5 pt-5">Ajout des épisodes</h1>
-    <div class="row pt-5">
-        {% for serie in series %}
-            <div class="col-md-3 col-sm-6 pl-4 pb-5">
-                <div class="card card-body mx-auto">
-                    <h2 class="card-title text-center">{{ serie.title | title }}</h2>
-                    {% if serie.link_picture is null %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
-                    {% else %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
-                    {% endif %}
+    <h1 class="mt-5 pt-5">Administration des Séries</h1>
+    <div class="row pt-5 mt-5">
+        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+            <h2 class="text-center">Modification de la série</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{ serie.id }}">
+                <div class="form-group row justify-content-center p-2">
+                    <label for="title" class="col-xs-3 col-form-label mr-3">Titre<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input type="text" class="form-control ml-2" id="title" name="title" value="{{ serie.title }}" required>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+                <div class="form-group row justify-content-center p-2">
+                    <label for="synopsis" class="col-xs-3 col-form-label">Synopsis :</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <textarea class="form-control" rows="5" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="genre" class="col-xs-3 col-form-label mr-3">Genre<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input type="text" class="form-control ml-1" id="genre" name="genre" value="{{ serie.genre }}" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-left p-2 broadcast">
+                    <label for="creation_date" class="col-xs-3 col-form-label mr-3">Date de création<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9">
+                        <input type="date" class="form-control" id="creation_date" name="creation_date" value="{{ serie.creation_date }}" required>
+                    </div>
+                </div>
+                {% if serie.link_picture is null %}
+                    <div class="form-group row justify-content-left p-2 vignette">
+                        <label for="picture" class="col-xs-3 col-form-label mr-3">Vignette :</label>
+                        <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
+                    </div>
+                {% else %}
+                    <div class="form-group row justify-content-center p-2">
+                        <label for="edit_image" class="col-xs-3 col-form-label"> Voulez-vous supprimer l'image?</label>
+                        <input type="checkbox" name="edit_image" id="edit_image" class="form-control">
+                        <input type="hidden" name="link_picture" value="{{ serie.link_picture }}">
+                    </div>
+                    <figure class="card card-body mx-auto">
+                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                    </figure>
+                {% endif %}
+                <div class="form-group row justify-content-center p-2">
+                    <div class="offset-xs-3 col-xs-9 mr-3">
+                        <button type="submit" class="btn btn-primary" value="updateSerie">Modifier</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 col-sm-6 pl-4 pb-5">
+            <h2 class="text-center">Liste des épisodes</h2>
+        </div>
     </div>
 {% endblock content %}

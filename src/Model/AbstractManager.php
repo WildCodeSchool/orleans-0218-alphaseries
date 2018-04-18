@@ -88,7 +88,6 @@ abstract class AbstractManager
             $statement->bindValue($field, $value);
         }
         $statement->execute();
-
         return $this->pdoConnection->lastInsertId();
 
     }
@@ -99,6 +98,18 @@ abstract class AbstractManager
      */
     public function update(int $id, array $data)
     {
-        //TODO : Implements SQL UPDATE request
+        $fields = array_keys($data);
+        $query = "UPDATE $this->table SET ";
+        foreach ($fields as $field) {
+            $queryFields[] = "$field = :$field";
+        }
+        $queryFields = implode(',', $queryFields);
+        $query .= $queryFields." WHERE id = :id";
+        $statement = $this->pdoConnection->prepare($query);
+        foreach ($data as $field => $value){
+            $statement->bindValue($field, $value);
+        }
+        $statement->bindValue('id', $id);
+        $statement->execute();
     }
 }

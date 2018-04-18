@@ -45,6 +45,7 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @param int $page
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -74,6 +75,21 @@ class SerieController extends AbstractController
     }
 
     /**
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function editSerie(int $id)
+    {
+        $serieManager = new SerieManager();
+        $serie = $serieManager->selectOneById($id);
+
+        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie]);
+    }
+
+    /**
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -85,7 +101,6 @@ class SerieController extends AbstractController
     }
 
     /**
-     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -108,11 +123,57 @@ class SerieController extends AbstractController
                 }
             }
             $serieManager = new SerieManager();
-            $series = $serieManager->insert($data);
+            try{
+                $data['link_picture'] = $serieManager->upload();
+                $lastId = $serieManager->insert($data);
+                header('Location: /pageSerie/admin/'.$lastId);
+                exit();
+            }catch (\Exception $e){
+                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            }
+        }
+    }
 
+    /**
+     * @throws \Exception
+     */
+    public function viewAfterUpdate()
+    {
+        if (!empty($_POST)){
+            $data = $this->cleanPost($_POST);
+            if (empty($data['title'])){
+                throw new \Exception('Le champ titre est requis!');
+            }
+            if (strlen($data['title']) > 255){
+                throw new \Exception('Le titre est trop long!');
+            }
+            if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+
+                if (!checkdate($date[2], $date[3], $date[1])) {
+                    throw new \Exception('Date invalide');
+                }
+            }
+            $serieManager = new SerieManager();
+            $id = $data['id'];
+            unset($data['id']);
+            if (isset($data['edit_image'])){
+                unset($data['edit_image']);
+                $fileName = 'assets/upload/'.$data['link_picture'];
+                if (file_exists($fileName)) {
+                    unlink($fileName);
+                }
+                $data['link_picture'] = null;
+                $serieManager->update($id, $data);
+                header('Location: /list/admin/');
+                exit();
+            }else {
+                $data['link_picture'] = $serieManager->upload();
+                $serieManager->update($id, $data);
+                header('Location: /list/admin/');
+                exit();
+            }
         }
 
-        return $this->twig->render('Serie/adminSerie.html.twig', ['series' => $series]);
     }
 
     /**
