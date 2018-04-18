@@ -89,13 +89,8 @@ class SerieManager extends AbstractManager
      */
     public function insert(array $data)
     {
-        try{
-            $data['link_picture'] = $this->upload();
-            parent::insert($data);
-            return $this->pdoConnection->lastInsertId();
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
+        parent::insert($data);
+        return $this->pdoConnection->lastInsertId();
 
     }
 
@@ -105,17 +100,7 @@ class SerieManager extends AbstractManager
      */
     public function update (int $id, array $data)
     {
-        try{
-            if (isset($data['link_picture'])) {
-                parent::update($id, $data);
-            }else {
-                $data[ 'link_picture' ] = $this->upload();
-                parent::update($id, $data);
-            }
-
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
+        parent::update($id, $data);
     }
   
     /**

@@ -123,9 +123,14 @@ class SerieController extends AbstractController
                 }
             }
             $serieManager = new SerieManager();
-            $lastId = $serieManager->insert($data);
-            header('Location: /pageSerie/admin/'.$lastId);
-
+            try{
+                $data['link_picture'] = $serieManager->upload();
+                $lastId = $serieManager->insert($data);
+                header('Location: /pageSerie/admin/'.$lastId);
+                exit();
+            }catch (\Exception $e){
+                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            }
         }
     }
 
@@ -150,9 +155,9 @@ class SerieController extends AbstractController
             }
             $serieManager = new SerieManager();
             $id = $data['id'];
-            array_splice($data, 0, 1);
+            unset($data['id']);
             if (isset($data['edit_image'])){
-                array_splice($data, 4, 1);
+                unset($data['edit_image']);
                 $fileName = 'assets/upload/'.$data['link_picture'];
                 if (file_exists($fileName)) {
                     unlink($fileName);
@@ -160,9 +165,12 @@ class SerieController extends AbstractController
                 $data['link_picture'] = null;
                 $serieManager->update($id, $data);
                 header('Location: /list/admin/');
+                exit();
             }else {
+                $data['link_picture'] = $serieManager->upload();
                 $serieManager->update($id, $data);
                 header('Location: /list/admin/');
+                exit();
             }
         }
 

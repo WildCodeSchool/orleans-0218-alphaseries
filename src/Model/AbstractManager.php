@@ -98,12 +98,10 @@ abstract class AbstractManager
     {
         $fields = array_keys($data);
         $update = "UPDATE $this->table SET ";
-        $queryFields = '';
         foreach ($fields as $field) {
-            $queryFields .= "$field = :$field, ";
+            $queryFields[] = "$field = :$field";
         }
-
-        $queryFields = substr($queryFields, 0, -2);
+        $queryFields = implode(',', $queryFields);
         $query = $update.$queryFields." WHERE id = :id";
         $statement = $this->pdoConnection->prepare($query);
         foreach ($data as $field => $value){
