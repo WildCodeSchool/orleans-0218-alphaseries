@@ -82,26 +82,6 @@ class SerieManager extends AbstractManager
         }
         return $filePath;
     }
-
-    /**
-     * @param array $data
-     * @return string
-     */
-    public function insert(array $data)
-    {
-        parent::insert($data);
-        return $this->pdoConnection->lastInsertId();
-
-    }
-
-    /**
-     * @param int $id
-     * @param array $data
-     */
-    public function update (int $id, array $data)
-    {
-        parent::update($id, $data);
-    }
   
     /**
      * @param $searchterm
