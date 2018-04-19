@@ -20,15 +20,15 @@ class SeasonController extends AbstractController
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
-            if (isset($data['nbSeasons']) AND preg_match('/^\d+$/', $data['nbSeasons']) AND $data['nbSeasons'] >= 0) {
+            if (!preg_match('/^\d+$/', $data['nbSeasons'])) {
+                throw new \Exception('Ceci n\' est pas un nombre');
+            }elseif ($data['nbSeasons'] < 0) {
+                throw new \Exception('le nombre doit être positif ou nul');
+            }elseif (isset($data['nbSeasons']) AND preg_match('/^\d+$/', $data['nbSeasons']) AND $data['nbSeasons'] >= 0) {
                 $saisonManager = new SeasonManager();
                 $saisonManager->insert($data);
                 header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
-            }elseif (!preg_match('/^\d+$/', $data['nbSeasons'])) {
-                throw new \Exception('Ceci n\' est pas un nombre');
-            }elseif ($data['nbSeasons'] < 0) {
-                throw new \Exception('le nombre doit être positif ou nul');
             }
         }
     }

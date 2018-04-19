@@ -30,24 +30,21 @@ class SeasonManager extends AbstractManager
     {
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'nbSeasons' ];
-        $verif = "SELECT numero_season FROM $this->table WHERE idserie = $idSerie";
-        $seasonInDb = $this->pdoConnection->query($verif, \PDO::FETCH_CLASS, $this->className)->fetchAll();
-        $errorMsg = '';
-        for ($i = 0; $i < count($seasonInDb); $i++) {
-            if ($nb == $seasonInDb[$i]->numero_season) {
-                $errorMsg = 'La saison existe déjà';
-            }
-        }
-        if ($errorMsg == '') {
+        $verif = "SELECT numero_season FROM $this->table WHERE numero_season = :numero_season AND idserie = :idSerie";
+        $result = $this->pdoConnection->prepare($verif);
+        $result->bindValue('numero_season', $nb, \PDO::PARAM_INT);
+        $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
+        $result->execute();
+        $res = $result->fetchAll();
+        if (count($res) !== 0) {
+            throw new \Exception('La saison existe déjà');
+        }else {
             $query = "INSERT INTO $this->table (numero_season, idserie) VALUES (:numb, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('numb', $nb);
             $statement->bindValue('idSerie', $idSerie);
             $statement->execute();
-        }else {
-            throw new \Exception($errorMsg);
         }
-
 
     }
 }
