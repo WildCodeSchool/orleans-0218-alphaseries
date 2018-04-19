@@ -34,14 +34,11 @@ class SeasonController extends AbstractController
      */
     public function allSeasons ()
     {
-        $saisonManager = new SeasonManager();
 
+        $saisonManager = new SeasonManager();
         $data = $this->cleanPost($_POST);
         $idSerie = $data[ 'idSerie' ];
-        var_dump($idSerie);
-        exit();
         $seasons = $saisonManager->selectAllByFk('idserie', $idSerie);
-
 
         return $this->twig->render('Serie/adminSerie.html.twig', ['seasons' => $seasons]);
     }
