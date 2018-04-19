@@ -11,7 +11,6 @@ namespace Controller;
 use Model\HomeManager;
 use Model\Serie;
 use Model\SerieManager;
-use Model\SeasonManager;
 
 
 class SerieController extends AbstractController
@@ -166,18 +165,12 @@ class SerieController extends AbstractController
                     }
                     $data['link_picture'] = null;
                     $serieManager->update($idSerie, $data);
-                    header('Location: /list/admin/');
-                    exit();
                 }else {
                     $data['link_picture'] = $serieManager->upload();
                     $serieManager->update($idSerie, $data);
-                    header('Location: /list/admin/');
-                    exit();
+
                 }
-            }elseif (isset($data['nbSeasons'])) {
-                $saisonManager = new SeasonManager();
-                $saisonManager->insert($data);
-                header('Location: /pageSerie/admin/'.$idSerie);
+                header('Location: /list/admin/');
                 exit();
             }
 
