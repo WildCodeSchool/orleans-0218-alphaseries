@@ -19,7 +19,7 @@ $routes = [
         ['listAdmin', '/list/admin/', 'GET'],
         ['viewAfterAdd', '/admin', 'POST'],
         ['viewAfterUpdate', '/admin/serie', 'POST'],
-
+        ['viewAfterDelete', '/admin/delete/', 'POST'],
     ],
     'Season' => [
         ['addSeason', '/admin/season', 'POST'],
