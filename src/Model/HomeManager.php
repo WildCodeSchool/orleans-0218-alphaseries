@@ -32,4 +32,5 @@ class HomeManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll();
     }
+
 }
