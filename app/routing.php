@@ -21,6 +21,9 @@ $routes = [
         ['viewAfterUpdate', '/pageSerie/admin/{id:\d+}', 'POST'],
         ['viewAfterDelete', '/admin/delete/', 'POST'],
     ],
+    'Season' => [
+        ['addSeason', '/admin/season', 'POST'],
+    ],
     'Home' => [
         ['homePage', '/', 'GET'],
     ],
