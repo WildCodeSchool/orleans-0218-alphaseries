@@ -5,7 +5,7 @@
     <div class="row pt-5 mt-5">
         <div class="col-md-5 col-sm-6 pl-4 pb-5">
             <h2 class="text-center">Modification de la série</h2>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/admin/serie" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="title" class="col-xs-3 col-form-label mr-3">Titre<span class="ast">&ast;</span> :</label>
@@ -73,7 +73,11 @@
                 <div class="form-group row justify-content-center p-2">
                     <label for="numeroSeason" class="col-xs-3 col-form-label mt-1">N° Saison<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
-                        <input type="text" class="form-control ml-2" id="numeroSeason" name="numeroSeason" required>
+                        <select id="numeroSeason" name="numeroSeason" class="form-control ml-2" required>
+                            {% for season in seasons %}
+                                <option value="{{ season.numero_season }}">{{ season.numero_season }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <label for="numeroEpisode" class="col-xs-3 col-form-label ml-1 mt-1">N° Episode<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">

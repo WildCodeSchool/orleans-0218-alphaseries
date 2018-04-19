@@ -170,7 +170,7 @@ class SerieController extends AbstractController
                     $serieManager->update($idSerie, $data);
 
                 }
-                header('Location: /list/admin/');
+                header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
             }
 

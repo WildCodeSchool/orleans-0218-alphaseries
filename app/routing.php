@@ -18,11 +18,12 @@ $routes = [
         ['addView', '/admin', 'GET'],
         ['listAdmin', '/list/admin/', 'GET'],
         ['viewAfterAdd', '/admin', 'POST'],
-        ['viewAfterUpdate', '/pageSerie/admin/{id:\d+}', 'POST'],
+        ['viewAfterUpdate', '/admin/serie', 'POST'],
 
     ],
     'Season' => [
         ['addSeason', '/admin/season', 'POST'],
+        ['allSeasons', '/pageSerie/admin/{id:\d+}', 'POST'],
     ],
     'Episode' => [
         ['addEpisode', '/admin/episode', 'POST'],
