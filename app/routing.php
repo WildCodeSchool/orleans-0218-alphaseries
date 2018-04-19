@@ -24,6 +24,9 @@ $routes = [
     'Season' => [
         ['addSeason', '/admin/season', 'POST'],
     ],
+    'Episode' => [
+        ['addEpisode', '/admin/episode', 'POST'],
+    ],
     'Home' => [
         ['homePage', '/', 'GET'],
     ],
