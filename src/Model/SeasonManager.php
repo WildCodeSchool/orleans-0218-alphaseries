@@ -32,6 +32,7 @@ class SeasonManager extends AbstractManager
         $nb = $data[ 'nbSeasons' ];
         $verif = "SELECT numero_season FROM $this->table WHERE numero_season = :numero_season AND idserie = :idSerie";
         $result = $this->pdoConnection->prepare($verif);
+        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $result->bindValue('numero_season', $nb, \PDO::PARAM_INT);
         $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
         $result->execute();
