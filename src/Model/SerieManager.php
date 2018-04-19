@@ -83,17 +83,7 @@ class SerieManager extends AbstractManager
         return $filePath;
     }
 
-    public function insert(array $data)
-    {
-        try{
-            $data['link_picture'] = $this->upload();
-            parent::insert($data);
-        }catch (\Exception $e){
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        }
 
-    }
-  
     /**
      * @param $searchterm
      * @return array

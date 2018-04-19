@@ -40,6 +40,10 @@ a:hover:after {
     transform: scaleX(1);
 }
 
+a.add-link:after{
+    display: none;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: transparent;
@@ -126,6 +130,13 @@ h2 {
 }
 
 
+.logoalpha{
+    width: 44vw;
+    height: auto;
+    max-height: 500px;
+
+}
+
 .navbar{
     font-size: calc(9px + 9 * (100vw - 400px) / 1200);
 }
@@ -136,7 +147,7 @@ h2 {
     min-width: 50%;
 }
 
-
 .aboutUs{
     font-size: 20px;
 }
+
