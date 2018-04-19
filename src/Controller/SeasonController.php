@@ -12,6 +12,9 @@ use Model\SeasonManager;
 
 class SeasonController extends AbstractController
 {
+    /**
+     * @throws \Exception
+     */
     public function addSeason()
     {
         if (!empty($_POST)) {
@@ -22,6 +25,10 @@ class SeasonController extends AbstractController
                 $saisonManager->insert($data);
                 header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
+            }elseif (!preg_match('/^\d+$/', $data['nbSeasons'])) {
+                throw new \Exception('Ceci n\' est pas un nombre');
+            }elseif ($data['nbSeasons'] < 0) {
+                throw new \Exception('le nombre doit être positif ou nul');
             }
         }
     }
