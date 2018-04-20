@@ -42,10 +42,11 @@ class SerieManager extends AbstractManager
     }
 
     /**
-     * @return string
+     * @param array $file
+     * @return null|string
      * @throws \Exception
      */
-    public function upload()
+    public function upload(array $file)
     {
         $uploadDir = 'assets/upload/';
         $maxsize  = 1048576;
@@ -57,22 +58,22 @@ class SerieManager extends AbstractManager
         ];
 
         if (!empty($_POST)){
-            for ($i = 0; $i < count($_FILES["fichier"]["name"]); $i++) {
+            for ($i = 0; $i < count($file["name"]); $i++) {
 
-                if ($_FILES["fichier"]["name"][0] === ""){
+                if ($file["name"][0] === ""){
                     $filePath = null;
 
                 }else {
-                    $fileName = $_FILES["fichier"]["tmp_name"][$i];
-                    $extension_upload = pathinfo($_FILES['fichier']['name'][$i], PATHINFO_EXTENSION);
+                    $fileName = $file["tmp_name"][$i];
+                    $extension_upload = pathinfo($file['name'][$i], PATHINFO_EXTENSION);
                     $uniqueSaveName = uniqid();
                     $filePath = $uniqueSaveName . '.' . $extension_upload;
 
-                    if (($_FILES['fichier']['size'][$i] >= $maxsize) || ($_FILES['fichier']['size'][$i] == 0)) {
+                    if (($file[$i] >= $maxsize) || ($file['size'][$i] == 0)) {
                         throw new \Exception('File too large. File must be less than '.$maxsize .' bytes.');
                     }
 
-                    if (!in_array($extension_upload, $acceptable) && !empty($_FILES['fichier']['type'][$i])) {
+                    if (!in_array($extension_upload, $acceptable) && !empty($file['type'][$i])) {
                         throw new \Exception('Invalid file type. Only '.implode(',',$acceptable).' types are accepted.');
                     }
                     move_uploaded_file($fileName, $uploadDir.$filePath);

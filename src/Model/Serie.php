@@ -39,7 +39,7 @@ class Serie
     /**
      * @var string
      */
-    private $picture;
+    private $link_picture;
 
     /**
      * @return int
@@ -137,20 +137,20 @@ class Serie
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPicture(): string
+    public function getLink_Picture(): ?string
     {
-        return $this->picture;
+        return $this->link_picture;
     }
 
     /**
      * @param string $picture
      * @return Serie
      */
-    public function setPicture(string $picture): Serie
+    public function setLink_Picture(string $picture): Serie
     {
-        $this->picture = $picture;
+        $this->link_picture = $picture;
 
         return $this;
     }
