@@ -4,8 +4,9 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body {
-    
+
     margin-top: 70px;
     background-image: url("../images/bg.jpg");
     color: white;
@@ -14,7 +15,7 @@ body {
 }
 
 .ast {
-     color: #ff0000;
+    color: #ff0000;
 }
 
 a:link, a:visited {
@@ -40,7 +41,7 @@ a:hover:after {
     transform: scaleX(1);
 }
 
-a.add-link:after{
+a.add-link:after {
     display: none;
 }
 
@@ -49,9 +50,10 @@ a.add-link:after{
     background-color: transparent;
     color: antiquewhite;
 }
+
 .row {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .card p {
@@ -65,7 +67,7 @@ a.add-link:after{
     text-overflow: ellipsis;
 }
 
-img{
+img {
     width: 340px;
     max-height: 454px;
 }
@@ -80,24 +82,24 @@ h2 {
     font-size: calc(19px + 14 * (100vw - 400px) / 1200);
 }
 
-.vignette{
+.vignette {
     margin-left: 12vw;
 }
 
-.broadcast{
+.broadcast {
     margin-left: 9vw;
 }
 
 /**********Footer**********/
 .footer {
-    font-size: calc(13px + 8 * (100vw - 400px) / 1200);
+    font-size: calc(15px + 8 * (100vw - 400px) / 1200);
 
 }
+
 .navlink-footer:hover {
 
     color: white;
 }
-
 
 /**********Navbar**********/
 .navlink {
@@ -105,6 +107,7 @@ h2 {
     display: inline-block;
 
 }
+
 .navlink:hover {
 
     color: white;
@@ -129,25 +132,24 @@ h2 {
 
 }
 
-
-.logoalpha{
+.logoalpha {
     width: 44vw;
     height: auto;
     max-height: 500px;
 
 }
 
-.navbar{
+.header {
     font-size: calc(9px + 9 * (100vw - 400px) / 1200);
 }
 
 /****searchbar*****/
 .form-control.searchengine {
-    border-radius:50px 50px 50px 50px;
+    border-radius: 50px 50px 50px 50px;
     min-width: 50%;
 }
 
-.aboutUs{
+.aboutUs {
     font-size: 20px;
 }
 
