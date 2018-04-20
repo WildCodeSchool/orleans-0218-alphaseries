@@ -20,7 +20,7 @@ class SeasonController extends AbstractController
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
-            if (empty($data['nbSeasons'])) {
+            if ($data['nbSeasons'] === '') {
                 throw new \Exception('Le champ est vide');
             }elseif (!preg_match('/^\d+$/', $data['nbSeasons'])) {
                 throw new \Exception('Ceci n\' est pas un nombre');
