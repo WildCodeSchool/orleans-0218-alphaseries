@@ -40,10 +40,8 @@
                     <p class="text-center pt-2">Voulez-vous supprimer l'image?</p>
                     <div class="form-group row justify-content-center">
                         <div class="d-flex flex-row">
-                            <input type="radio" name="edit_image" id="edit_imageYes" class="form-control" value="True" required>
-                            <label for="edit_imageYes" class="col-xs-3 col-form-label p-2">Oui</label>
-                            <input type="radio" name="edit_image" id="edit_imageNo" class="form-control" value="False" required>
-                            <label for="edit_imageNo" class="col-xs-3 col-form-label p-2">Non</label>
+                            <input type="checkbox" name="edit_image" id="edit_image" class="form-control" value="1" required>
+                            <label for="edit_image" class="col-xs-3 col-form-label p-2"></label>
                         </div>
                         <input type="hidden" name="link_picture" value="{{ serie.link_picture }}">
                     </div>
