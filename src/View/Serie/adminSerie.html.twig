@@ -37,9 +37,14 @@
                         <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
                     </div>
                 {% else %}
+                    <p class="text-center">Voulez-vous supprimer l'image?</p>
                     <div class="form-group row justify-content-center p-2">
-                        <label for="edit_image" class="col-xs-3 col-form-label"> Voulez-vous supprimer l'image?</label>
-                        <input type="checkbox" name="edit_image" id="edit_image" class="form-control">
+                        <div class="d-flex flex-row">
+                            <label for="edit_imageY" class="col-xs-3 col-form-label p-2">Oui</label>
+                            <input type="radio" name="edit_image" id="edit_imageY" class="form-control" value="1" required>
+                            <label for="edit_imageN" class="col-xs-3 col-form-label p-2">Non</label>
+                            <input type="radio" name="edit_image" id="edit_imageN" class="form-control" value="0" required>
+                        </div>
                         <input type="hidden" name="link_picture" value="{{ serie.link_picture }}">
                     </div>
                     <figure class="card card-body mx-auto">
