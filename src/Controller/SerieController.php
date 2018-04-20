@@ -157,19 +157,20 @@ class SerieController extends AbstractController
                 }
                 $serieManager = new SerieManager();
                 unset($data['idSerie']);
-                if (isset($data['edit_image'])){
+                if (isset($data['edit_image']) AND $data['edit_image'] == 'True'){
                     unset($data['edit_image']);
                     $fileName = 'assets/upload/'.$data['link_picture'];
                     if (file_exists($fileName)) {
                         unlink($fileName);
                     }
                     $data['link_picture'] = null;
-                    $serieManager->update($idSerie, $data);
+                }elseif (isset($data['edit_image']) AND $data['edit_image'] == 'False') {
+                    unset($data['edit_image']);
+
                 }else {
                     $data['link_picture'] = $serieManager->upload();
-                    $serieManager->update($idSerie, $data);
-
                 }
+                $serieManager->update($idSerie, $data);
                 header('Location: /list/admin/');
                 exit();
             }
