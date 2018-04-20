@@ -124,7 +124,8 @@ class SerieController extends AbstractController
             }
             $serieManager = new SerieManager();
             try{
-                $data['link_picture'] = $serieManager->upload();
+                $file = $_FILES["fichier"];
+                $data['link_picture'] = $serieManager->upload($file);
                 $lastId = $serieManager->insert($data);
                 header('Location: /pageSerie/admin/'.$lastId);
                 exit();
