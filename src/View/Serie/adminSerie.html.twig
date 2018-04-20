@@ -3,18 +3,18 @@
 {% block content %}
     <h1 class="mt-5 pt-5">Administration des Séries</h1>
     <div class="row pt-5 mt-5">
-        <div class="col-md-5 col-sm-6 pl-4 pb-5">
+        <div class="col-md-5 col-sm-6 pb-5">
             <h2 class="text-center">Modification de la série</h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
                 <div class="form-group row justify-content-center p-2">
-                    <label for="title" class="col-xs-3 col-form-label mr-3">Titre<span class="ast">&ast;</span> :</label>
+                    <label for="title" class="col-xs-3 col-form-label mr-4">Titre<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <input type="text" class="form-control ml-2" id="title" name="title" value="{{ serie.title }}" required>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ serie.title }}" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
-                    <label for="synopsis" class="col-xs-3 col-form-label">Synopsis :</label>
+                    <label for="synopsis" class="col-xs-3 col-form-label mr-3">Synopsis :</label>
                     <div class="col-xs-9 col-sm-5">
                         <textarea class="form-control" rows="5" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
                     </div>
@@ -25,16 +25,18 @@
                         <input type="text" class="form-control ml-1" id="genre" name="genre" value="{{ serie.genre }}" required>
                     </div>
                 </div>
-                <div class="form-group row justify-content-left p-2 broadcast">
-                    <label for="creation_date" class="col-xs-3 col-form-label mr-3">Date de création<span class="ast">&ast;</span> :</label>
-                    <div class="col-xs-9">
+                <div class="form-group row justify-content-center p-2">
+                    <label for="creation_date" class="col-xs-3 col-form-label mr-3">Crée le<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-5">
                         <input type="date" class="form-control" id="creation_date" name="creation_date" value="{{ serie.creation_date }}" required>
                     </div>
                 </div>
                 {% if serie.link_picture is null %}
-                    <div class="form-group row justify-content-left p-2 vignette">
+                    <div class="form-group row justify-content-center p-2">
                         <label for="picture" class="col-xs-3 col-form-label mr-3">Vignette :</label>
-                        <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
+                        <div class="col-xs-9 col-sm-5">
+                            <input id="picture" type="file" name="fichier[]" multiple="multiple"/>
+                        </div>
                     </div>
                 {% else %}
                     <p class="text-center pt-2">Voulez-vous supprimer l'image?</p>
@@ -60,18 +62,18 @@
             <h2 class="text-center">Ajouter des Saisons</h2>
             <form action="/admin/season" method="post">
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
-                <div class="form-group row justify-content-left p-2">
-                    <label for="nbSeasons" class="col-xs-3 col-form-label mt-1">N° de la saison à ajouter<span class="ast">&ast;</span> :</label>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="nbSeasons" class="col-xs-3 col-form-label">N° de la saison à ajouter<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
-                        <input type="number" min="0" class="form-control ml-2" id="nbSeasons" name="nbSeasons" required>
+                        <input type="number" min="0" class="form-control" id="nbSeasons" name="nbSeasons" required>
                     </div>
-                    <div class="offset-xs-3 col-xs-9 ml-3 p-2">
+                    <div class="offset-xs-3 col-xs-9 p-2">
                         <button type="submit" class="btn btn-outline-info" value="addSeason">Ajouter</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col-md-3 col-sm-6 pl-4 pb-5">
+        <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
         </div>
     </div>
