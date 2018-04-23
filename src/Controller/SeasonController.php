@@ -30,27 +30,12 @@ class SeasonController extends AbstractController
             }else {
                 $saisonManager = new SeasonManager();
                 $saisonManager->insert($data);
-                header('Location: /pageSerie/admin/' . $idSerie);
+                header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
+
             }
         }
     }
 
-    /**
-     * @return string
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
-    public function allSeasons ()
-    {
-
-        $saisonManager = new SeasonManager();
-        $data = $this->cleanPost($_POST);
-        $idSerie = $data[ 'idSerie' ];
-        $seasons = $saisonManager->selectAllByFk('idserie', $idSerie);
-
-        return $this->twig->render('Serie/adminSerie.html.twig', ['seasons' => $seasons]);
-    }
 
 }

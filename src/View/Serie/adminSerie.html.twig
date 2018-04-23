@@ -60,8 +60,8 @@
         </div>
         <div class="col-md-4 col-sm-6 pl-4 pb-5">
             <h2 class="text-center">Ajouter des Saisons</h2>
-            <form action="/admin/season" method="post">
-                <input type="hidden" name="idSerie" value="{{ serie.id }}">
+            <form action="" method="post">
+                <input type="hidden" name="idSerie" value="{{ idSerie }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="nbSeasons" class="col-xs-3 col-form-label">N° de la saison à ajouter<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
@@ -74,7 +74,7 @@
             </form>
             <h2 class="text-center">Ajouter des Episodes</h2>
             <form action="/admin/episode" method="post">
-                <input type="hidden" name="idSerie" value="{{ serie.id }}">
+                <input type="hidden" name="idSerie" value="{{ idSerie }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="numeroSeason" class="col-xs-3 col-form-label mt-1">N° Saison<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">

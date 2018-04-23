@@ -22,8 +22,7 @@ $routes = [
         ['viewAfterDelete', '/admin/delete/', 'POST'],
     ],
     'Season' => [
-        ['addSeason', '/admin/season', 'POST'],
-        ['allSeasons', '/pageSerie/admin/{id:\d+}', 'POST'],
+        ['addSeason', '/pageSerie/admin/{id:\d+}', 'POST'],
     ],
     'Episode' => [
         ['addEpisode', '/admin/episode', 'POST'],

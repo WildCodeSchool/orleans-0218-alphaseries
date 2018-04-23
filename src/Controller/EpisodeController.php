@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-
 use Model\EpisodeManager;
 
 class EpisodeController extends AbstractController

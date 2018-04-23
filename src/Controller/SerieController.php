@@ -7,6 +7,7 @@
  */
 namespace Controller;
 use Model\HomeManager;
+use Model\SeasonManager;
 use Model\Serie;
 use Model\SerieManager;
 class SerieController extends AbstractController
@@ -72,7 +73,9 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
-        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie]);
+        $saisonManager = new SeasonManager();
+        $seasons = $saisonManager->selectAllByFk('idserie', 'id', $id, 'serie', 'numero_season');
+        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons]);
     }
     /**
      * @return string

@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+{% for season in seasons %}
+<h1>{{ season.numero_season }}</h1>
+{% endfor %}
+{% endblock %}
