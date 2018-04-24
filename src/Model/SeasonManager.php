@@ -55,4 +55,15 @@ class SeasonManager extends AbstractManager
 
         return $count;
     }
+  
+    public function selectSeason(int $idSerie)
+    {
+        $query = "SELECT numberSeason FROM $this->table WHERE idserie = :idSerie ORDER BY numberSeason ASC";
+        $result = $this->pdoConnection->prepare($query);
+        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
+        $result->execute();
+        $res = $result->fetchAll();
+        return $res;
+    }
 }

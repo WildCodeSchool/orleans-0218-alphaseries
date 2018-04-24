@@ -10,6 +10,7 @@ use Model\HomeManager;
 use Model\SeasonManager;
 use Model\Serie;
 use Model\SerieManager;
+
 class SerieController extends AbstractController
 {
     const LIMIT = 12;
@@ -34,7 +35,7 @@ class SerieController extends AbstractController
             $page = $pageMax;
         }
         $series = $serieManager->selectByPage($page, self::LIMIT);
-        return $this->twig->render('Serie/list.html.twig', ['series' => $series,'page' => $page,'pageMax' => $pageMax]);
+        return $this->twig->render('Serie/list.html.twig', ['series' => $series, 'page' => $page, 'pageMax' => $pageMax]);
     }
     /**
      * @param int $page
@@ -60,7 +61,11 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
-        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie]);
+        $season = new SeasonManager();
+        $seasons = $season->selectSeason($id);
+
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons]);
+
     }
     /**
      * @param int $id
@@ -95,12 +100,12 @@ class SerieController extends AbstractController
      */
     public function viewAfterAdd()
     {
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
-            if (empty($data['title'])){
+            if (empty($data['title'])) {
                 throw new \Exception('Le champ titre est requis!');
             }
-            if (strlen($data['title']) > 255){
+            if (strlen($data['title']) > 255) {
                 throw new \Exception('Le titre est trop long!');
             }
             if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
@@ -109,14 +114,14 @@ class SerieController extends AbstractController
                 }
             }
             $serieManager = new SerieManager();
-            try{
+            try {
                 $file = $_FILES["fichier"];
                 $data['link_picture'] = $serieManager->upload($file);
                 $lastId = $serieManager->insert($data);
-                header('Location: /pageSerie/admin/'.$lastId);
+                header('Location: /pageSerie/admin/' . $lastId);
                 exit();
-            }catch (\Exception $e){
-                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            } catch (\Exception $e) {
+                echo 'Exception reçue : ', $e->getMessage(), "\n";
             }
         }
     }
@@ -125,14 +130,14 @@ class SerieController extends AbstractController
      */
     public function viewAfterUpdate()
     {
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
             if (!isset($data['nbSeasons'])) {
-                if (empty($data['title'])){
+                if (empty($data['title'])) {
                     throw new \Exception('Le champ titre est requis!');
                 }
-                if (strlen($data['title']) > 255){
+                if (strlen($data['title']) > 255) {
                     throw new \Exception('Le titre est trop long!');
                 }
                 if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
@@ -144,16 +149,18 @@ class SerieController extends AbstractController
                 unset($data['idSerie']);
                 $serie = $serieManager->selectOneById($idSerie);
                 if ($serie->getLink_Picture()) {
-                    if ($data[ 'edit_image' ]) {
-                        $fileName = 'assets/upload/' . $data[ 'link_picture' ];
+                    if ($data['edit_image']) {
+                        $fileName = 'assets/upload/' . $data['link_picture'];
                         if (file_exists($fileName)) {
                             unlink($fileName);
                         }
-                        $data[ 'link_picture' ] = null;
+                        $data['link_picture'] = null;
                     }
-                    unset($data[ 'edit_image' ]);
-                }
-                else {
+
+                    unset($data['edit_image']);
+
+                } else {
+
                     $file = $_FILES["fichier"];
                     $data['link_picture'] = $serieManager->upload($file);
                 }
