@@ -139,7 +139,7 @@ class Serie
     /**
      * @return string|null
      */
-    public function getLink_Picture(): ?string
+    public function getLink_Picture(): string
     {
         return $this->link_picture;
     }
