@@ -43,20 +43,17 @@ class EpisodeManager extends AbstractManager
 
         //On vérifie que l'épisode n'existe pas déjà
 
-        $verif = "SELECT number FROM $this->table WHERE idseason = :IdSeason AND idserie = :idSerie";
+        $verif = "SELECT count(number) as count FROM $this->table WHERE idseason = :idSeason AND idserie = :idSerie AND number = :number";
         $result = $this->pdoConnection->prepare($verif);
         $result->setFetchMode(\PDO::FETCH_ASSOC);
-        $result->bindValue('IdSeason', $idSeason, \PDO::PARAM_INT);
+        $result->bindValue('idSeason', $idSeason, \PDO::PARAM_INT);
         $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
+        $result->bindValue('number', $data[ 'numeroEpisode' ], \PDO::PARAM_INT);
         $result->execute();
-        $episodes = $result->fetchAll();
-        $count = 0;
-        foreach ($episodes as $episode) {
-            if ($episode['number'] == $data[ 'numeroEpisode' ]) {
-                $count++;
-            }
-        }
-        if ($count !== 0) {
+        $res = $result->fetchAll();
+        $count = $res[0]['count'];
+
+        if ($count !== '0') {
             throw new \Exception('L\' épisode existe déjà');
         } else {
             //Si Ok on ajoute en base de donnée
