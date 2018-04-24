@@ -88,4 +88,12 @@ class EpisodeManager extends AbstractManager
         return $statement->fetch();
 
     }
+
+    public function selectAllEpisodesOfOneSerie($id)
+    {
+        $query = "SELECT * FROM episode WHERE idserie = $id";
+        $res = $this->pdoConnection->query($query);
+        $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
+        return $resAll;
+    }
 }
