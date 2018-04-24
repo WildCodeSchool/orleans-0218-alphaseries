@@ -30,14 +30,7 @@ class SeasonManager extends AbstractManager
     {
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'nbSeasons' ];
-        $verif = "SELECT numberSeason FROM $this->table WHERE numberSeason = :number_season AND idserie = :idSerie";
-        $result = $this->pdoConnection->prepare($verif);
-        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $result->bindValue('number_season', $nb, \PDO::PARAM_INT);
-        $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
-        $result->execute();
-        $res = $result->fetchAll();
-        if (count($res) !== 0) {
+        if (!$this->checkSeasonExist($nb, $idSerie)) {
             throw new \Exception('La saison existe déjà');
         }else {
             $query = "INSERT INTO $this->table (numberSeason, idserie) VALUES (:numb, :idSerie)";
@@ -47,5 +40,22 @@ class SeasonManager extends AbstractManager
             $statement->execute();
         }
 
+    }
+
+    public function checkSeasonExist(int $nb, int $idSerie): bool
+    {
+        $verif = "SELECT numberSeason FROM $this->table WHERE numberSeason = :number_season AND idserie = :idSerie";
+        $result = $this->pdoConnection->prepare($verif);
+        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $result->bindValue('number_season', $nb, \PDO::PARAM_INT);
+        $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
+        $result->execute();
+        $res = $result->fetchAll();
+
+        if (count($res) !== 0) {
+            return false;
+        }else {
+            return true;
+        }
     }
 }
