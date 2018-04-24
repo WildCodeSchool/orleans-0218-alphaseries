@@ -5,7 +5,7 @@
     <div class="row pt-5 mt-5">
         <div class="col-md-5 col-sm-6 pb-5">
             <h2 class="text-center">Modification de la série</h2>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/admin/serie" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="title" class="col-xs-3 col-form-label mr-4">Titre<span class="ast">&ast;</span> :</label>
@@ -60,8 +60,8 @@
         </div>
         <div class="col-md-4 col-sm-6 pl-4 pb-5">
             <h2 class="text-center">Ajouter des Saisons</h2>
-            <form action="/admin/season" method="post">
-                <input type="hidden" name="idSerie" value="{{ serie.id }}">
+            <form action="" method="post">
+                <input type="hidden" name="idSerie" value="{{ idSerie }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="nbSeasons" class="col-xs-3 col-form-label">N° de la saison à ajouter<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
@@ -72,9 +72,47 @@
                     </div>
                 </div>
             </form>
+            <h2 class="text-center">Ajouter des Episodes</h2>
+            <form action="/admin/episode" method="post">
+                <input type="hidden" name="idSerie" value="{{ idSerie }}">
+                <div class="form-group row justify-content-center p-2">
+                    <label for="numeroSeason" class="col-xs-3 col-form-label mt-1">N° Saison<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-2 p-2">
+                        <select id="numeroSeason" name="numeroSeason" class="form-control ml-2" required>
+                            {% for season in seasons %}
+                                <option value="{{ season.numero_season }}">{{ season.numero_season }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label for="numeroEpisode" class="col-xs-3 col-form-label ml-1 mt-1">N° Episode<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-2 p-2">
+                        <input type="text" class="form-control ml-2" id="numeroEpisode" name="numeroEpisode" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <label for="titleEpisode" class="col-xs-3 col-form-label mr-1">Titre<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9 col-sm-5">
+                        <input type="text" class="form-control ml-1" id="titleEpisode" name="titleEpisode" required>
+                    </div>
+                </div>
+                <div class="form-group row ml-5 p-2">
+                    <label for="date_diff" class="col-xs-3 col-form-label mr-3">Date de diffusion<span class="ast">&ast;</span> :</label>
+                    <div class="col-xs-9">
+                        <input type="date" class="form-control" id="date_diff" name="date_diff" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center p-2">
+                    <div class="offset-xs-3 col-xs-9 ml-3 p-2">
+                        <button type="submit" class="btn btn-outline-info" value="addEpisode">Ajouter</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
+            {% for episode in episodes %}
+                        <p class="card-title text-center">{{ episode.title }}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}

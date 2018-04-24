@@ -12,6 +12,7 @@ use Model\SeasonManager;
 
 class SeasonController extends AbstractController
 {
+
     /**
      * @throws \Exception
      */
@@ -31,8 +32,10 @@ class SeasonController extends AbstractController
                 $saisonManager->insert($data);
                 header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
+
             }
         }
     }
+
 
 }
