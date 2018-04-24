@@ -25,5 +25,4 @@ class EpisodeController extends AbstractController
             }
         }
     }
-
 }
