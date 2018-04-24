@@ -31,17 +31,9 @@ class EpisodeManager extends AbstractManager
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'numeroSeason' ];
         $numberEpisode = $data[ 'numeroEpisode' ];
-        // On récupère l'id de la saison associée à la série
+        $idSeason = $this->recupIdSeason($nb, $idSerie)->getId();
 
-        $query = "SELECT id FROM season WHERE numberSeason = :nb AND idserie = :idSerie";
-        $statement = $this->pdoConnection->prepare($query);
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('nb', $nb);
-        $statement->bindValue('idSerie', $idSerie);
-        $statement->execute();
-        $idSeason = $statement->fetch()->getId();
-
-        if (!$this->checkEpisodeExist($idSeason, $idSerie, $numberEpisode)) {
+        if ($this->checkEpisodeExist($idSeason, $idSerie, $numberEpisode)) {
             throw new \Exception('L\' épisode existe déjà');
         } else {
             //Si Ok on ajoute en base de donnée
@@ -80,10 +72,20 @@ class EpisodeManager extends AbstractManager
         $res = $result->fetch();
         $count = $res['count'];
 
-        if ($count !== '0') {
-            return false;
-        } else {
-            return true;
-        }
+        return $count;
+    }
+
+    public function recupIdSeason(int $nb, int $idSerie)
+    {
+        // On récupère l'id de la saison associée à la série
+
+        $query = "SELECT id FROM season WHERE numberSeason = :nb AND idserie = :idSerie";
+        $statement = $this->pdoConnection->prepare($query);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('nb', $nb);
+        $statement->bindValue('idSerie', $idSerie);
+        $statement->execute();
+        return $statement->fetch();
+
     }
 }

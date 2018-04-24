@@ -30,7 +30,7 @@ class SeasonManager extends AbstractManager
     {
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'nbSeasons' ];
-        if (!$this->checkSeasonExist($nb, $idSerie)) {
+        if ($this->checkSeasonExist($nb, $idSerie)) {
             throw new \Exception('La saison existe déjà');
         }else {
             $query = "INSERT INTO $this->table (numberSeason, idserie) VALUES (:numb, :idSerie)";
@@ -51,11 +51,8 @@ class SeasonManager extends AbstractManager
         $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
         $result->execute();
         $res = $result->fetchAll();
+        $count = count($res);
 
-        if (count($res) !== 0) {
-            return false;
-        }else {
-            return true;
-        }
+        return $count;
     }
 }
