@@ -49,7 +49,7 @@ class SeasonManager extends AbstractManager
 
     }
 
-    public function SelectSeason(int $idSerie)
+    public function selectSeason(int $idSerie)
     {
         $query = "SELECT number_season FROM $this->table WHERE idserie = :idSerie ORDER BY number_season ASC";
         $result = $this->pdoConnection->prepare($query);

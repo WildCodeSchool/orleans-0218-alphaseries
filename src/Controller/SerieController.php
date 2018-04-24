@@ -73,7 +73,7 @@ class SerieController extends AbstractController
         $serie = $serieManager->selectOneById($id);
 
         $season = new SeasonManager();
-        $seasons = $season->SelectSeason($id);
+        $seasons = $season->selectSeason($id);
 
         return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons]);
     }
