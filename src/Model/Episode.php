@@ -19,7 +19,7 @@ class Episode
     /**
      * @var int
      */
-    private $numero;
+    private $number;
 
     /**
      * @var string
@@ -70,17 +70,17 @@ class Episode
     /**
      * @return int
      */
-    public function getNumero (): int
+    public function getNumber (): int
     {
-        return $this->numero;
+        return $this->number;
     }
 
     /**
      * @param int $numero
      */
-    public function setNumero (int $numero): void
+    public function setNumber (int $number): void
     {
-        $this->numero = $numero;
+        $this->number = $number;
     }
 
     /**
