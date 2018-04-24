@@ -44,6 +44,18 @@ abstract class AbstractManager
         return $this->pdoConnection->query('SELECT * FROM ' . $this->table, \PDO::FETCH_CLASS, $this->className)->fetchAll();
     }
 
+    public function selectAllByFk($fkName, $fkSource, $id, $table2, $field)
+    {
+        $statement = $this->pdoConnection->prepare("SELECT $this->table.* FROM $this->table 
+                      JOIN $table2 ON $this->table.$fkName = $table2.$fkSource 
+                      WHERE $table2.$fkSource = :id ORDER BY $this->table.$field ASC");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
     /**
      * Get one row from database by ID.
      *

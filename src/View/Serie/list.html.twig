@@ -5,8 +5,9 @@
     <div class="container ">
         <div class="row">
             <div class="col-7 p-3 mx-auto">
-                <form method="GET" action ="/searchResult" class="input-group">
-                    <input class="form-control searchengine" type="search" name="search" value="" placeholder="Votre recherche">
+                <form method="GET" action="/searchResult" class="input-group">
+                    <input class="form-control searchengine" type="search" name="search" value=""
+                           placeholder="Votre recherche">
                 </form>
             </div>
         </div>
@@ -15,7 +16,8 @@
         {% for serie in series %}
             <div class="col-md-3 col-sm-6 pl-4 pb-5 mx-auto">
                 <figure class="card card-body mx-auto">
-                    <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
+                    <a href="/pageSerie/{{ serie.id }}"><h2
+                                class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
                         <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
                     {% else %}
@@ -25,15 +27,18 @@
             </div>
         {% endfor %}
     </div>
-    <div class=" d-flex flex-row pt-5 justify-content-center">
+    <div class="d-flex flex-row pt-5 justify-content-center">
         {% if page > 1 %}
-            <div class="col-md-2 col-sm-3 ml-5">
-                <a class="btn btn-secondary" href="/list/{{ page-1 }}" role="button">précédent</a>
+            <div class="col-md-1 col-sm-1">
+                <a class="btn btn-outline-secondary btn-ms" href="/list/{{ page-1 }}" role="button">Précédent</a>
             </div>
         {% endif %}
+        <div class="col-md-1 col-sm-1 text-nowrap">
+            <p>Page {{ page }} sur {{ pageMax }}</p>
+        </div>
         {% if page < pageMax %}
-            <div class="col-md-1 col-sm-1 mr-5">
-                <a class="btn btn-secondary" href="/list/{{ page+1 }}" role="button">suivant</a>
+            <div class="col-md-1 col-sm-1">
+                <a class="btn btn-outline-secondary btn-sm" href="/list/{{ page+1 }}" role="button">Suivant</a>
             </div>
         {% endif %}
     </div>
