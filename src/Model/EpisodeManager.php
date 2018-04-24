@@ -30,20 +30,38 @@ class EpisodeManager extends AbstractManager
     {
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'numeroSeason' ];
-        $query = "SELECT id FROM season WHERE numero_season = $nb AND idserie = $idSerie";
-        $objRes = $this->pdoConnection->query($query, \PDO::FETCH_CLASS, $this->className)->fetch();
-        $idSeason = $objRes->getId();
-        $verif = "SELECT numero FROM $this->table WHERE idseason = :numero_season AND idserie = :idSerie";
+
+        // On récupère l'id de la saison associée à la série
+
+        $query = "SELECT id FROM season WHERE number_season = :nb AND idserie = :IdSerie";
+        $statement = $this->pdoConnection->prepare($query);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('nb', $nb);
+        $statement->bindValue('IdSerie', $idSerie);
+        $statement->execute();
+        $idSeason = $statement->fetch()->getId();
+
+        //On vérifie que l'épisode n'existe pas déjà
+
+        $verif = "SELECT number FROM $this->table WHERE idseason = :IdSeason AND idserie = :idSerie";
         $result = $this->pdoConnection->prepare($verif);
         $result->setFetchMode(\PDO::FETCH_ASSOC);
-        $result->bindValue('numero_season', $idSeason, \PDO::PARAM_INT);
+        $result->bindValue('IdSeason', $idSeason, \PDO::PARAM_INT);
         $result->bindValue('idSerie', $idSerie, \PDO::PARAM_INT);
         $result->execute();
-        $res = $result->fetchAll();
-        if (count($res) !== 0) {
+        $episodes = $result->fetchAll();
+        $count = 0;
+        foreach ($episodes as $episode) {
+            if ($episode['number'] == $data[ 'numeroEpisode' ]) {
+                $count++;
+            }
+        }
+        if ($count !== 0) {
             throw new \Exception('L\' épisode existe déjà');
         } else {
-            $query = "INSERT INTO $this->table (numero, title, broadcasting_date, idseason, idserie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
+            //Si Ok on ajoute en base de donnée
+
+            $query = "INSERT INTO $this->table (number, title, broadcasting_date, idseason, idserie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('nb', $data[ 'numeroEpisode' ]);
             $statement->bindValue('title', $data[ 'titleEpisode' ]);

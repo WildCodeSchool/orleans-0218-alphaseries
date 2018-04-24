@@ -9,14 +9,14 @@
                 <input type="hidden" name="idSerie" value="{{ serie.id }}">
                 <div class="form-group row justify-content-center p-2">
                     <label for="title" class="col-xs-3 col-form-label mr-4">Titre<span class="ast">&ast;</span> :</label>
-                    <div class="col-xs-9 col-sm-5">
+                    <div class="col-xs-9 col-sm-5 ml-3">
                         <input type="text" class="form-control" id="title" name="title" value="{{ serie.title }}" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
                     <label for="synopsis" class="col-xs-3 col-form-label mr-3">Synopsis :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <textarea class="form-control" rows="5" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
+                        <textarea class="form-control" rows="10" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
@@ -80,7 +80,7 @@
                     <div class="col-xs-9 col-sm-2 p-2">
                         <select id="numeroSeason" name="numeroSeason" class="form-control ml-2" required>
                             {% for season in seasons %}
-                                <option value="{{ season.numero_season }}">{{ season.numero_season }}</option>
+                                <option value="{{ season.number_season }}">{{ season.number_season }}</option>
                             {% endfor %}
                         </select>
                     </div>
