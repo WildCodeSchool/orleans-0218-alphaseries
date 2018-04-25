@@ -16,13 +16,16 @@ $routes = [
         ['editSerie', '/pageSerie/admin/{id:\d+}', 'GET'],
         ['search', '/searchResult', 'GET'],
         ['addView', '/admin', 'GET'],
-        ['listAdmin', '/list/admin/', 'GET'],
+        ['listAdmin', '/list/admin/{page}', 'GET'],
         ['viewAfterAdd', '/admin', 'POST'],
-        ['viewAfterUpdate', '/pageSerie/admin/{id:\d+}', 'POST'],
+        ['viewAfterUpdate', '/admin/serie', 'POST'],
         ['viewAfterDelete', '/admin/delete/', 'POST'],
     ],
     'Season' => [
-        ['addSeason', '/admin/season', 'POST'],
+        ['addSeason', '/pageSerie/admin/{id:\d+}', 'POST'],
+    ],
+    'Episode' => [
+        ['addEpisode', '/admin/episode', 'POST'],
     ],
     'Home' => [
         ['homePage', '/', 'GET'],
