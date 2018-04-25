@@ -6,6 +6,16 @@
             <h1 class="text-center pt-5">{{ serie.title }}</h1>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12-mx-auto">
+            <div class="star-rating">
+                {% for i in  1..5 %}
+                    {% set classNote = (i<= note ? "" : i - note < 0.5 ? "-half-full" : "-o" ) %}
+                        <span class="fa fa-lg fa-star{{ classNote }}"></span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <div class="row pt-5 column-reverse">
         <div class="col-sm-6 col-md-8 order-2 order-sm-1">
             <div class="row">
