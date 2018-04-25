@@ -61,7 +61,7 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
-        $note = round($serieManager->averageNote($id)['AVG(note)'], 1, PHP_ROUND_HALF_UP);
+        $note = round($serieManager->averageNote($id)['avgNote'], 1, PHP_ROUND_HALF_UP);
         $season = new SeasonManager();
         $seasons = $season->selectSeason($id);
 
