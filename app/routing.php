@@ -16,7 +16,7 @@ $routes = [
         ['editSerie', '/pageSerie/admin/{id:\d+}', 'GET'],
         ['search', '/searchResult', 'GET'],
         ['addView', '/admin', 'GET'],
-        ['listAdmin', '/list/admin/', 'GET'],
+        ['listAdmin', '/list/admin/{page}', 'GET'],
         ['viewAfterAdd', '/admin', 'POST'],
         ['viewAfterUpdate', '/admin/serie', 'POST'],
         ['viewAfterDelete', '/admin/delete/', 'POST'],
