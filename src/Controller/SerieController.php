@@ -70,8 +70,8 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
-
-        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie]);
+        $note = round($serieManager->averageNote($id)['AVG(note)'], 1, PHP_ROUND_HALF_UP);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'note' => $note]);
     }
 
     /**
