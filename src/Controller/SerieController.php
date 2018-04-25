@@ -177,7 +177,7 @@ class SerieController extends AbstractController
                     $data['link_picture'] = $serieManager->upload($file);
                 }
                 $serieManager->update($idSerie, $data);
-                header('Location: /list/admin/');
+                header('Location: /pageSerie/admin/' . $idSerie);
                 exit();
             }
         }
@@ -188,7 +188,7 @@ class SerieController extends AbstractController
             $id = trim($_POST['serieId']);
             $serieManager = new SerieManager();
             $serieManager->delete($id);
-            header('Location: /list/admin/');
+            header('Location: /list/admin/1');
             exit();
         }
     }
