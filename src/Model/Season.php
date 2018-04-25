@@ -19,7 +19,7 @@ class Season
     /**
      * @var int
      */
-    private $nbSeason;
+    private $numberSeason;
 
     /**
      * @var int
@@ -45,17 +45,17 @@ class Season
     /**
      * @return int
      */
-    public function getNbSeason (): int
+    public function getNumberSeason (): int
     {
-        return $this->nbSeason;
+        return $this->numberSeason;
     }
 
     /**
      * @param int $nbSeason
      */
-    public function setNbSeason (int $nbSeason): void
+    public function setNumberSeason (int $nbSeason): void
     {
-        $this->nbSeason = $nbSeason;
+        $this->numberSeason = $nbSeason;
     }
 
     /**

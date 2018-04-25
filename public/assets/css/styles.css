@@ -153,6 +153,7 @@ h2 {
     font-size: 20px;
 }
 
+
 .fa-star{
     color: yellow;
     -webkit-text-stroke-width: 1px;
@@ -178,3 +179,9 @@ h2 {
     -webkit-text-stroke-color: orange;
 
 }
+
+textarea#synopsis {
+    height: 35vh;
+    width: 25vw;
+}
+
