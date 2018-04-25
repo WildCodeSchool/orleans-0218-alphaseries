@@ -23,7 +23,7 @@ class SerieManager extends AbstractManager
 
     public function selectByPage(int $page, int $limit)
     {
-        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
+        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' ORDER BY ' . "$this->table.title" . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
             \PDO::FETCH_CLASS, $this->className
         )->fetchAll();
 
