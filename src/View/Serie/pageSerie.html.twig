@@ -10,13 +10,8 @@
         <div class="col-md-12-mx-auto">
             <div class="star-rating">
                 {% for i in  1..5 %}
-                    {% if i <= note %}
-                        <span class="fa fa-star fa-lg" ></span>
-                    {% elseif i - note < 0.5  %}
-                        <span class="fa fa-star-half-full fa-lg" ></span>
-                    {% else %}
-                        <span class="fa fa-star-o fa-lg" ></span>
-                    {% endif %}
+                    {% set classNote = (i<= note ? "" : i - note < 0.5 ? "-half-full" : "-o" ) %}
+                        <span class="fa fa-lg fa-star{{ classNote }}"></span>
                 {% endfor %}
             </div>
         </div>
