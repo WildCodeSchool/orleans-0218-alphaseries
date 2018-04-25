@@ -158,3 +158,7 @@ textarea#synopsis {
     width: 25vw;
 }
 
+/****listEpisode*****/
+#listEpisode {
+    font-size: calc(14px + 7 * (100vw - 400px) / 1200);
+}

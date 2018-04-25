@@ -5,7 +5,9 @@
  * Date: 03/04/18
  * Time: 17:12
  */
+
 namespace Controller;
+
 use Model\HomeManager;
 use Model\SeasonManager;
 use Model\Serie;
@@ -16,6 +18,7 @@ class SerieController extends AbstractController
 {
     const LIMIT = 12;
     const PAGEMIN = 0;
+
     /**
      * Display serie listing
      * @param int $page
@@ -38,6 +41,7 @@ class SerieController extends AbstractController
         $series = $serieManager->selectByPage($page, self::LIMIT);
         return $this->twig->render('Serie/list.html.twig', ['series' => $series, 'page' => $page, 'pageMax' => $pageMax]);
     }
+
     /**
      * @param int $page
      * @return string
@@ -58,6 +62,7 @@ class SerieController extends AbstractController
         $series = $serieManager->selectByPage($page, self::LIMIT);
         return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series, 'page' => $page, 'pageMax' => $pageMax]);
     }
+
     /**
      * @param int $id
      * @return string
@@ -69,12 +74,38 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
+
         $season = new SeasonManager();
         $seasons = $season->selectSeason($id);
+
+//        $idSeason = 1;
+//
+//        $episode = new EpisodeManager();
+//        $episodes = $episode->selectEpisodeBySeason($id,$idSeason);
 
         return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons]);
 
     }
+
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function episodeBySerie()
+    {
+        if (!empty($_POST['idSeason']) && !empty($_POST['idSerie'])) {
+            $idSerie = $_POST['idSerie'];
+            $idSeason = $_POST['idSeason'];
+
+            $episode = new EpisodeManager();
+            $episodes = $episode->selectEpisodeBySeason($idSerie, $idSeason);
+
+            return $this->twig->render('Serie/inc_listEpisode.html.twig', ['episodes' => $episodes]);
+        }
+    }
+
     /**
      * @param int $id
      * @return string
@@ -92,6 +123,7 @@ class SerieController extends AbstractController
         $episodes = $episodeManager->selectAllEpisodesOfOneSerie($id);
         return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons, 'episodes' => $episodes]);
     }
+
     /**
      * @return string
      * @throws \Twig_Error_Loader
@@ -102,6 +134,7 @@ class SerieController extends AbstractController
     {
         return $this->twig->render('Serie/add.html.twig');
     }
+
     /**
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -135,6 +168,7 @@ class SerieController extends AbstractController
             }
         }
     }
+
     /**
      * @throws \Exception
      */
@@ -180,6 +214,7 @@ class SerieController extends AbstractController
             }
         }
     }
+
     public function viewAfterDelete()
     {
         if (!empty($_POST)) {
@@ -190,6 +225,7 @@ class SerieController extends AbstractController
             exit();
         }
     }
+
     /**
      * @return string
      * @throws \Twig_Error_Loader

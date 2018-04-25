@@ -13,6 +13,7 @@ $routes = [
     'Serie' => [
         ['list', '/list/{page}', 'GET'],
         ['selectSerie', '/pageSerie/{id:\d+}', 'GET'],
+        ['episodeBySerie','/seasonId', 'POST'],
         ['editSerie', '/pageSerie/admin/{id:\d+}', 'GET'],
         ['search', '/searchResult', 'GET'],
         ['addView', '/admin', 'GET'],
