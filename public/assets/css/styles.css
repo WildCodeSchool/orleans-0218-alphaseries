@@ -158,3 +158,23 @@ textarea#synopsis {
     width: 25vw;
 }
 
+.stylecard{
+    padding: 30px;
+    transition: transform .5s;
+    width: 240px;
+    height: 350px;
+    margin: 0 auto;
+
+}
+
+.stylecard:hover{
+    -ms-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -transform: scale(1.3);
+}
+
+a.linkcard:after{
+    text-decoration: none;
+    display: none;
+
+}

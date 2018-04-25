@@ -13,13 +13,17 @@
                 <figure class="card card-body mx-auto">
                     <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
+                        <div class="stylecard">
+                            <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
+                        </div>
                     {% else %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                        <div class="stylecard">
+                        <a class="linkcard" href="/pageSerie/{{ serie.id }}" ><img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}"></a>
+                        </div>
                     {% endif %}
                     <div class="d-flex flex-row mx-auto">
                         <div class="p-2">
-                            <a href="/pageSerie/admin/{{ serie.id }}" class="add-link mt-1"><button class="btn btn-outline-success">Modifier</button></a>
+                            <a class="linkcard" href="/pageSerie/admin/{{ serie.id }}" class="add-link mt-1"><button class="btn btn-outline-success">Modifier</button></a>
                         </div>
                         <div class="p-2">
                             <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette série?');" action="/admin/delete/" method="post">
