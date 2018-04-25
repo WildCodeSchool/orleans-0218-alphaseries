@@ -10,6 +10,7 @@ use Model\HomeManager;
 use Model\SeasonManager;
 use Model\Serie;
 use Model\SerieManager;
+use Model\EpisodeManager;
 
 class SerieController extends AbstractController
 {
@@ -44,11 +45,18 @@ class SerieController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function listAdmin()
+    public function listAdmin(int $page)
     {
         $serieManager = new SerieManager();
-        $series = $serieManager->selectAll();
-        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series]);
+        $pageMax = $serieManager->recupPageMax();
+        if ($page < 1) {
+            $page = 1;
+        }
+        if ($page > $pageMax) {
+            $page = $pageMax;
+        }
+        $series = $serieManager->selectByPage($page, self::LIMIT);
+        return $this->twig->render('Serie/listAdmin.html.twig', ['series' => $series, 'page' => $page, 'pageMax' => $pageMax]);
     }
     /**
      * @param int $id
@@ -61,12 +69,14 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
+        $note = round($serieManager->averageNote($id)['avgNote'], 1, PHP_ROUND_HALF_UP);
         $season = new SeasonManager();
         $seasons = $season->selectSeason($id);
 
-        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons]);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons, 'note' => $note]);
 
     }
+
     /**
      * @param int $id
      * @return string
@@ -80,7 +90,9 @@ class SerieController extends AbstractController
         $serie = $serieManager->selectOneById($id);
         $saisonManager = new SeasonManager();
         $seasons = $saisonManager->selectAllByFk('idserie', 'id', $id, 'serie', 'numberSeason');
-        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons]);
+        $episodeManager = new episodeManager();
+        $episodes = $episodeManager->selectAllEpisodesOfOneSerie($id);
+        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons, 'episodes' => $episodes]);
     }
     /**
      * @return string
