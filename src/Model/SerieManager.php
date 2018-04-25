@@ -102,7 +102,7 @@ class SerieManager extends AbstractManager
 
     public function averageNote($idserie)
     {
-        $average = $this->pdoConnection->prepare("SELECT AVG(note) FROM episode WHERE idserie= :idserie");
+        $average = $this->pdoConnection->prepare("SELECT AVG(note) AS avgNote FROM episode WHERE idserie= :idserie");
         $average->setFetchMode(\PDO::PARAM_INT);
         $average->bindValue('idserie', $idserie);
         $average->execute();
