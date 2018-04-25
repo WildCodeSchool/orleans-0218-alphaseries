@@ -153,6 +153,33 @@ h2 {
     font-size: 20px;
 }
 
+
+.fa-star{
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+}
+
+.fa-star-half{
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+}
+
+.fa-star-half-full{
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+
+}
+
+.fa-star-o{
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+
+}
+
 textarea#synopsis {
     height: 35vh;
     width: 25vw;

@@ -74,16 +74,11 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($id);
-
+        $note = round($serieManager->averageNote($id)['avgNote'], 1, PHP_ROUND_HALF_UP);
         $season = new SeasonManager();
         $seasons = $season->selectSeason($id);
 
-//        $idSeason = 1;
-//
-//        $episode = new EpisodeManager();
-//        $episodes = $episode->selectEpisodeBySeason($id,$idSeason);
-
-        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons]);
+        return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons, 'note' => $note]);
 
     }
 
@@ -209,7 +204,7 @@ class SerieController extends AbstractController
                     $data['link_picture'] = $serieManager->upload($file);
                 }
                 $serieManager->update($idSerie, $data);
-                header('Location: /list/admin/');
+                header('Location: /pageSerie/admin/' . $idSerie);
                 exit();
             }
         }
@@ -221,7 +216,7 @@ class SerieController extends AbstractController
             $id = trim($_POST['serieId']);
             $serieManager = new SerieManager();
             $serieManager->delete($id);
-            header('Location: /list/admin/');
+            header('Location: /list/admin/1');
             exit();
         }
     }
