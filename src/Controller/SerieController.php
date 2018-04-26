@@ -114,22 +114,26 @@ class SerieController extends AbstractController
     {
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
+            $msg = '';
             try {
                 $this->validationForm($data);
             }catch (\Exception $e) {
                 $msg = 'Erreur: '. $e->getMessage(). "\n";
-                return $this->twig->render('Serie/add.html.twig', ['data' => $data, 'msg' => $msg]);
             }
             $serieManager = new SerieManager();
             try {
                 $file = $_FILES["fichier"];
                 $data['link_picture'] = $serieManager->upload($file);
+            } catch (\Exception $e) {
+                $msg = 'Erreur: '. $e->getMessage(). "\n";
+
+            }
+            if (!empty($msg)) {
+                return $this->twig->render('Serie/add.html.twig', ['data' => $data, 'msg' => $msg]);
+            }else {
                 $lastId = $serieManager->insert($data);
                 header('Location: /pageSerie/admin/' . $lastId);
                 exit();
-            } catch (\Exception $e) {
-                $msg = 'Erreur: '. $e->getMessage(). "\n";
-                return $this->twig->render('Serie/add.html.twig', ['data' => $data, 'msg' => $msg]);
             }
         }
     }
@@ -161,18 +165,12 @@ class SerieController extends AbstractController
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
+            $msg = '';
             if (!isset($data['nbSeasons'])) {
                 try {
                     $this->validationFormUpdate($data);
                 }catch (\Exception $e) {
                     $msg = 'Erreur: '. $e->getMessage(). "\n";
-                    $serieManager = new SerieManager();
-                    $serie = $serieManager->selectOneById($idSerie);
-                    $season = new SeasonManager();
-                    $seasons = $season->selectSeason($idSerie);
-                    $episodeManager = new episodeManager();
-                    $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
-                    return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie,'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
                 }
                 $serieManager = new SerieManager();
                 unset($data['idSerie']);
@@ -195,19 +193,23 @@ class SerieController extends AbstractController
                         $data['link_picture'] = $serieManager->upload($file);
                     }catch (\Exception $e) {
                         $msg = 'Erreur: '. $e->getMessage(). "\n";
-                        $serieManager = new SerieManager();
-                        $serie = $serieManager->selectOneById($idSerie);
-                        $season = new SeasonManager();
-                        $seasons = $season->selectSeason($idSerie);
-                        $episodeManager = new episodeManager();
-                        $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
-                        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $idSerie,  'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
                     }
 
                 }
-                $serieManager->update($idSerie, $data);
-                header('Location: /list/admin/');
-                exit();
+                if (empty($msg)) {
+                    $serieManager->update($idSerie, $data);
+                    header('Location: /pageSerie/admin/' . $idSerie);
+                    exit();
+                }else {
+                    $serieManager = new SerieManager();
+                    $serie = $serieManager->selectOneById($idSerie);
+                    $season = new SeasonManager();
+                    $seasons = $season->selectSeason($idSerie);
+                    $episodeManager = new episodeManager();
+                    $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
+                    return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie,'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
+
+                }
             }
         }
     }
