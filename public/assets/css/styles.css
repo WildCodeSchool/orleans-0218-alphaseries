@@ -203,18 +203,18 @@ textarea#synopsis {
 }
 
 .stylecard{
-
+    padding: 50px;
     transition: transform .5s;
-    width: 240px;
-    height: 350px;
+    width: auto;
+    height: auto;
     margin: 0 auto;
 
 }
 
 .stylecard:hover{
+
     transform: scale(1.3);
-    transform: scale(1.3);
-    transform: scale(1.3);
+
 }
 
 a.linkcard:after{
@@ -224,6 +224,6 @@ a.linkcard:after{
 }
 
 .btn-outline-secondary{
-    padding: .10rem 3rem;
+    padding: .10rem 2rem;
     border-radius: 25px;
 }
