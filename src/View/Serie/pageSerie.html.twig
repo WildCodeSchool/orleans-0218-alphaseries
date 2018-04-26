@@ -25,12 +25,16 @@
                 </div>
                 <div class="col-sm-12 col-md-6 pt-1 d-inline-block">
                     <div class="input-group mb-3">
-                        <select class="custom-select">
+                        <select id="seasonSelect" class="custom-select" data-idSerie="{{ serie.id }}">
+                            <option value="{{ season.id }}">Selectionner une saison</option>
                             {% for season in seasons %}
-                            <option value="{{ season.numberSeason }}">saison {{ season.numberSeason }}</option>
+                                <option value="{{ season.id }}">saison {{ season.numberSeason }}</option>
                             {% endfor %}
                         </select>
                     </div>
+                    <ul id="listEpisode" class="list-group">
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -44,4 +48,8 @@
             </figure>
         </div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="/assets/js/selecteurAjax.js"></script>
 {% endblock %}
