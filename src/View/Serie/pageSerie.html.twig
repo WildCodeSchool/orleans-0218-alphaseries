@@ -28,7 +28,11 @@
                         <select id="seasonSelect" class="custom-select" data-idSerie="{{ serie.id }}">
                             <option value="{{ season.id }}">Selectionner une saison</option>
                             {% for season in seasons %}
-                                <option value="{{ season.id }}">saison {{ season.numberSeason }}</option>
+                                {% if season.numberSeason < 10 %}
+                                    <option value="0{{ season.numberSeason }}">Saison 0{{ season.numberSeason }}</option>
+                                {% else %}
+                                    <option value="{{ season.numberSeason }}">Saison {{ season.numberSeason }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>

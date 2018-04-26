@@ -89,13 +89,17 @@
                     <div class="col-xs-9 col-sm-2 p-2">
                         <select id="numeroSeason" name="numeroSeason" class="form-control ml-2" required>
                             {% for season in seasons %}
-                                <option value="{{ season.numberSeason }}">{{ season.numberSeason }}</option>
+                                {% if season.numberSeason < 10 %}
+                                    <option value="0{{ season.numberSeason }}">0{{ season.numberSeason }}</option>
+                                {% else %}
+                                    <option value="{{ season.numberSeason }}">{{ season.numberSeason }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
                     <label for="numeroEpisode" class="col-xs-3 col-form-label ml-1 mt-1">N° Episode<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
-                        <input type="text" class="form-control ml-2" id="numeroEpisode" name="numeroEpisode" required>
+                        <input type="number" min="0" class="form-control ml-2" id="numeroEpisode" name="numeroEpisode" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
