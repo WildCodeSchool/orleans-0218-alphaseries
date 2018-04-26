@@ -124,7 +124,19 @@
         <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
             {% for episode in episodes %}
-                <p class="card-title text-center">S{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
+                {% if episode.numberSeason < 10 %}
+                    {% if episode.number < 10 %}
+                        <p class="card-title text-center">S0{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
+                    {% else %}
+                        <p class="card-title text-center">S0{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
+                    {% endif %}
+                {% else %}
+                    {% if episode.number < 10 %}
+                        <p class="card-title text-center">S{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
+                    {% else %}
+                        <p class="card-title text-center">S{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
+                    {% endif %}
+                {% endif %}
             {% endfor %}
         </div>
     </div>
