@@ -26,11 +26,13 @@
                 <div class="col-sm-12 col-md-6 pt-1 d-inline-block">
                     <div class="input-group mb-3">
                         <select class="custom-select">
-                            {% if season.numberSeason < 10 %}
-                                <option value="0{{ season.numberSeason }}">Saison 0{{ season.numberSeason }}</option>
-                            {% else %}
-                                <option value="{{ season.numberSeason }}">Saison {{ season.numberSeason }}</option>
-                            {% endif %}
+                            {% for season in seasons %}
+                                {% if season.numberSeason < 10 %}
+                                    <option value="0{{ season.numberSeason }}">Saison 0{{ season.numberSeason }}</option>
+                                {% else %}
+                                    <option value="{{ season.numberSeason }}">Saison {{ season.numberSeason }}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
