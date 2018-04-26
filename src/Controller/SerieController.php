@@ -210,6 +210,7 @@ class SerieController extends AbstractController
                     return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie,'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
 
                 }
+
             }
         }
     }
@@ -239,7 +240,7 @@ class SerieController extends AbstractController
             $id = trim($_POST['serieId']);
             $serieManager = new SerieManager();
             $serieManager->delete($id);
-            header('Location: /list/admin/');
+            header('Location: /list/admin/1');
             exit();
         }
     }
