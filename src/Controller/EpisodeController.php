@@ -8,6 +8,7 @@
 
 namespace Controller;
 
+use function FastRoute\TestFixtures\empty_options_cached;
 use Model\EpisodeManager;
 use Model\SeasonManager;
 use Model\SerieManager;
@@ -22,17 +23,17 @@ class EpisodeController extends AbstractController
      */
     public function addEpisode()
     {
-        if (!empty($_POST)) {
+        if ( !empty($_POST) ) {
             $data = $this->cleanPost($_POST);
-            $idSerie = $data[ 'idSerie' ];
-            if (isset($data[ 'numeroEpisode' ])) {
+            $idSerie = $data['idSerie'];
+            if ( isset($data['numeroEpisode']) ) {
                 try {
                     $episodeManager = new EpisodeManager();
                     $episodeManager->insert($data);
                     header('Location: /pageSerie/admin/' . $idSerie);
                     exit();
-                }catch (\Exception $e) {
-                    $msg = 'Erreur: '. $e->getMessage(). "\n";
+                } catch (\Exception $e) {
+                    $msg = 'Erreur: ' . $e->getMessage() . "\n";
 
                 }
                 $serieManager = new SerieManager();
@@ -41,9 +42,22 @@ class EpisodeController extends AbstractController
                 $seasons = $season->selectSeason($idSerie);
                 $episodeManager = new episodeManager();
                 $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
-                return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $idSerie,  'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
+                return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
             }
         }
     }
+
+    public function deleteEpisode()
+    {
+        if(!empty($_POST)) {
+            $id = $_POST['idEp'];
+            $episodeManager = new EpisodeManager();
+            $idSerie = $episodeManager->selectOneById($id)->getIdSerie();
+            $episodeManager->delete($id);
+            header( 'Location: /pageSerie/admin/' .$idSerie);
+            exit();
+        }
+    }
+
 
 }
