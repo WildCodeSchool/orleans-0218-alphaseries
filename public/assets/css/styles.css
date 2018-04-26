@@ -223,3 +223,7 @@ a.linkcard:after{
 
 }
 
+.btn-outline-secondary{
+    padding: .10rem 3rem;
+    border-radius: 25px;
+}
