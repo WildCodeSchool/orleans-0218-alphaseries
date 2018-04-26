@@ -111,4 +111,16 @@ class EpisodeManager extends AbstractManager
         $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
         return $resAll;
     }
+  
+    public function selectEpisodeBySeason(int $idSerie, int $idSeason)
+    {
+        $query = "SELECT number, title FROM $this->table WHERE idserie = :idSerie AND idseason = :idSeason ORDER BY number";
+        $result = $this->pdoConnection->prepare($query);
+        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $result->bindValue('idSerie', $idSerie);
+        $result->bindValue('idSeason', $idSeason);
+        $result->execute();
+        $res = $result->fetchAll();
+        return $res;
+    }
 }

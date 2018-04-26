@@ -2,6 +2,15 @@
 
 {% block content %}
     <h1 class="mt-5 pt-5">Administration des Séries</h1>
+    {% if msg is null %}
+    {% else %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ msg }}
+        </div>
+    {% endif %}
     <div class="row pt-5 mt-5">
         <div class="col-md-5 col-sm-6 pb-5">
             <h2 class="text-center">Modification de la série</h2>

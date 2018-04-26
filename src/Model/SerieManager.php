@@ -23,7 +23,7 @@ class SerieManager extends AbstractManager
 
     public function selectByPage(int $page, int $limit)
     {
-        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
+        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' ORDER BY ' . "$this->table.title" . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
             \PDO::FETCH_CLASS, $this->className
         )->fetchAll();
 
@@ -98,6 +98,15 @@ class SerieManager extends AbstractManager
             $result = $req->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }
+    }
+
+    public function averageNote($idserie)
+    {
+        $average = $this->pdoConnection->prepare("SELECT AVG(note) AS avgNote FROM episode WHERE idserie= :idserie");
+        $average->setFetchMode(\PDO::PARAM_INT);
+        $average->bindValue('idserie', $idserie);
+        $average->execute();
+        return $average->fetch();
     }
 
 }
