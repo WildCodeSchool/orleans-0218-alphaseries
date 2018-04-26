@@ -37,6 +37,11 @@ class Serie
     private $creationDate;
 
     /**
+     * @var float
+     */
+    private $globalNote;
+
+    /**
      * @var string
      */
     private $link_picture;
@@ -154,4 +159,21 @@ class Serie
 
         return $this;
     }
+
+    /**
+     * @return float
+     */
+    public function getGlobalNote (): float
+    {
+        return $this->globalNote;
+    }
+
+    /**
+     * @param float $globalNote
+     */
+    public function setGlobalNote (float $globalNote): void
+    {
+        $this->globalNote = $globalNote;
+    }
+
 }
