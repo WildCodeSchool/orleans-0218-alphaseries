@@ -23,21 +23,21 @@ class SeasonController extends AbstractController
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
-            try {
-                $this->validationForm($data);
-                $saisonManager = new SeasonManager();
-                $saisonManager->insert($data);
-                header('Location: /pageSerie/admin/'.$idSerie);
-                exit();
-            }catch (\Exception $e) {
-                $msg = 'Erreur: '. $e->getMessage(). "\n";
-            }
             $serieManager = new SerieManager();
             $serie = $serieManager->selectOneById($idSerie);
             $season = new SeasonManager();
             $seasons = $season->selectSeason($idSerie);
             $episodeManager = new episodeManager();
             $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
+            try {
+                $this->validationForm($data);
+                $season->insert($data);
+                header('Location: /pageSerie/admin/'.$idSerie);
+                exit();
+            }catch (\Exception $e) {
+                $msg = 'Erreur: '. $e->getMessage(). "\n";
+            }
+
             return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
 
         }
