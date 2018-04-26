@@ -46,4 +46,33 @@ class EpisodeController extends AbstractController
         }
     }
 
+    public function updateEpisode(int $id)
+    {
+        $episodeManager = new EpisodeManager();
+        $episode = $episodeManager->selectOneById($id);
+        $idserie = $episode->getIdSerie();
+        $date = $episode->getBroadcastingDate();
+        $serieManager = new SerieManager();
+        $serie = $serieManager->selectOneById($idserie);
+        $seasonManager = new SeasonManager();
+        $seasons = $seasonManager->selectAllByFk( 'idserie', 'id', $idserie, 'serie', 'numberSeason');
+        $episodes = $episodeManager->listSpecsEpisodes($idserie);
+
+        return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons, 'episodes' => $episodes, 'date' => $date, 'episode' => $episode]);
+
+    }
+
+    public function viewAfterUpdateEp()
+    {
+        if (!empty($_POST)) {
+            $data = $this->cleanPost($_POST);
+            $id = $data['id'];
+            $episodeManager = new EpisodeManager();
+            $episodeManager->update($id, $data);
+            $idserie = $episodeManager->selectOneById($id)->getIdSerie();
+            header('Location: /pageSerie/admin/' .$idserie);
+            exit();
+        }
+    }
+
 }

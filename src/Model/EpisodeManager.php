@@ -38,7 +38,7 @@ class EpisodeManager extends AbstractManager
         } else {
             //Si Ok on ajoute en base de donnée
 
-            $query = "INSERT INTO $this->table (number, title, broadcasting_date, idseason, idserie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
+            $query = "INSERT INTO $this->table (number, title, broadcastingDate, idSeason, idSerie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('nb', $numberEpisode);
             $statement->bindValue('title', $data['titleEpisode']);
@@ -75,6 +75,11 @@ class EpisodeManager extends AbstractManager
         return $count;
     }
 
+    /**
+     * @param int $nb
+     * @param int $idSerie
+     * @return mixed
+     */
     public function recupIdSeason(int $nb, int $idSerie)
     {
         // On récupère l'id de la saison associée à la série
@@ -89,6 +94,10 @@ class EpisodeManager extends AbstractManager
 
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function selectAllEpisodesOfOneSerie($id)
     {
         $query = "SELECT * FROM episode WHERE idserie = $id";
@@ -97,6 +106,10 @@ class EpisodeManager extends AbstractManager
         return $resAll;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function listSpecsEpisodes($id)
     {
         $query = "SELECT episode.id, episode.number, episode.title, season.numberSeason 
@@ -111,7 +124,12 @@ class EpisodeManager extends AbstractManager
         $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
         return $resAll;
     }
-  
+
+    /**
+     * @param int $idSerie
+     * @param int $idSeason
+     * @return array
+     */
     public function selectEpisodeBySeason(int $idSerie, int $idSeason)
     {
         $query = "SELECT number, title FROM $this->table WHERE idserie = :idSerie AND idseason = :idSeason ORDER BY number";
@@ -123,4 +141,5 @@ class EpisodeManager extends AbstractManager
         $res = $result->fetchAll();
         return $res;
     }
+
 }
