@@ -97,9 +97,10 @@ class EpisodeManager extends AbstractManager
         return $resAll;
     }
 
-    public function selectTheFiveLastEpisodeOfOneSerie($id)
+    public function listSpecsEpisodes($id)
     {
-        $query = "SELECT episode.id, episode.number, episode.title, season.numberSeason FROM episode 
+        $query = "SELECT episode.id, episode.number, episode.title, season.numberSeason 
+                  FROM episode 
                   JOIN season 
                   ON season.id = episode.idseason
                   WHERE episode.idserie = $id
