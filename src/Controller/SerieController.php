@@ -118,7 +118,7 @@ class SerieController extends AbstractController
         $saisonManager = new SeasonManager();
         $seasons = $saisonManager->selectAllByFk('idserie', 'id', $id, 'serie', 'numberSeason');
         $episodeManager = new episodeManager();
-        $episodes = $episodeManager->selectAllEpisodesOfOneSerie($id);
+        $episodes = $episodeManager->listSpecsEpisodes($id);
         return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons, 'episodes' => $episodes]);
     }
 
