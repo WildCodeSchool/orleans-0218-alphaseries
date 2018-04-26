@@ -101,11 +101,13 @@ class EpisodeManager extends AbstractManager
     {
         $query = "SELECT episode.id, episode.number, episode.title, season.numberSeason 
                   FROM episode 
-                  JOIN season 
-                  ON season.id = episode.idseason
-                  WHERE episode.idserie = $id
+                  JOIN season ON season.id = episode.idseason
+                  WHERE episode.idserie = :id
                   ORDER BY season.numberSeason, episode.number;";
-        $res = $this->pdoConnection->query($query);
+        $res = $this->pdoConnection->prepare($query);
+        $res->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $res->bindValue('id', $id);
+        $res->execute();
         $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
         return $resAll;
     }
