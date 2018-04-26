@@ -17,7 +17,6 @@ body {
 .ast {
     color: #ff0000;
 }
-
 a:link, a:visited {
     text-decoration: none;
     color: white;
@@ -28,7 +27,19 @@ a:hover, a:active {
     color: white;
 }
 
-a:after {
+
+a.navlink:link, a.navlink:visited {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+a.navlink:hover, a.navlink:active {
+    text-decoration: none;
+    color: white;
+}
+
+a.navlink:after {
     display: block;
     content: '';
     border-bottom: 2px solid white;
@@ -57,11 +68,11 @@ a.add-link:after {
 }
 
 .card p {
-    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+    font-size: calc(15px + 10 * (100vw - 400px) / 1200);
 }
 
 .card h2 {
-    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
+    font-size: calc(17px + 11 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -185,3 +196,34 @@ textarea#synopsis {
     width: 25vw;
 }
 
+
+/****listEpisode*****/
+#listEpisode {
+    font-size: calc(14px + 7 * (100vw - 400px) / 1200);
+}
+
+.stylecard{
+
+    transition: transform .5s;
+    width: 240px;
+    height: 350px;
+    margin: 0 auto;
+
+}
+
+.stylecard:hover{
+    transform: scale(1.3);
+    transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+a.linkcard:after{
+    text-decoration: none;
+    display: none;
+
+}
+
+.btn-outline-secondary{
+    padding: .10rem 3rem;
+    border-radius: 25px;
+}
