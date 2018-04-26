@@ -38,7 +38,7 @@ class EpisodeManager extends AbstractManager
         } else {
             //Si Ok on ajoute en base de donnée
 
-            $query = "INSERT INTO $this->table (number, title, broadcasting_date, idseason, idserie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
+            $query = "INSERT INTO $this->table (number, title, broadcastingDate, idSeason, idSerie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('nb', $numberEpisode);
             $statement->bindValue('title', $data['titleEpisode']);
