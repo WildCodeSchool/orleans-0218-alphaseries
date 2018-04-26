@@ -29,7 +29,7 @@ a:hover, a:active {
 
 
 a.navlink:link, a.navlink:visited {
-    font-size: 15px;
+    font-size: 20px;
     text-decoration: none;
     color: white;
 }
@@ -68,11 +68,11 @@ a.add-link:after {
 }
 
 .card p {
-    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+    font-size: calc(15px + 10 * (100vw - 400px) / 1200);
 }
 
 .card h2 {
-    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+    font-size: calc(17px + 11 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
