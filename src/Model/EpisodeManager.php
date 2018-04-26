@@ -16,7 +16,7 @@ class EpisodeManager extends AbstractManager
     /**
      *  Initializes this class.
      */
-    public function __construct ()
+    public function __construct()
     {
         parent::__construct(self::TABLE);
     }
@@ -26,11 +26,11 @@ class EpisodeManager extends AbstractManager
      * @return string|void
      * @throws \Exception
      */
-    public function insert (array $data)
+    public function insert(array $data)
     {
-        $idSerie = $data[ 'idSerie' ];
-        $nb = $data[ 'numeroSeason' ];
-        $numberEpisode = $data[ 'numeroEpisode' ];
+        $idSerie = $data['idSerie'];
+        $nb = $data['numeroSeason'];
+        $numberEpisode = $data['numeroEpisode'];
         $idSeason = $this->recupIdSeason($nb, $idSerie)->getId();
 
         if ($this->checkEpisodeExist($idSeason, $idSerie, $numberEpisode)) {
@@ -41,8 +41,8 @@ class EpisodeManager extends AbstractManager
             $query = "INSERT INTO $this->table (number, title, broadcasting_date, idseason, idserie) VALUES (:nb, :title, :dateDiff, :idSeason, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('nb', $numberEpisode);
-            $statement->bindValue('title', $data[ 'titleEpisode' ]);
-            $statement->bindValue('dateDiff', $data[ 'date_diff' ]);
+            $statement->bindValue('title', $data['titleEpisode']);
+            $statement->bindValue('dateDiff', $data['date_diff']);
             $statement->bindValue('idSerie', $idSerie);
             $statement->bindValue('idSeason', $idSeason);
             $statement->execute();
@@ -95,5 +95,32 @@ class EpisodeManager extends AbstractManager
         $res = $this->pdoConnection->query($query);
         $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
         return $resAll;
+    }
+
+    public function listSpecsEpisodes($id)
+    {
+        $query = "SELECT episode.id, episode.number, episode.title, season.numberSeason 
+                  FROM episode 
+                  JOIN season ON season.id = episode.idseason
+                  WHERE episode.idserie = :id
+                  ORDER BY season.numberSeason, episode.number;";
+        $res = $this->pdoConnection->prepare($query);
+        $res->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $res->bindValue('id', $id);
+        $res->execute();
+        $resAll = $res->fetchAll(\PDO::FETCH_CLASS);
+        return $resAll;
+    }
+  
+    public function selectEpisodeBySeason(int $idSerie, int $idSeason)
+    {
+        $query = "SELECT number, title FROM $this->table WHERE idserie = :idSerie AND idseason = :idSeason ORDER BY number";
+        $result = $this->pdoConnection->prepare($query);
+        $result->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $result->bindValue('idSerie', $idSerie);
+        $result->bindValue('idSeason', $idSeason);
+        $result->execute();
+        $res = $result->fetchAll();
+        return $res;
     }
 }
