@@ -90,11 +90,7 @@
                     <div class="col-xs-9 col-sm-2 p-2">
                         <select id="numeroSeason" name="numeroSeason" class="form-control ml-2" required>
                             {% for season in seasons %}
-                                {% if season.numberSeason < 10 %}
-                                    <option value="0{{ season.numberSeason }}">0{{ season.numberSeason }}</option>
-                                {% else %}
                                     <option value="{{ season.numberSeason }}">{{ season.numberSeason }}</option>
-                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -128,13 +124,7 @@
                     <label for="numeroSeason" class="col-xs-3 col-form-label mt-1">N° Saison<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
                         <select id="idSeason" name="idSeason" class="form-control ml-2" required>
-                            {% for season in seasons %}
-                                {% if season.numberSeason < 10 %}
-                                    <option value="0{{ episode.idSeason }}">0{{ episode.idSeason }}</option>
-                                {% else %}
-                                    <option value="{{ episode.idSeason }}">{{ episode.idSeason }}</option>
-                                {% endif %}
-                            {% endfor %}
+                                <option value="{{ episode.idSeason}}">{{ episode.idSeason }}</option>
                         </select>
                     </div>
                     <label for="numeroEpisode" class="col-xs-3 col-form-label ml-1 mt-1">N° Episode<span class="ast">&ast;</span> :</label>
@@ -165,19 +155,7 @@
         <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
             {% for episode in episodes %}
-                {% if episode.numberSeason < 10 %}
-                    {% if episode.number < 10 %}
-                        <p class="card-title text-center">S0{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
-                    {% else %}
-                        <p class="card-title text-center">S0{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
-                    {% endif %}
-                {% else %}
-                    {% if episode.number < 10 %}
-                        <p class="card-title text-center">S{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
-                    {% else %}
-                        <p class="card-title text-center">S{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
-                    {% endif %}
-                {% endif %}
+                        <p class="card-title text-center">{{ "S%02d" | format (episode.numberSeason) }} {{ "E%02d" | format (episode.number) }} - {{ episode.title }}</p>
                 <a href="/admin/episode/update/{{ episode.id }}" class="add-link mt-1">
                     <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil"></i></button>
                 </a>
