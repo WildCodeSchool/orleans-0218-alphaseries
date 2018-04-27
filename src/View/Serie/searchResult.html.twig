@@ -17,9 +17,13 @@
                 <figure class="card card-body mx-auto">
                     <figcaption><a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a></figcaption>
                     {% if serie.link_picture is null %}
-                        <img class="img-fluid" src="assets/upload/defaultPicture.png"/>
+                        <div class="stylecard">
+                            <a class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid" src="assets/upload/defaultPicture.png"/></a>
+                        </div>
                     {% else %}
-                        <img class="img-fluid" src="assets/upload/{{ serie.link_picture }}"/>
+                        <div class="stylecard">
+                            <a class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid" src="assets/upload/{{ serie.link_picture }}"/></a>
+                        </div>
                     {% endif %}
                 </figure>
             </div>

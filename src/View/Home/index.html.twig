@@ -30,9 +30,13 @@
                 <figure class="card card-body mx-auto">
                     <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png">
+                        <div class="stylecard">
+                            <a  class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png"></a>
+                        </div>
                     {% else %}
-                        <img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}">
+                        <div class="stylecard">
+                            <a class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}"></a>
+                        </div>
                     {% endif %}
                 </figure>
             </div>
@@ -40,7 +44,8 @@
     </div>
     <div class="row pt-5 aboutUs mx-auto" id="about-us">
         <div class="col-md-12 text-center">
-            <p>AlphaSeries est un site web réalisé par des passionnés, pour des passionnés, afin de faciliter la gestion des séries TV qui n'ont jamais été aussi nombreuses qu'aujourd'hui. Grace à AlphaSeries, vous pouvez ajouter les séries et les épisodes que vous suiviez, puis d'indiquer au fur et à mesure lesquels ont été visionnés. Vous pouvez aussi noter les épisodes pour retrouver en quelques clics, le prochain épisode à voir de votre série préférée ! </p>
+            <h2>À Propos</h2>
+            <p class="pt-5">AlphaSeries est un site web réalisé par des passionnés, pour des passionnés, afin de faciliter la gestion des séries TV qui n'ont jamais été aussi nombreuses qu'aujourd'hui. Grace à AlphaSeries, vous pouvez ajouter les séries et les épisodes que vous suiviez, puis d'indiquer au fur et à mesure lesquels ont été visionnés. Vous pouvez aussi noter les épisodes pour retrouver en quelques clics, le prochain épisode à voir de votre série préférée ! </p>
         </div>
     </div>
 {% endblock %}

@@ -17,7 +17,6 @@ body {
 .ast {
     color: #ff0000;
 }
-
 a:link, a:visited {
     text-decoration: none;
     color: white;
@@ -28,7 +27,19 @@ a:hover, a:active {
     color: white;
 }
 
-a:after {
+
+a.navlink:link, a.navlink:visited {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+a.navlink:hover, a.navlink:active {
+    text-decoration: none;
+    color: white;
+}
+
+a.navlink:after {
     display: block;
     content: '';
     border-bottom: 2px solid white;
@@ -57,11 +68,11 @@ a.add-link:after {
 }
 
 .card p {
-    font-size: calc(10px + 10 * (100vw - 400px) / 1200);
+    font-size: calc(15px + 10 * (100vw - 400px) / 1200);
 }
 
 .card h2 {
-    font-size: calc(19px + 14 * (100vw - 400px) / 1200);
+    font-size: calc(17px + 11 * (100vw - 400px) / 1200);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -132,6 +143,11 @@ h2 {
 
 }
 
+.bgt {
+    background-color: transparent;
+
+}
+
 .logoalpha {
     width: 44vw;
     height: auto;
@@ -155,28 +171,28 @@ h2 {
 
 
 .fa-star{
-    color: yellow;
+    color: #045bba;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: orange;
+    -webkit-text-stroke-color: #045bba;
 }
 
 .fa-star-half{
-    color: yellow;
+    color: #045bba;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: orange;
+    -webkit-text-stroke-color: #045bba;
 }
 
 .fa-star-half-full{
-    color: yellow;
+    color: #045bba;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: orange;
+    -webkit-text-stroke-color: #045bba;
 
 }
 
 .fa-star-o{
-    color: yellow;
+    color: #045bba;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: orange;
+    -webkit-text-stroke-color: #045bba;
 
 }
 
@@ -185,3 +201,90 @@ textarea#synopsis {
     width: 25vw;
 }
 
+
+/****listEpisode*****/
+#listEpisode {
+    font-size: calc(14px + 7 * (100vw - 400px) / 1200);
+}
+
+.stylecard{
+    padding: 50px;
+    transition: transform .5s;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+.stylecard:hover{
+
+    transform: scale(1.3);
+
+}
+
+a.linkcard:after{
+    text-decoration: none;
+    display: none;
+
+}
+
+.btn-outline-secondary{
+    padding: .10rem 2rem;
+    border-radius: 25px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 23px;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
