@@ -62,7 +62,7 @@ class EpisodeController extends AbstractController
 
     }
 
-    public function viewAfterUpdateEp()
+    public function viewAfterUpdateEpisode()
     {
         if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
