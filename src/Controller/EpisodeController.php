@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-use function FastRoute\TestFixtures\empty_options_cached;
 use Model\EpisodeManager;
 use Model\SeasonManager;
 use Model\SerieManager;
