@@ -143,6 +143,11 @@ h2 {
 
 }
 
+.bgt {
+    background-color: transparent;
+
+}
+
 .logoalpha {
     width: 44vw;
     height: auto;
