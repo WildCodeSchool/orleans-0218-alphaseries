@@ -27,6 +27,8 @@ $routes = [
     ],
     'Episode' => [
         ['addEpisode', '/admin/episode', 'POST'],
+        ['updateEpisode', '/admin/episode/update/{id:\d+}', 'GET'],
+        ['viewAfterUpdateEpisode', '/submit/episode/', 'POST'],
         ['deleteEpisode', '/delete/episode/', 'POST'],
     ],
     'Home' => [
