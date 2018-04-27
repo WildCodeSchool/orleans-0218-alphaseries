@@ -1,7 +1,20 @@
+<div class="d-inline-flex">
+    <label class="switch">
+        <input type="checkbox" id="checkAll" onclick="toggle(this);">
+        <span class="slider round"></span>
+    </label >
+    <p class="mt-3 mb-0 ml-1">Tous vus</p>
+</div>
 {% for episode in episodes %}
-    {% if episode.number < 10 %}
-        <li class="list-group-item bgc">E0{{ episode.number }}   {{ episode.title }}</li>
-    {% else %}
-        <li class="list-group-item bgc">E{{ episode.number }}   {{ episode.title }}</li>
-    {% endif %}
-{% endfor %}
+      <li class="list-group-item bgt">
+          <label class="switch">
+              <input type="checkbox" id="switch">
+              <span class="slider round"></span>
+          </label >
+          {% if episode.number < 10 %}
+            E0{{ episode.number }}   {{ episode.title }}
+          {% else %}
+            E{{ episode.number }}   {{ episode.title }}
+          {% endif %}
+      </li>
+ {% endfor %}

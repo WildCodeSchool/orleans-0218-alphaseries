@@ -29,9 +29,9 @@
                             <option value="{{ season.id }}">Selectionner une saison</option>
                             {% for season in seasons %}
                                 {% if season.numberSeason < 10 %}
-                                    <option value="0{{ season.numberSeason }}">Saison 0{{ season.numberSeason }}</option>
+                                    <option value="0{{ season.id }}">Saison 0{{ season.numberSeason }}</option>
                                 {% else %}
-                                    <option value="{{ season.numberSeason }}">Saison {{ season.numberSeason }}</option>
+                                    <option value="{{ season.id }}">Saison {{ season.numberSeason }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>

@@ -179,7 +179,7 @@ class SerieController extends AbstractController
         if (strlen($data['title']) > 255) {
             throw new \Exception('Le titre est trop long!');
         }
-        if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+        if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creationDate'], $date)) {
             if (!checkdate($date[2], $date[3], $date[1])) {
                 throw new \Exception('Date invalide');
             }
@@ -256,7 +256,7 @@ class SerieController extends AbstractController
         if (strlen($data['title']) > 255) {
             throw new \Exception('Le titre est trop long!');
         }
-        if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creation_date'], $date)) {
+        if (!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['creationDate'], $date)) {
             if (!checkdate($date[2], $date[3], $date[1])) {
                 throw new \Exception('Date invalide');
             }

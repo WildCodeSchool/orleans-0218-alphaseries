@@ -37,7 +37,7 @@
                 <div class="form-group row justify-content-center p-2">
                     <label for="creation_date" class="col-xs-3 col-form-label mr-3">Crée le<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <input type="date" class="form-control" id="creation_date" name="creation_date" value="{{ serie.creation_date }}" required>
+                        <input type="date" class="form-control" id="creationDate" name="creationDate" value="{{ serie.creationDate }}" required>
                     </div>
                 </div>
                 {% if serie.link_picture is null %}
@@ -159,6 +159,11 @@
                 <a href="/admin/episode/update/{{ episode.id }}" class="add-link mt-1">
                     <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil"></i></button>
                 </a>
+
+                <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
+                    <input type="hidden" name="idEp" value="{{ episode.id }}">
+                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o "></i></button>
+                </form>
             {% endfor %}
         </div>
     </div>
