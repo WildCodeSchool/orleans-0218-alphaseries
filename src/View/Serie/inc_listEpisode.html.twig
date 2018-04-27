@@ -1,19 +1,13 @@
 {% for episode in episodes %}
-    {% if episode.number < 10 %}
       <li class="list-group-item bgc">
           <label class="switch">
               <input type="checkbox" id="switch">
               <span class="slider round"></span>
           </label >
-          E0{{ episode.number }}   {{ episode.title }}
+          {% if episode.number < 10 %}
+            E0{{ episode.number }}   {{ episode.title }}
+          {% else %}
+            E{{ episode.number }}   {{ episode.title }}
+          {% endif %}
       </li>
-    {% else %}
-      <li class="list-group-item bgc">
-          <label class="switch">
-              <input type="checkbox" id="switch">
-              <span class="slider round"></span>
-          </label >
-          E{{ episode.number }}   {{ episode.title }}
-      </li>
-    {% endif %}
  {% endfor %}
