@@ -129,14 +129,20 @@
                         <p class="card-title text-center">S0{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
                     {% else %}
                         <p class="card-title text-center">S0{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
+
                     {% endif %}
                 {% else %}
                     {% if episode.number < 10 %}
                         <p class="card-title text-center">S{{ episode.numberSeason }} E0{{ episode.number }} - {{ episode.title }}</p>
                     {% else %}
                         <p class="card-title text-center">S{{ episode.numberSeason }} E{{ episode.number }} - {{ episode.title }}</p>
+
                     {% endif %}
                 {% endif %}
+                <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
+                    <input type="hidden" name="idEp" value="{{ episode.id }}">
+                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o "></i></button>
+                </form>
             {% endfor %}
         </div>
     </div>
