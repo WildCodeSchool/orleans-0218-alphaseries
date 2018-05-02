@@ -12,5 +12,13 @@
             <span class="slider round"></span>
         </label >
         {{ "E%02d" | format (episode.number) }} - {{ episode.title }}
+        <div class="stars">
+              {% for i in  1..5 %}
+                  <span class="star">
+                {% set classNote = (i<= episode.note ? "" : i - episode.note < 0.5 ? "-half-full" : "-o" ) %}
+                      <i class="fa fa-lg fa-star fa-star{{ classNote }}" id="{{ episode.id }}" data-rating="{{ i }}" onclick="rating(this)"></i>
+            </span>
+              {% endfor %}
+          </div>
     </li>
 {% endfor %}
