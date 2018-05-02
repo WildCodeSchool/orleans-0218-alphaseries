@@ -284,6 +284,7 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $series = $serieManager->searchBar($_GET['search']);
-        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
+        $numberResults = count($series);
+        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series, 'numberResults' => $numberResults]);
     }
 }
