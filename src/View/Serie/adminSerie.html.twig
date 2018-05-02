@@ -155,15 +155,16 @@
         <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
             {% for episode in episodes %}
-                        <p class="card-title text-center">{{ "S%02d" | format (episode.numberSeason) }} {{ "E%02d" | format (episode.number) }} - {{ episode.title }}</p>
-                <a href="/admin/episode/update/{{ episode.id }}" class="add-link mt-1">
-                    <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil"></i></button>
+                <div class="d-inline-flex flex-row ml-5 p-2">
+                <p class="card-title text-center ml-5 mt-2 p-1">{{ "S%02d" | format (episode.numberSeason) }} {{ "E%02d" | format (episode.number) }} - {{ episode.title }}</p>
+                <a href="/admin/episode/update/{{ episode.id }}" class="add-link p-1">
+                    <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil p-1"></i></button>
                 </a>
-
-                <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
+                <form class="mt-1" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
                     <input type="hidden" name="idEp" value="{{ episode.id }}">
-                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o "></i></button>
+                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o p-1"></i></button>
                 </form>
+                </div>
             {% endfor %}
         </div>
     </div>
