@@ -1,9 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
     <div class="row pt-5">
-        <div class="col-md-12 pt-5">
-            <h1 class="text-center pt-5">{{ serie.title }}</h1>
+        <div class="col-md-12">
+            <h1 class="text-center">{{ serie.title }}</h1>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -41,15 +42,21 @@
         <div class="col-xs-12 col-sm-6 col-md-4 order-1 order-sm-2 pt-1">
             <figure>
                 {% if serie.link_picture is null %}
-                    <img class="img-fluid" src="/assets/upload/defaultPicture.png"/>
+                    <img class="img-fluid" src="/assets/upload/defaultPicture.jpg"/>
                 {% else %}
                     <img class="img-fluid" src="/assets/upload/{{ serie.link_picture }}"/>
                 {% endif %}
             </figure>
         </div>
     </div>
+    <div class="d-flex flex-row justify-content-md-end justify-content-sm-center pt-5 ml-5 pl-4">
+        <div class="col-md-2 col-sm-12">
+            <a class="btn btn-outline-secondary btn-ms" href="/list/1" role="button">Précédent</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascript %}
 <script src="/assets/js/selecteurAjax.js"></script>
+<script src="/assets/js/ratingStar.js"></script>
 {% endblock %}

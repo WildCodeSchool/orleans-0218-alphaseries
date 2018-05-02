@@ -14,7 +14,7 @@
     </div>
     <div class="container ">
         <div class="row">
-            <div class="col-7 p-3 mx-auto">
+            <div class="col-md-8 col-sm-9 p-3 mx-auto">
                 <form method="GET" action ="/searchResult" class="input-group">
                     <input class="form-control searchengine" type="search" name="search" value="" placeholder="Votre recherche">
                 </form>
@@ -31,7 +31,7 @@
                     <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
                         <div class="stylecard">
-                            <a  class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.png"></a>
+                            <a  class="linkcard" href="/pageSerie/{{ serie.id }}"><img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg"></a>
                         </div>
                     {% else %}
                         <div class="stylecard">
@@ -42,7 +42,7 @@
             </div>
         {% endfor %}
     </div>
-    <div class="row pt-5 aboutUs mx-auto" id="about-us">
+    <div class="row aboutUs mx-auto" id="about-us">
         <div class="col-md-12 text-center">
             <h2>À Propos</h2>
             <p class="pt-5">AlphaSeries est un site web réalisé par des passionnés, pour des passionnés, afin de faciliter la gestion des séries TV qui n'ont jamais été aussi nombreuses qu'aujourd'hui. Grace à AlphaSeries, vous pouvez ajouter les séries et les épisodes que vous suiviez, puis d'indiquer au fur et à mesure lesquels ont été visionnés. Vous pouvez aussi noter les épisodes pour retrouver en quelques clics, le prochain épisode à voir de votre série préférée ! </p>

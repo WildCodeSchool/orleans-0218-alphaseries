@@ -94,7 +94,7 @@ class SerieManager extends AbstractManager
         if(!empty($searchterm)) {
             $req = $this->pdoConnection->prepare("SELECT * FROM serie WHERE title LIKE :searchterm");
             $req->bindValue(':searchterm', $searchterm, \PDO::PARAM_STR);
-            $req->execute(array('searchterm' => $searchterm . '%'));
+            $req->execute(array('searchterm' => '%' . $searchterm . '%'));
             $result = $req->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }

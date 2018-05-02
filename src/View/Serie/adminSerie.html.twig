@@ -19,25 +19,25 @@
                 <div class="form-group row justify-content-center p-2">
                     <label for="title" class="col-xs-3 col-form-label mr-4">Titre<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5 ml-3">
-                        <input type="text" class="form-control" id="title" name="title" value="{{ serie.title }}" required>
+                        <input type="text" class="form-control-modif" id="title" name="title" value="{{ serie.title }}" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
                     <label for="synopsis" class="col-xs-3 col-form-label mr-3">Synopsis :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <textarea class="form-control" rows="10" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
+                        <textarea class="form-control-modif" rows="10" id="synopsis" name="synopsis">{{ serie.synopsis }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
                     <label for="genre" class="col-xs-3 col-form-label mr-3">Genre<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <input type="text" class="form-control ml-1" id="genre" name="genre" value="{{ serie.genre }}" required>
+                        <input type="text" class="form-control-modif ml-1" id="genre" name="genre" value="{{ serie.genre }}" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center p-2">
                     <label for="creation_date" class="col-xs-3 col-form-label mr-3">Crée le<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-5">
-                        <input type="date" class="form-control" id="creationDate" name="creationDate" value="{{ serie.creationDate }}" required>
+                        <input type="date" class="form-control-modif" id="creationDate" name="creationDate" value="{{ serie.creationDate }}" required>
                     </div>
                 </div>
                 {% if serie.link_picture is null %}
@@ -124,7 +124,7 @@
                     <label for="numeroSeason" class="col-xs-3 col-form-label mt-1">N° Saison<span class="ast">&ast;</span> :</label>
                     <div class="col-xs-9 col-sm-2 p-2">
                         <select id="idSeason" name="idSeason" class="form-control ml-2" required>
-                                <option value="{{ episode.idSeason}}">{{ episode.idSeason }}</option>
+                                <option value="{{ episode.idSeason}}">{{ season.numberSeason }}</option>
                         </select>
                     </div>
                     <label for="numeroEpisode" class="col-xs-3 col-form-label ml-1 mt-1">N° Episode<span class="ast">&ast;</span> :</label>
@@ -155,15 +155,16 @@
         <div class="col-md-3 col-sm-6 pb-5">
             <h2 class="text-center">Liste des épisodes</h2>
             {% for episode in episodes %}
-                        <p class="card-title text-center">{{ "S%02d" | format (episode.numberSeason) }} {{ "E%02d" | format (episode.number) }} - {{ episode.title }}</p>
-                <a href="/admin/episode/update/{{ episode.id }}" class="add-link mt-1">
-                    <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil"></i></button>
+                <div class="d-inline-flex flex-row ml-5 p-2">
+                <p class="card-title text-center ml-5 mt-2 p-1">{{ "S%02d" | format (episode.numberSeason) }} {{ "E%02d" | format (episode.number) }} - {{ episode.title }}</p>
+                <a href="/admin/episode/update/{{ episode.id }}" class="add-link p-1">
+                    <button type="submit" name="updateEp" class="btn btn-outline-info" value=""><i class="fa fa-pencil p-1"></i></button>
                 </a>
-
-                <form onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
+                <form class="mt-1" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet épisode?');" action="/delete/episode/" method="post">
                     <input type="hidden" name="idEp" value="{{ episode.id }}">
-                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o "></i></button>
+                    <button type="submit" class="btn btn-outline-danger" name="deleteEp"><i class="fa fa-trash-o p-1"></i></button>
                 </form>
+                </div>
             {% endfor %}
         </div>
     </div>

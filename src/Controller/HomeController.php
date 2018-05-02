@@ -22,4 +22,10 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', ['series' => $series]);
     }
 
+    public function printInfo()
+    {
+
+        return $this->twig->render('Home/conditions_generales.html.twig');
+    }
+
 }
