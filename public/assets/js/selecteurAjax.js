@@ -11,6 +11,7 @@ function toggle(source) {
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i] != source)
             checkboxes[i].checked = source.checked;
+            processForm(checkboxes[i]);
     }
 }
 
