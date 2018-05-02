@@ -150,7 +150,7 @@ h2 {
 }
 
 .logoalpha {
-    width: 44vw;
+    width: 100%;
     height: auto;
     max-height: 500px;
 
@@ -200,6 +200,7 @@ h2 {
 textarea#synopsis {
     height: 35vh;
     width: 25vw;
+    min-width: 100%;
 }
 
 
@@ -216,8 +217,7 @@ textarea#synopsis {
 
 .stylecard:hover{
 
-    transform: scale(1.05);
-
+   transform: scale(1.05);
 }
 
 a.linkcard:after{
@@ -285,4 +285,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.form-control-modif{
+    width: 25vw;
+    min-width: 100%;
 }
