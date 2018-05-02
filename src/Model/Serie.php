@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class Serie
 {
     /**
@@ -163,7 +162,7 @@ class Serie
     /**
      * @return float
      */
-    public function getGlobalNote (): float
+    public function getGlobalNote(): float
     {
         return $this->globalNote;
     }
@@ -171,9 +170,8 @@ class Serie
     /**
      * @param float $globalNote
      */
-    public function setGlobalNote (float $globalNote): void
+    public function setGlobalNote(float $globalNote): void
     {
         $this->globalNote = $globalNote;
     }
-
 }

@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class Episode
 {
     /**
@@ -54,7 +53,7 @@ class Episode
     /**
      * @return int
      */
-    public function getId (): int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -62,7 +61,7 @@ class Episode
     /**
      * @param int $id
      */
-    public function setId (int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -70,7 +69,7 @@ class Episode
     /**
      * @return int
      */
-    public function getNumber (): int
+    public function getNumber(): int
     {
         return $this->number;
     }
@@ -78,7 +77,7 @@ class Episode
     /**
      * @param int $numero
      */
-    public function setNumber (int $number): void
+    public function setNumber(int $number): void
     {
         $this->number = $number;
     }
@@ -86,7 +85,7 @@ class Episode
     /**
      * @return string
      */
-    public function getTitle (): string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -94,7 +93,7 @@ class Episode
     /**
      * @param string $title
      */
-    public function setTitle (string $title): void
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -102,7 +101,7 @@ class Episode
     /**
      * @return bool
      */
-    public function getHasSeen (): ?bool
+    public function getHasSeen(): ?bool
     {
         return $this->hasSeen;
     }
@@ -110,7 +109,7 @@ class Episode
     /**
      * @param bool $hasSeen
      */
-    public function setHasSeen (bool $hasSeen): void
+    public function setHasSeen(bool $hasSeen): void
     {
         $this->hasSeen = $hasSeen;
     }
@@ -118,7 +117,7 @@ class Episode
     /**
      * @return int
      */
-    public function getNote (): ?int
+    public function getNote(): ?int
     {
         return $this->note;
     }
@@ -126,7 +125,7 @@ class Episode
     /**
      * @param int $note
      */
-    public function setNote (int $note): void
+    public function setNote(int $note): void
     {
         $this->note = $note;
     }
@@ -134,7 +133,7 @@ class Episode
     /**
      * @return string
      */
-    public function getBroadcastingDate (): string
+    public function getBroadcastingDate(): string
     {
         return $this->broadcastingDate;
     }
@@ -142,7 +141,7 @@ class Episode
     /**
      * @param string $broadcastingDate
      */
-    public function setBroadcastingDate (string $broadcastingDate): void
+    public function setBroadcastingDate(string $broadcastingDate): void
     {
         $this->broadcastingDate = $broadcastingDate;
     }
@@ -150,7 +149,7 @@ class Episode
     /**
      * @return int
      */
-    public function getIdSeason (): int
+    public function getIdSeason(): int
     {
         return $this->idSeason;
     }
@@ -158,7 +157,7 @@ class Episode
     /**
      * @param int $idSeason
      */
-    public function setIdSeason (int $idSeason): void
+    public function setIdSeason(int $idSeason): void
     {
         $this->idSeason = $idSeason;
     }
@@ -166,7 +165,7 @@ class Episode
     /**
      * @return int
      */
-    public function getIdSerie (): int
+    public function getIdSerie(): int
     {
         return $this->idSerie;
     }
@@ -174,11 +173,8 @@ class Episode
     /**
      * @param int $idSerie
      */
-    public function setIdSerie (int $idSerie): void
+    public function setIdSerie(int $idSerie): void
     {
         $this->idSerie = $idSerie;
     }
-
-
-
 }

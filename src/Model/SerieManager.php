@@ -23,10 +23,11 @@ class SerieManager extends AbstractManager
 
     public function selectByPage(int $page, int $limit)
     {
-        return $this->pdoConnection->query('SELECT * FROM ' . $this->table . ' ORDER BY ' . "$this->table.title" . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
-            \PDO::FETCH_CLASS, $this->className
+        return $this->pdoConnection->query(
+            'SELECT * FROM ' . $this->table . ' ORDER BY ' . "$this->table.title" . ' LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit,
+            \PDO::FETCH_CLASS,
+            $this->className
         )->fetchAll();
-
     }
 
     public function recupPageMax()
@@ -57,13 +58,11 @@ class SerieManager extends AbstractManager
             'png'
         ];
 
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             for ($i = 0; $i < count($file["name"]); $i++) {
-
-                if ($file["name"][0] === ""){
+                if ($file["name"][0] === "") {
                     $filePath = null;
-
-                }else {
+                } else {
                     $fileName = $file["tmp_name"][$i];
                     $extension_upload = pathinfo($file['name'][$i], PATHINFO_EXTENSION);
                     $uniqueSaveName = uniqid();
@@ -74,10 +73,9 @@ class SerieManager extends AbstractManager
                     }
 
                     if (!in_array($extension_upload, $acceptable) && !empty($file['type'][$i])) {
-                        throw new \Exception('Invalid file type. Only '.implode(',',$acceptable).' types are accepted.');
+                        throw new \Exception('Invalid file type. Only '.implode(',', $acceptable).' types are accepted.');
                     }
                     move_uploaded_file($fileName, $uploadDir.$filePath);
-
                 }
             }
         }
@@ -91,7 +89,7 @@ class SerieManager extends AbstractManager
      */
     public function searchBar($searchterm)
     {
-        if(!empty($searchterm)) {
+        if (!empty($searchterm)) {
             $req = $this->pdoConnection->prepare("SELECT * FROM serie WHERE title LIKE :searchterm");
             $req->bindValue(':searchterm', $searchterm, \PDO::PARAM_STR);
             $req->execute(array('searchterm' => '%' . $searchterm . '%'));
@@ -108,5 +106,4 @@ class SerieManager extends AbstractManager
         $average->execute();
         return $average->fetch();
     }
-
 }

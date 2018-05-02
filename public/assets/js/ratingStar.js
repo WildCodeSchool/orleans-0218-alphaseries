@@ -1,4 +1,5 @@
-function rating (element) {
+function rating(element)
+{
     let idEpisode = element.id;
     const starRating = $(element).attr('data-rating');
     console.log(starRating);

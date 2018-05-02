@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class EpisodeManager extends AbstractManager
 {
     const TABLE = 'episode';
@@ -46,9 +45,7 @@ class EpisodeManager extends AbstractManager
             $statement->bindValue('idSerie', $idSerie);
             $statement->bindValue('idSeason', $idSeason);
             $statement->execute();
-
         }
-
     }
 
     /**
@@ -91,7 +88,6 @@ class EpisodeManager extends AbstractManager
         $statement->bindValue('idSerie', $idSerie);
         $statement->execute();
         return $statement->fetch();
-
     }
 
     /**
@@ -141,5 +137,4 @@ class EpisodeManager extends AbstractManager
         $res = $result->fetchAll();
         return $res;
     }
-
 }

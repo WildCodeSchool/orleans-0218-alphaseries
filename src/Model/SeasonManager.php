@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class SeasonManager extends AbstractManager
 {
     const TABLE = 'season';
@@ -16,7 +15,7 @@ class SeasonManager extends AbstractManager
     /**
      *  Initializes this class.
      */
-    public function __construct ()
+    public function __construct()
     {
         parent::__construct(self::TABLE);
     }
@@ -26,20 +25,19 @@ class SeasonManager extends AbstractManager
      * @return string|void
      * @throws \Exception
      */
-    public function insert (array $data)
+    public function insert(array $data)
     {
         $idSerie = $data[ 'idSerie' ];
         $nb = $data[ 'nbSeasons' ];
         if ($this->checkSeasonExist($nb, $idSerie)) {
             throw new \Exception('La saison existe déjà');
-        }else {
+        } else {
             $query = "INSERT INTO $this->table (numberSeason, idserie) VALUES (:numb, :idSerie)";
             $statement = $this->pdoConnection->prepare($query);
             $statement->bindValue('numb', $nb);
             $statement->bindValue('idSerie', $idSerie);
             $statement->execute();
         }
-
     }
 
     public function checkSeasonExist(int $nb, int $idSerie): bool
