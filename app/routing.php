@@ -33,6 +33,7 @@ $routes = [
     ],
     'Home' => [
         ['homePage', '/', 'GET'],
+        ['printInfo', '/MentionsLegales', 'GET'],
     ],
 
 ];
