@@ -13,3 +13,25 @@ function toggle(source) {
             checkboxes[i].checked = source.checked;
     }
 }
+
+function processForm(source) {
+    let idEpisode = source.id;
+    if ($(source).is(':checked')) {
+        source.setAttribute("checked", "checked");
+        $.ajax({
+            type: 'POST',
+            url: '/submit/episode/',
+            data: {hasSeen: 1, id: idEpisode},
+
+        });
+    }
+    else {
+        source.removeAttribute("checked");
+        $.ajax({
+            type: 'POST',
+            url: '/submit/episode/',
+            data: {hasSeen: 0, id: idEpisode},
+
+        });
+    }
+}

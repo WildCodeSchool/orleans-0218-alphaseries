@@ -98,7 +98,6 @@ class SerieController extends AbstractController
 
             $episode = new EpisodeManager();
             $episodes = $episode->selectEpisodeBySeason($idSerie, $idSeason);
-
             return $this->twig->render('Serie/inc_listEpisode.html.twig', ['episodes' => $episodes]);
         }
     }
