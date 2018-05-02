@@ -11,10 +11,6 @@
               <input type="checkbox" id="switch">
               <span class="slider round"></span>
           </label >
-          {% if episode.number < 10 %}
-            E0{{ episode.number }}   {{ episode.title }}
-          {% else %}
-            E{{ episode.number }}   {{ episode.title }}
-          {% endif %}
+          {{ "E%02d" | format (episode.number) }} - {{ episode.title }}
       </li>
  {% endfor %}
