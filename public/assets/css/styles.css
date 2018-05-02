@@ -82,6 +82,8 @@ img {
     width: 310px;
     max-height: 424px;
     object-fit: cover;
+    min-height: 424px;
+
 }
 
 h1 {
@@ -291,3 +293,4 @@ input:checked + .slider:before {
     width: 25vw;
     min-width: 100%;
 }
+
