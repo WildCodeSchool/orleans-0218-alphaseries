@@ -34,12 +34,11 @@ class SeasonController extends AbstractController
                 $season->insert($data);
                 header('Location: /pageSerie/admin/'.$idSerie);
                 exit();
-            }catch (\Exception $e) {
+            } catch (\Exception $e) {
                 $msg = 'Erreur: '. $e->getMessage(). "\n";
             }
 
             return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
-
         }
     }
 
@@ -51,13 +50,10 @@ class SeasonController extends AbstractController
     {
         if ($data['nbSeasons'] === '') {
             throw new \Exception('Le champ est vide');
-        }elseif (!preg_match('/^\d+$/', $data['nbSeasons'])) {
+        } elseif (!preg_match('/^\d+$/', $data['nbSeasons'])) {
             throw new \Exception('Ceci n\' est pas un nombre');
-        }elseif ($data['nbSeasons'] < 0) {
+        } elseif ($data['nbSeasons'] < 0) {
             throw new \Exception('le nombre doit être positif ou nul');
         }
-
     }
-
-
 }

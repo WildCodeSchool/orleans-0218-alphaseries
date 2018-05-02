@@ -6,7 +6,8 @@ $("#seasonSelect").change(function () {
     });
 });
 
-function toggle(source) {
+function toggle(source)
+{
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i] != source) {
@@ -16,7 +17,8 @@ function toggle(source) {
     }
 }
 
-function processForm(source) {
+function processForm(source)
+{
     let idEpisode = source.id;
     if ($(source).is(':checked')) {
         source.setAttribute("checked", "checked");
@@ -26,8 +28,7 @@ function processForm(source) {
             data: {hasSeen: 1, id: idEpisode},
 
         });
-    }
-    else {
+    } else {
         source.removeAttribute("checked");
         $.ajax({
             type: 'POST',

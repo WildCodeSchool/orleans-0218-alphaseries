@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class Season
 {
     /**
@@ -29,7 +28,7 @@ class Season
     /**
      * @return int
      */
-    public function getId (): int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -37,7 +36,7 @@ class Season
     /**
      * @param int $id
      */
-    public function setId (int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -45,7 +44,7 @@ class Season
     /**
      * @return int
      */
-    public function getNumberSeason (): int
+    public function getNumberSeason(): int
     {
         return $this->numberSeason;
     }
@@ -53,7 +52,7 @@ class Season
     /**
      * @param int $nbSeason
      */
-    public function setNumberSeason (int $nbSeason): void
+    public function setNumberSeason(int $nbSeason): void
     {
         $this->numberSeason = $nbSeason;
     }
@@ -61,7 +60,7 @@ class Season
     /**
      * @return int
      */
-    public function getIdSerie (): int
+    public function getIdSerie(): int
     {
         return $this->idSerie;
     }
@@ -69,10 +68,8 @@ class Season
     /**
      * @param int $idSerie
      */
-    public function setIdSerie (int $idSerie): void
+    public function setIdSerie(int $idSerie): void
     {
         $this->idSerie = $idSerie;
     }
-
-
 }
