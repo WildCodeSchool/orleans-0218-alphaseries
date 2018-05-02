@@ -4,11 +4,10 @@
 </div>
 {% for episode in episodes %}
     <li class="list-group-item bgt">
-        {% if episode.hasSeen == 0 %}
-            <input type="checkbox" id="{{ episode.id }}" name="hasSeen" onclick="processForm(this)">
-        {% else %}
-            <input type="checkbox" id="{{ episode.id }}" name="hasSeen" checked onclick="processForm(this)">
-        {% endif %}
+        <label class="switch">
+            <input type="checkbox" class="toggles" id="{{ episode.id }}" name="hasSeen" {% if episode.hasSeen == 0 %}checked{% endif %} onclick="processForm(this)">
+            <span class="slider round"></span>
+        </label >
         {{ "E%02d" | format (episode.number) }} - {{ episode.title }}
     </li>
 {% endfor %}
