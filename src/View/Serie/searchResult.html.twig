@@ -8,6 +8,9 @@
                 <form method="GET" action ="" class="input-group">
                     <input class="form-control searchengine" type="search" name="search" value="" placeholder="Votre recherche">
                 </form>
+                {% if numberResults == 0 %}
+                    <p class="text-danger ">Aucun résultat ne correspond à votre recherche</p>
+                {% endif %}
             </div>
         </div>
     </div>

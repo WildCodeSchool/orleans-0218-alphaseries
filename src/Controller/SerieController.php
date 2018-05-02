@@ -98,7 +98,6 @@ class SerieController extends AbstractController
 
             $episode = new EpisodeManager();
             $episodes = $episode->selectEpisodeBySeason($idSerie, $idSeason);
-
             return $this->twig->render('Serie/inc_listEpisode.html.twig', ['episodes' => $episodes]);
         }
     }
@@ -284,6 +283,7 @@ class SerieController extends AbstractController
     {
         $serieManager = new SerieManager();
         $series = $serieManager->searchBar($_GET['search']);
-        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series]);
+        $numberResults = count($series);
+        return $this->twig->render('Serie/searchResult.html.twig', ['series' => $series, 'numberResults' => $numberResults]);
     }
 }

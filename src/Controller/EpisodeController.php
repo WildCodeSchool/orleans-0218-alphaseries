@@ -74,6 +74,7 @@ class EpisodeController extends AbstractController
             header('Location: /pageSerie/admin/' .$idserie);
         }
     }
+
     public function deleteEpisode()
     {
         if(!empty($_POST)) {

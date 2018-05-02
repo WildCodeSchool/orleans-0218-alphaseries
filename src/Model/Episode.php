@@ -102,7 +102,7 @@ class Episode
     /**
      * @return bool
      */
-    public function isHasSeen (): bool
+    public function getHasSeen (): ?bool
     {
         return $this->hasSeen;
     }
@@ -118,7 +118,7 @@ class Episode
     /**
      * @return int
      */
-    public function getNote (): int
+    public function getNote (): ?int
     {
         return $this->note;
     }
