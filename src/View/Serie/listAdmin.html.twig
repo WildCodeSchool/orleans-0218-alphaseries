@@ -14,11 +14,11 @@
                     <a href="/pageSerie/{{ serie.id }}"><h2 class="card-title text-center">{{ serie.title | title }}</h2></a>
                     {% if serie.link_picture is null %}
                         <div class="stylecard">
-                            <img class="img-fluid mx-auto" src="/assets/upload/defaultPicture.jpg">
+                            <img class="img-fluid mx-auto" alt="defaultPicture" src="/assets/upload/defaultPicture.jpg">
                         </div>
                     {% else %}
                         <div class="stylecard">
-                        <a class="linkcard" href="/pageSerie/{{ serie.id }}" ><img class="img-fluid mx-auto" src="/assets/upload/{{ serie.link_picture }}"></a>
+                        <a class="linkcard" href="/pageSerie/{{ serie.id }}" ><img class="img-fluid mx-auto" alt="{{ serie.link_picture }}" src="/assets/upload/{{ serie.link_picture }}"></a>
                         </div>
                     {% endif %}
                     <div class="d-flex flex-row mx-auto">
