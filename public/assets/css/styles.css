@@ -82,6 +82,8 @@ img {
     width: 310px;
     max-height: 424px;
     object-fit: cover;
+    min-height: 424px;
+
 }
 
 h1 {
