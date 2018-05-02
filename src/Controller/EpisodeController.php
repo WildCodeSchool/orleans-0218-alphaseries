@@ -22,10 +22,10 @@ class EpisodeController extends AbstractController
      */
     public function addEpisode()
     {
-        if ( !empty($_POST) ) {
+        if (!empty($_POST)) {
             $data = $this->cleanPost($_POST);
             $idSerie = $data['idSerie'];
-            if ( isset($data['numeroEpisode']) ) {
+            if (isset($data['numeroEpisode'])) {
                 try {
                     $episodeManager = new EpisodeManager();
                     $episodeManager->insert($data);
@@ -33,7 +33,6 @@ class EpisodeController extends AbstractController
                     exit();
                 } catch (\Exception $e) {
                     $msg = 'Erreur: ' . $e->getMessage() . "\n";
-
                 }
                 $serieManager = new SerieManager();
                 $serie = $serieManager->selectOneById($idSerie);
@@ -55,12 +54,11 @@ class EpisodeController extends AbstractController
         $serieManager = new SerieManager();
         $serie = $serieManager->selectOneById($idserie);
         $seasonManager = new SeasonManager();
-        $seasons = $seasonManager->selectAllByFk( 'idSerie', 'id', $idserie, 'serie', 'numberSeason');
+        $seasons = $seasonManager->selectAllByFk('idSerie', 'id', $idserie, 'serie', 'numberSeason');
         $season = $seasonManager->selectOneById($idSeason);
         $episodes = $episodeManager->listSpecsEpisodes($idserie);
 
         return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie, 'idSerie' => $id, 'seasons' => $seasons, 'episodes' => $episodes, 'episode' => $episode, 'season' => $season]);
-
     }
 
     public function viewAfterUpdateEpisode()
@@ -77,15 +75,13 @@ class EpisodeController extends AbstractController
 
     public function deleteEpisode()
     {
-        if(!empty($_POST)) {
+        if (!empty($_POST)) {
             $id = $_POST['idEp'];
             $episodeManager = new EpisodeManager();
             $idSerie = $episodeManager->selectOneById($id)->getIdSerie();
             $episodeManager->delete($id);
-            header( 'Location: /pageSerie/admin/' .$idSerie);
+            header('Location: /pageSerie/admin/' .$idSerie);
             exit();
         }
     }
-
 }
-

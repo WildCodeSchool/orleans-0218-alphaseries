@@ -79,7 +79,6 @@ class SerieController extends AbstractController
         $seasons = $season->selectSeason($id);
 
         return $this->twig->render('Serie/pageSerie.html.twig', ['serie' => $serie, 'seasons' => $seasons, 'note' => $note]);
-
     }
 
     /**
@@ -145,7 +144,7 @@ class SerieController extends AbstractController
             $msg = '';
             try {
                 $this->validationForm($data);
-            }catch (\Exception $e) {
+            } catch (\Exception $e) {
                 $msg = 'Erreur: '. $e->getMessage(). "\n";
             }
             $serieManager = new SerieManager();
@@ -154,11 +153,10 @@ class SerieController extends AbstractController
                 $data['link_picture'] = $serieManager->upload($file);
             } catch (\Exception $e) {
                 $msg = 'Erreur: '. $e->getMessage(). "\n";
-
             }
             if (!empty($msg)) {
                 return $this->twig->render('Serie/add.html.twig', ['data' => $data, 'msg' => $msg]);
-            }else {
+            } else {
                 $lastId = $serieManager->insert($data);
                 header('Location: /pageSerie/admin/' . $lastId);
                 exit();
@@ -197,7 +195,7 @@ class SerieController extends AbstractController
             if (!isset($data['nbSeasons'])) {
                 try {
                     $this->validationFormUpdate($data);
-                }catch (\Exception $e) {
+                } catch (\Exception $e) {
                     $msg = 'Erreur: '. $e->getMessage(). "\n";
                 }
                 $serieManager = new SerieManager();
@@ -213,22 +211,19 @@ class SerieController extends AbstractController
                     }
 
                     unset($data['edit_image']);
-
                 } else {
-
                     $file = $_FILES["fichier"];
                     try {
                         $data['link_picture'] = $serieManager->upload($file);
-                    }catch (\Exception $e) {
+                    } catch (\Exception $e) {
                         $msg = 'Erreur: '. $e->getMessage(). "\n";
                     }
-
                 }
                 if (empty($msg)) {
                     $serieManager->update($idSerie, $data);
                     header('Location: /pageSerie/admin/' . $idSerie);
                     exit();
-                }else {
+                } else {
                     $serieManager = new SerieManager();
                     $serie = $serieManager->selectOneById($idSerie);
                     $season = new SeasonManager();
@@ -236,9 +231,7 @@ class SerieController extends AbstractController
                     $episodeManager = new episodeManager();
                     $episodes = $episodeManager->selectAllEpisodesOfOneSerie($idSerie);
                     return $this->twig->render('Serie/adminSerie.html.twig', ['serie' => $serie,'idSerie' => $idSerie, 'seasons' => $seasons, 'msg' => $msg, 'episodes' => $episodes]);
-
                 }
-
             }
         }
     }
