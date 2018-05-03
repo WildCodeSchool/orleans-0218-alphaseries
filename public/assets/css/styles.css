@@ -297,3 +297,7 @@ input:checked + .slider:before {
 .numericNote{
     font-size: 22px;
 }
+
+span.star {
+    cursor: pointer;
+}
