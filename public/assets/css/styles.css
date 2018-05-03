@@ -82,6 +82,8 @@ img {
     width: 310px;
     max-height: 424px;
     object-fit: cover;
+    min-height: 424px;
+
 }
 
 h1 {
@@ -290,4 +292,12 @@ input:checked + .slider:before {
 .form-control-modif{
     width: 25vw;
     min-width: 100%;
+}
+
+.numericNote{
+    font-size: 22px;
+}
+
+span.star {
+    cursor: pointer;
 }
